@@ -22,4 +22,5 @@ build:
     post_install:
       - poetry install --only doc
 
-
+mkdocs:
+  configuration: mkdocs.yml
