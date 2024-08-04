@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "web"
+version = "0.1.0"
+description = ""
+authors = ["Everson Otoni <everson.ott@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+mkdocs = "^1.6.0"
+
+
+[tool.poetry.group.doc.dependencies]
+mkdocs-material = "^9.5.30"
+mkdocstrings = "^0.25.1"
+mkdocstrings-python = "^1.10.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
