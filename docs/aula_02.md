@@ -1,4 +1,4 @@
-# Aula 02 - Introdução ao conceito de complexidade de algoritmos
+# Aula 02 - Análise de algoritmos e suas complexidades
 
 ## Ordenação por inserção - Passo a passo
 
