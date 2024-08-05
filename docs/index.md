@@ -34,22 +34,22 @@ O módulo 2 está direcionado à aplicação do que foi aprendido no módulo 1. 
 
 Para aproveitar ao máximo todo o conteúdo do curso, é recomendado que você apenas esteja em dia com o conteúdo.
 
-A [Aula 01 - Primeiro contato com a programação](./Revisão do módulo 1/aula_01.md) é a aula mais básica do curso, e não exige nenhum pré-requisito.
+A [Aula 01 - Primeiro contato com a programação](./Módulo 1/aula_01.md) é a aula mais básica do curso, e não exige nenhum pré-requisito.
 
 ## Aulas
 
 ### Módulo 1
-1. [Aula 01 - Primeiro contato com a programação](./Revisão do módulo 1/aula_01.md)
-2. [Aula 02 - Variáveis, expressões e instruções](./Revisão do módulo 1/aula_02.md)
-3. [Aula 03 - Funções](./Revisão do módulo 1/aula_03.md)
-4. [Aula 04 - Operadores e manipulação de scripts em Python](./Revisão do módulo 1/aula_04.md)
-5. [Aula 05 - Expressões boolenas, operadores e execução condicional](./Revisão do módulo 1/aula_05.md)
-6. [Aula 06 - Recursividade](./Revisão do módulo 1/aula_06.md)
-7. [Aula 07 - Introdução à iteração](./Revisão do módulo 1/aula_07.md)
-8. [Aula 08 - Iteração (continuação)](./Revisão do módulo 1/aula_08.md)
-9. [Aula 09 - Métodos de lista](./Revisão do módulo 1/aula_09.md)
-10. [Aula 10 - Iteração (continuação), instrução For](./Revisão do módulo 1/aula_10.md)
-11. [Aula 11 - Estrutura de dados embutida, dicionários](./Revisão do módulo 1/aula_11.md)
+1. [Aula 01 - Primeiro contato com a programação](./Módulo 1/aula_01.md)
+2. [Aula 02 - Variáveis, expressões e instruções](./Módulo 1/aula_02.md)
+3. [Aula 03 - Funções](./Módulo 1/aula_03.md)
+4. [Aula 04 - Operadores e manipulação de scripts em Python](./Módulo 1/aula_04.md)
+5. [Aula 05 - Expressões boolenas, operadores e execução condicional](./Módulo 1/aula_05.md)
+6. [Aula 06 - Recursividade](./Módulo 1/aula_06.md)
+7. [Aula 07 - Introdução à iteração](./Módulo 1/aula_07.md)
+8. [Aula 08 - Iteração (continuação)](./Módulo 1/aula_08.md)
+9. [Aula 09 - Métodos de lista](./Módulo 1/aula_09.md)
+10. [Aula 10 - Iteração (continuação), instrução For](./Módulo 1/aula_10.md)
+11. [Aula 11 - Estrutura de dados embutida, dicionários](./Módulo 1/aula_11.md)
 
 ### Módulo 2
 1. [Aula 01 - Apresentação do módulo 2 e introdução à análise de algoritmos](./aula_01.md)
