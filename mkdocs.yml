@@ -8,6 +8,19 @@ theme:
   language: pt-BR
   logo: assets/logo_fundamentos_algoritmos.png
   favicon: assets/logo_fundamentos_algoritmos.png
+  palette:
+    - scheme: slate
+      primary: deep blue
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+    - scheme: default
+      primary: deep blue
+      toggle:
+        icon: material/weather-night
+        name: Modo noturno
+
+
 
 markdown_extensions:
   - pymdownx.highlight:
