@@ -21,6 +21,7 @@ def ordenacao_insercao(A):
 
 Vamos considerar o arranjo:
 
+
 |arranjo:|5|2|4|6|
 |-|-|-|-|-|
 |**índice:**|**0**|**1**|**2**|**3**|

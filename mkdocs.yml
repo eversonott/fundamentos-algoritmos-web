@@ -9,9 +9,8 @@ theme:
   logo: assets/logo_fundamentos_algoritmos.png
   favicon: assets/logo_fundamentos_algoritmos.png
 
-  markdown_extensions:
+markdown_extensions:
   - attr_list
-
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
