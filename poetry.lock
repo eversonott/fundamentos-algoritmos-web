@@ -427,6 +427,20 @@ files = [
 ]
 
 [[package]]
+name = "mkdocs-pymdownx-material-extras"
+version = "2.5.6"
+description = "Plugin to extend MkDocs Material theme."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "mkdocs_pymdownx_material_extras-2.5.6-py3-none-any.whl", hash = "sha256:ed5bfc23c6f42f485603e05abc22926c27c2b31ef9972a0132582b73f49557e9"},
+    {file = "mkdocs_pymdownx_material_extras-2.5.6.tar.gz", hash = "sha256:e0cf0aa4f284a78ecab9caf0bc62a12d8b836a5abbd49f9638cc03b2698a021c"},
+]
+
+[package.dependencies]
+mkdocs-material = ">=8.3.3"
+
+[[package]]
 name = "mkdocstrings"
 version = "0.25.1"
 description = "Automatic documentation from sources, for MkDocs."
@@ -833,4 +847,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b9fc4cf4357cfa1e27925a3ecefdec0b8390b2a7646420e90f0b45a16efa1e9a"
+content-hash = "2196638b818755657de5039c0e7b687d9650676d42c95c9d5f6e68f0a0305057"
