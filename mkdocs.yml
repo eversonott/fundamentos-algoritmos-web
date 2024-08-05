@@ -3,9 +3,10 @@ repo_url: https://github.com/eversonott/fundamentos-algoritmos
 repo_name: eversonott/fundamentos-algoritmos
 edit_uri: tree/main/docs
 
-theme: 
+theme:
   name: material
   language: pt-BR
-  logo: assets/logo_fundamentos_algoritmos.png
-  favicon: assets/logo_fundamentos_algoritmos.png
+  logo: assets/logo.png
+  favicon: assets/logo.png
+
 
