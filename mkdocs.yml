@@ -4,7 +4,7 @@ repo_name: eversonott/fundamentos-algoritmos
 edit_uri: tree/main/docs
 
 theme: 
-  name: 'material'
+  name: material
   language: pt-BR
   logo: assets/logo_fundamentos_algoritmos.png
   favicon: assets/logo_fundamentos_algoritmos.png
