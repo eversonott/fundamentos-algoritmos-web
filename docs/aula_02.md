@@ -1,6 +1,18 @@
 # Aula 02 - Análise de algoritmos e suas complexidades
 
+
+{% set aula = "01" %}
+{% set link = "gjcuwUxTQGY" %}
+{% set objetivos = ["Um entendimento do algoritmo de ordenação por inserção.", "Introduzir os conceitos de análise de algoritmo.", "O uso do pior caso de execução.", "Ordem de crescimento dos algoritmos."] %}
+
+
+{% include "templates/cabecalho.md" %}
+
+---
+
 ## Ordenação por inserção - Passo a passo
+
+
 
 
 

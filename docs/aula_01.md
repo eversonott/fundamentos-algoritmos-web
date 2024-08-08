@@ -1,18 +1,11 @@
----
-marp: true
-theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
----
-# Aula 01 - Aula Inaugural do curso
+# Aula 01 - Aula Inaugural do curso e introdução à análise de algoritmos
 
-Fundamentos de algoritmos e introdução à programação em python II
 
-Prof. Everson Otoni
+{% set aula = "01" %}
+{% set link = "hhKYfALDc3s" %}
+{% set objetivos = ["Recursos computacionais", "Modelo RAM", "Discussão inicial de como analisar algoritmos"] %}
+
+{% include "templates/cabecalho.md" %}
 
 
 ---
@@ -25,6 +18,7 @@ Prof. Everson Otoni
 - Por que se inscreveram no módulo 2?
 
 - O que esperam do módulo 2?
+
 ---
 
 ## Iniciativa
