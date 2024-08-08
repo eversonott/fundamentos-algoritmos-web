@@ -20,8 +20,6 @@ theme:
         icon: material/weather-night
         name: Modo noturno
 
-
-
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -36,6 +34,17 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true  
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+plugins:
+  - macros
+  - mkdocs-video
+
+
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
