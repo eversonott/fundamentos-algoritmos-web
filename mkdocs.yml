@@ -43,6 +43,10 @@ markdown_extensions:
 plugins:
   - macros
   - mkdocs-video
+  - ezlinks:
+      warn_ambiguities: true
+      wikilinks:  true
+      reference_links: true
 
 
 extra_css:

@@ -508,6 +508,20 @@ markupsafe = ">=2.0.1"
 mkdocs = ">=1.1"
 
 [[package]]
+name = "mkdocs-ezlinks-plugin"
+version = "0.1.14"
+description = "A mkdocs plugin that makes linking to other documents easy."
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "mkdocs-ezlinks-plugin-0.1.14.tar.gz", hash = "sha256:3e2085c16a850e022393e80194c17612e7b55de87fb45b3ffb618b5dfdb10811"},
+]
+
+[package.dependencies]
+mkdocs = ">=1.1.0"
+pygtrie = "==2.*"
+
+[[package]]
 name = "mkdocs-get-deps"
 version = "0.2.0"
 description = "MkDocs extension that lists all dependencies according to a mkdocs.yml file"
@@ -715,6 +729,17 @@ files = [
 
 [package.extras]
 windows-terminal = ["colorama (>=0.4.6)"]
+
+[[package]]
+name = "pygtrie"
+version = "2.5.0"
+description = "A pure Python trie data structure implementation."
+optional = false
+python-versions = "*"
+files = [
+    {file = "pygtrie-2.5.0-py3-none-any.whl", hash = "sha256:8795cda8105493d5ae159a5bef313ff13156c5d4d72feddefacaad59f8c8ce16"},
+    {file = "pygtrie-2.5.0.tar.gz", hash = "sha256:203514ad826eb403dab1d2e2ddd034e0d1534bbe4dbe0213bb0593f66beba4e2"},
+]
 
 [[package]]
 name = "pymdown-extensions"
@@ -1020,4 +1045,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "ad958b043c26332fb56b8755811582eacf2f73108232296249b53bf20cb450a5"
+content-hash = "197885f3161d7051670d485597720b61e05db7bb6614567b173f67d72faefb5e"
