@@ -13,7 +13,7 @@
 ## Ordenação por inserção - Passo a passo
 
 
-
+![](https://upload.wikimedia.org/wikipedia/commons/2/25/Insertion_sort_animation.gif){: .center .shadow}
 
 
 Para o exemplo iremos utilizar o arranjo: `A = < 5, 2, 4, 6 >`
