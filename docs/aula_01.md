@@ -84,7 +84,7 @@ No modelo RAM encontramos:
 
 ---
 
-### Comportamento do algoritmo
+### Comportamento dos algoritmos
 
 Uma análise de um algoritmo simples no modelo de RAM pode ser desafiante.
 
@@ -186,17 +186,6 @@ Perceba que o arranjo inicial era <5, 2, 4, 6> e o final <2, 4, 5, 6>.
 
 ---
 
-##### Conclusão
-
-Como o comparativo é binário, ou seja, exige dois elementos. Podemos sempre começar a partir do passo 2.
-
-Logo iniciamos a partir do segundo elemento.
-
-Perceba que a ordenação ocorre da esquerda para a direita.
-
-
----
-
 #### Pseudocódigo
 
 O pseudocódigo se assemelha muito com as linguagens de programação C, C++, Python e Pascal.
@@ -211,7 +200,7 @@ O pseudocódigo transmite a essência do algoritmo de modo mais conciso.
 
 ---
 
-##### O pseudocódigo de fato
+#### O pseudocódigo da ordenação por inserção
 
 ```py title="pseudocodigo.py" linenums="1"
 def ordenacao_insercao(A):
@@ -228,7 +217,7 @@ def ordenacao_insercao(A):
 
 ---
 
-##### Ordenação por inserção
+#### Ordenação por inserção em Python
 
 ```py title="ordenacao_insercao.py" linenums="1" hl_lines="2 5"
 def ordenacao_insercao(lista):
@@ -248,23 +237,7 @@ def ordenacao_insercao(lista):
 
 ---
 
-###### Explicações
 
-A variável `i` inicia a partir do segundo elemento da lista. 
-Como concluímos, a comparação é binária, e compara o posterior com o anterior.
-
-`chave = lista[i]` armazena o valor numérico (elemento) na posição `i`.
-
-A condição `j >= 0 and lista[j] > chave` faz o comparativo.
-Se o elemento anterior for maior que o elemento posterior. Há um inversão de posições (`lista[j + 1] = lista[j]`)
-Por conta dessa inversão, temos que voltar uma posição (`j = j -1`)
-
-
-Se o elemento anterior não for maior que o elemento posterior, ele será igual ou menor. Logo fora do escopo do while, temos `lista[j + 1] = chave`
-
----
-
-###### Caso de teste
 
 
 
