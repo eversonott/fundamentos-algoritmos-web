@@ -41,6 +41,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 plugins:
+  - search
   - macros
   - mkdocs-video
   - ezlinks:
