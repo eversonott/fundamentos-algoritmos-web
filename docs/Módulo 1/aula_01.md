@@ -17,16 +17,6 @@ Prof. Everson Otoni
 
 ---
 
-## OBMEP - Mentores (Apresentação)
-
-### Quem são vocês?
-- De onde são?
-- Em qual ano escolar estão?
-- Pretende fazer uma graduação ou licenciatura?
-- Por que se inscreveram no curso?
-- O que esperam deste curso?
-
----
 
  A ideia do curso é oferecer um primeiro contato com a programação.
 
