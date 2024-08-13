@@ -1,13 +1,13 @@
-# Aula 03 - Análise de algoritmos e suas complexidades (continuação)
+# Aula 03 - Análise de algoritmos e suas complexidades (continuação) e Módulos em Python
 
 
 
 {% set aula = "03" %}
-{% set link = "" %}
+{% set link = "WfPIxKBEjPI" %}
 {% set objetivos = ["Um entendimento do algoritmo de ordenação por inserção.", "Introduzir os conceitos de análise de algoritmo.", "O uso do pior caso de execução.", "Ordem de crescimento dos algoritmos."] %}
 
 
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 ---
 
@@ -24,8 +24,8 @@ Essa permutação lembra a forma como as bolhas de ar em um tanque com água, po
 
 ```py title="pseudocodigo_ordenacao_insercao" linenums="1"
 def ordenacao_flutuacao(A):
-    Para i = 1 até A.comprimento, faça:
-        Para j = A.comprimento -i - 1
+    Para i = 0 até A.comprimento, faça:
+        Para j = 0 até A.comprimento -i - 1
             Se A[j] > A[j + 1]
                 valor_temporario = A[j]
                 A[j] = A[j + 1]
@@ -36,7 +36,6 @@ def ordenacao_flutuacao(A):
 
 Faça uma tabela de custos e quantidade de vezes uma linha é executada.
 
-<!---
 
 |linha|def ordenacao_flutuacao(A):|custo|vezes|
 |-----|---------------------------|-----|-----|
@@ -47,7 +46,6 @@ Faça uma tabela de custos e quantidade de vezes uma linha é executada.
 |5    |&emsp;&emsp;&emsp;&emsp;A[j] = A[j + 1]|$c_5$|$\sum_{i=1}^{n} (t_i - 1)$|
 |6    |&emsp;&emsp;&emsp;&emsp; A[j + 1] = valor_temporario|$c_6$|$\sum_{i=1}^{n} (t_i - 1)$|
 
---->
 
 ### Pior caso
 
@@ -55,8 +53,6 @@ Faça uma tabela de custos e quantidade de vezes uma linha é executada.
 Estudo do $T(n)$ para o pior caso.
 
 Definição $\Theta(n^2)$
-
-<!---
 
 
 Para o pior caso, ou seja, um arranjo de $n$ elementos, ordenado de maneira decrescente. Temos que, nossas linhas $2$ e $3$ será executada $n, n - 1, n-2,\cdots  1$ vezes. Logo, para cada $i$, $A[j]$ sempre será **maior** que $A[j + 1] e será executado $n - i -1$. Teremos então para as linhas $4$, $5$ e $6$: $n - 1, n - 2, n - 3, \cdots, 1$ ou $0, 1, 2, 3, 4, i - 1$ vezes.
@@ -76,11 +72,10 @@ $$T(n) = \dfrac{c_2 + c_3 + c_4 + c_5 + c_6}{2}n^2 + \biggl[c_1 + \dfrac{c_2 + c
 
 $$T(n) = c_7n^2 + c_8n$$
 
-$$\Theta(n^2)
+$$\Theta(n^2)$$
 
 Ainda não foi dessa vez, que nosso $\Theta < \Theta(n^2)$
 
---->
 
 ## Módulos
 
