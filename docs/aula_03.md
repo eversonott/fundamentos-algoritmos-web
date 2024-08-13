@@ -121,7 +121,7 @@ Vamos agora criar um arquivo que utilizará do nosso módulo recém criado.
 Para isso utilizamos `import` para "importar" o módulo.  
 
 
-```py title="aula_03.py" linenums="1"
+```py title="aula_03_modulos.py" linenums="1"
 import ordenacao
 
 ```
@@ -130,7 +130,7 @@ Nossa estrutura de arquivos e pastas está assim:
 
 ```
 .
-├── aula_03.py
+├── aula_03_modulos.py
 └── ordenacao.py
 ```
 
@@ -138,7 +138,7 @@ Até agora só adicionamos o nome do módulo `ordenacao`.
 
 Usando o nome do módulo importado, podemos acessar as funções.
 
-```py title="aula_03.py" linenums="1" hl_lines="7 13"
+```py title="aula_03_modulos.py" linenums="1" hl_lines="7 13"
 import ordenacao
 
 arranjo = [6, 5, 4, 2]
@@ -154,7 +154,7 @@ print(arranjo)
 ordenacao.ordenacao_flutuacao(arranjo)
 ```
 
-```shell title="Resposta do comando `python aula_03.py`" hl_lines="2 4"
+```shell title="Resposta do comando `python aula_03_modulos.py`" hl_lines="2 4"
 [6, 5, 4, 2]
 Por inserção:  [2, 4, 5, 6]
 [6, 5, 4, 2]
@@ -164,7 +164,7 @@ Por flutuação:  [2, 4, 5, 6]
 É claro que, se pretendemos usar muitas vezes uma função importada, podemos atribui-lá a um nome local:
 
 
-```py title="aula_03.py" linenums="1" hl_lines="7 8 17"
+```py title="aula_03_modulos.py" linenums="1" hl_lines="7 8 17"
 import ordenacao
 
 arranjo = [6, 5, 4, 2]
