@@ -5,7 +5,6 @@ edit_uri: tree/main/docs
 
 theme: 
   name: material
-  custom_dir: overrides
   features:
     - navigation.tabs
   language: pt-BR
