@@ -5,6 +5,9 @@ edit_uri: tree/main/docs
 
 theme: 
   name: material
+  custom_dir: overrides
+  features:
+    - navigation.tabs
   language: pt-BR
   logo: assets/logo_fundamentos_algoritmos.png
   favicon: assets/logo_fundamentos_algoritmos.png
@@ -21,13 +24,17 @@ theme:
         name: Modo noturno
 
 markdown_extensions:
+  - pymdownx.critic
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.keys
+  - footnotes
+  - markdown.extensions.attr_list
   - pymdownx.arithmatex:
       generic: true
   - attr_list
@@ -39,8 +46,11 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  - pymdownx.snippets:
+      base_path: ["docs"]
 
 plugins:
+  - social
   - search
   - macros
   - mkdocs-video
