@@ -253,3 +253,5 @@ Também podemos usar `as` com a palavra-chave `from`, e obeter efeitos similares
         >>> import importlib
         >>> importlib.reload(`nome do módulo`)
     ```
+
+Continuamos na Aula 04
