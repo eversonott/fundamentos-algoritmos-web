@@ -250,6 +250,8 @@ Modo absoluto:
 from audio.efeitos import eco
 ```
 
+No módulo absoluto o caminho parte da pasta principal (pacote `audio`). Por isso é absoluto, pois a referência é absoluta em qualquer módulo, de qualquer subpacote.
+
 Modo relativos:
 
 Importações relativas, utilizam pontos para indicar o pacote pai e o atual, envolvidos.
