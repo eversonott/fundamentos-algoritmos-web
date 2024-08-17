@@ -3,6 +3,7 @@
 
 {% set aula = "03" %}
 {% set link = "WfPIxKBEjPI" %}
+{% set codigos = true %}
 {% set objetivos = [
 "Ordenação por flutuação entendimento do algoritmo e sua análise", 
 "Introdução à ideia de módulo"] %}
