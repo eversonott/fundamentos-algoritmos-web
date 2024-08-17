@@ -20,7 +20,7 @@ Quando um módulo é chamado, o interpretador procura um módulo embutido com es
 
 Módulos embutidos podem ser listados com: `sys.builtin_module_names`.
 
-```py title="Terminal interativo" linenums="1"
+```py title="Terminal interativo"
 >>> import sys
 >>> sys.builtin_module_names
 ('_abc', '_ast', '_codecs', '_collections', '_functools', '_imp', '_io', 
@@ -33,7 +33,7 @@ Módulos embutidos podem ser listados com: `sys.builtin_module_names`.
 Se não encontra, procura um arquivo com o mesmo nome em uma lista de diretórios incluídos na variável `sys.path`. Que nada mais é do que uma lista de strings que especifica o caminho de pesquisa para módulos.
 
 
-```py title="Terminal interativo" linenums="1"
+```py title="Terminal interativo"
 >>> import sys
 >>> sys.path
 ['', '/home/aristoteles/.pyenv/versions/3.13.0b2/lib/python313.zip', 
@@ -45,7 +45,7 @@ Se não encontra, procura um arquivo com o mesmo nome em uma lista de diretório
 Como se trata de uma lista podemos modificá-la com as operações típicas de lista, por exemplo:
 
 
-```py title="Terminal interativo" linenums="1"
+```py title="Terminal interativo"
 >>> import sys
 >>> sys.path.append('../guido/lib/python')
 ```
@@ -60,7 +60,7 @@ Vamos considerar novamente o módulo `ordenacao.py`:
 --8<-- "./codigo/aula_04/ordenacao.py"
 ```
 
-```py title="Terminal interativo" linenums="1"
+```py title="Terminal interativo" 
 >>> import ordenacao, sys
 >>> dir(ordenacao)
 ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', 
@@ -100,7 +100,7 @@ Vamos considerar novamente o módulo `ordenacao.py`:
 Sem argumentos, `dir()` lista os nomes atualmente definidos:
 
 
-```py title="Terminal interativo" linenums="1"
+```py title="Terminal interativo" 
 >>> import ordenacao
 >>> arranjo = [12, 8, 5, 3, 2]
 >>> insert_sort = ordenacao.ordenacao_insercao
@@ -120,7 +120,7 @@ Ou seja, a função `dir()` lista todo tipo de nomes: variáveis, módulos, fun�
 Para listar os nomes de variáveis e funções embutidas. Utilizamos o módulo padrão `builtins`:
 
 
-```py title="Terminal interativo" linenums="1"
+```py title="Terminal interativo" 
 >>> import builtins
 >>> dir(builtins)
 ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException',
@@ -369,7 +369,7 @@ Vamos dar uma olhada no arquivo `__init__.py`:
 
 
 
-```py title="./numpy/__init__.py"
+```py title="./numpy/__init__.py" linenums="1"
 --8<-- "./codigo/aula_04/numpy/__init__.py"
 ```
 
