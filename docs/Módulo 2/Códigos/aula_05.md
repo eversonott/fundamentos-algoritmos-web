@@ -18,3 +18,9 @@
 ```py title="aula_05/exemplo_04.py" linenums="1"
 --8<-- "./codigo/aula_05/exemplo_04.py"
 ```
+
+## Feito em aula
+
+```py title="aula_05/exemplo_05.py" linenums="1"
+--8<-- "./codigo/aula_05/exemplo_05.py"
+```
