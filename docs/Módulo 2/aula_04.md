@@ -1,4 +1,4 @@
-# Aula 04 - Módulos (continuação) e pacotes em Python
+# Aula 04 - Módulos (pt. 2) e pacotes em Python
 
 {% set aula = "04" %}
 {% set link = "" %}
@@ -378,4 +378,3 @@ Vamos dar uma olhada no arquivo `__init__.py`:
 
 --8<-- "./Módulo 2/Pesquisas/aula_04.html"
 
-"./Pesquisas/aula_04.md"

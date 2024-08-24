@@ -1,5 +1,5 @@
 
-# Aula 03 - Análise de algoritmos e suas complexidades (continuação) e Módulos em Python
+# Aula 03 - Análise de algoritmos e suas complexidades (pt. 2) e Módulos em Python
 
 {% set aula = "03" %}
 {% set link = "WfPIxKBEjPI" %}

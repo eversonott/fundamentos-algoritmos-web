@@ -1,4 +1,4 @@
-# Aula 02 - Análise de algoritmos e suas complexidades
+# Aula 02 - Análise de algoritmos e suas complexidades (pt. 1)
 
 
 {% set aula = "01" %}
