@@ -1,7 +1,7 @@
 # Aula 05 - Entrada e Saída de arquivos (pt. 1)
 
 {% set aula = "05" %}
-{% set link = "" %}
+{% set link = "k6LpQWeoHDY" %}
 {% set codigos = true %}
 {% set pesquisas = true %}
 {% set slides = false %}
