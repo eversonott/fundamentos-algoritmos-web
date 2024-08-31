@@ -1,7 +1,7 @@
 # Aula 06 - Entrada e Saída de arquivos (pt. 2)
 
 {% set aula = "06" %}
-{% set link = "" %}
+{% set link = "goBEiJMmWVw" %}
 {% set codigos = true %}
 {% set pesquisas = true %}
 {% set slides = false %}
