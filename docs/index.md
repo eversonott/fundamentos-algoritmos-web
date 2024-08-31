@@ -57,7 +57,7 @@ A [Aula 01 - Primeiro contato com a programação](./Módulo 1/aula_01.md) é a 
 3. [Aula 03 - Análise de algoritmos e suas complexidades (pt. 2) e Módulos em Python](./Módulo 2/aula_03.md)
 4. [Aula 04 - Módulos (pt. 2) e pacotes em Python](./Módulo 2/aula_04.md)
 5. [Aula 05 - Entrada e Saída de arquivos (pt. 1)](./Módulo 2/aula_05.md)
-5. [Aula 05 - Entrada e Saída de arquivos (pt. 2)](./Módulo 2/aula_06.md)
+5. [Aula 06 - Entrada e Saída de arquivos (pt. 2)](./Módulo 2/aula_06.md)
 
 
 
