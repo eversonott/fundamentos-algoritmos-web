@@ -1,0 +1,1 @@
+Podemos utilizar o especificador '=' com f-strings.
