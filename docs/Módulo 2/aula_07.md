@@ -1,7 +1,7 @@
 # Aula 07 - Gerenciamento de pacotes e a biblioteca Pandas
 
 {% set aula = "07" %}
-{% set link = "" %}
+{% set link = "OiaRGoLGzOc" %}
 {% set codigos = false %}
 {% set pesquisas = false %}
 {% set slides = false %}
