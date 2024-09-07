@@ -7,6 +7,13 @@ theme:
   name: material
   features:
     - navigation.tabs
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+    - search.share
   language: pt-BR
   logo: assets/logo_fundamentos_algoritmos.png
   favicon: assets/logo_fundamentos_algoritmos.png
