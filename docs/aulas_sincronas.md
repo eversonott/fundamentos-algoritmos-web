@@ -18,8 +18,8 @@ Nossos encontros acontecerão aos sábados com duração de 2h. Ou se iniciarão
 |Aula 06 |Entrada e Saída de arquivos (pt. 2)|31/08/24|[Aula 06](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula06-An%C3%A1lisedealgoritmos){:target="_blank"}|
 |Aula 07 |Gerenciamento de pacotes e a biblioteca Pandas (pt. 1)|07/09/24|[Aula 07](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula07-An%C3%A1lisedealgoritmos){:target="_blank"}|
 |Aula 08 |Gerenciamento de pacotes e a biblioteca Pandas (pt. 2)|21/09/24|[Aula 08](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula08-An%C3%A1lisedealgoritmos){:target="_blank"}|
-|Aula 09 |Expressões regulares|28/09/24|[Aula 09](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula09-An%C3%A1lisedealgoritmos){:target="_blank"}|
-|Aula 10 |Programação orientada a objeto|05/10/24|[Aula 10](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula10-An%C3%A1lisedealgoritmos){:target="_blank"}|
-|Aula 11 |Web Scraping|12/10/24|[Aula 11](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula11-An%C3%A1lisedealgoritmos){:target="_blank"}|
-|Aula 12 |Avaliação final|19/10/24|[Aula 12](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula12-An%C3%A1lisedealgoritmos){:target="_blank"}|
+|Aula 09 |Selenium|05/10/24|[Aula 09](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula09-An%C3%A1lisedealgoritmos){:target="_blank"}|
+|Aula 10 |Web Scraping (pt. 1)|12/10/24|[Aula 10](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula10-An%C3%A1lisedealgoritmos){:target="_blank"}|
+|Aula 11 |Web Scraping (pt. 2)|19/10/24|[Aula 11](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula11-An%C3%A1lisedealgoritmos){:target="_blank"}|
+|Aula 12 |Avaliação final|A definir|[Aula 12](https://meet.jit.si/FUNDAMENTOSDEALGORITMOSEINICIA%C3%87%C3%83O%C3%80PROGRAMA%C3%87%C3%83OEMPYTHON-Aula12-An%C3%A1lisedealgoritmos){:target="_blank"}|
 
