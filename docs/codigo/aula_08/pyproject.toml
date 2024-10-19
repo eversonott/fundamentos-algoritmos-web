@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "aula-08"
+version = "0.1.0"
+description = ""
+authors = ["Everson Otoni <everson.ott@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+notebook = "^7.2.2"
+pandas = "^2.2.2"
+pyarrow = "^17.0.0"
+plotly = "^5.24.1"
+pendulum = "^3.0.0"
+#kaleido = {git='https://github.com/plotly/Kaleido.git', tag='v0.1.0.post1'}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
