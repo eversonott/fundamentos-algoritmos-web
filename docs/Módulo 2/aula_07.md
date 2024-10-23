@@ -10,8 +10,6 @@
 
 ---
 
-Gerenciando dependências no Python
-
 ## PyPI
 
 O Índice de pacotes Python (PyPI) é um repositório de software para a linguagem de programação Python.
