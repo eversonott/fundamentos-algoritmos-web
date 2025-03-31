@@ -1,29 +1,11 @@
----
-marp: true
-theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
----
-
 # Aula 02 - Variáveis, expressões e instruções
-Fundamentos de algoritmos e introdução à programação em python
-
-Prof. Everson Otoni
-
-
----
 
 ## Variável
 
 Um dos recursos eficientes de uma linguagem de programação é a capacidade de manipular variáveis.
 
-Uma variável é um nome que se refere a um valor.
+**Uma variável é um nome que se refere a um valor.**
 
----
 
 ## Instruções de atribuição
 
@@ -43,8 +25,6 @@ A segunda dá o número inteiro 17 a variável chamada numero.
 
 A terceira atribui o valor (aproximado) de π a variável denominada de "pi".
 
----
-
 
 ## PEP 8
 
@@ -59,19 +39,19 @@ Guia de estilo que evolui com tempo à medida que convenções adicionais são i
 
 É um conjunto de diretrizes que têm como objetivo melhorar a legibilidade do código e torná-lo consistente em todo o amplo espectro do código Python.
 
----
 
-### Convenções de nomenclatura
+## Convenções de nomenclatura
 
-Essas convenções ainda são confusas, mas existem certos padrões de nomenclatura que atualmente são recomendados.
+Existem algumas convenções,que sugerem certos padrões de nomenclatura que atualmente são recomendados.
 
-#### Princípio primordial
+### Princípio primordial
 
 Os nomes que são visíveis para o usuário devem seguir convenções que reflitam o uso e não a implementação.
 
----
+O nome explicita o seu uso.
 
-#### Estilos de nomenclatura
+
+### Estilos de nomenclatura
 
 Os seguintes estilos de nomenclatura são comumente distinguidos em:
 
@@ -81,33 +61,25 @@ Os seguintes estilos de nomenclatura são comumente distinguidos em:
 - minúsculas_separadas_por_sublinhados
 - MAIÚSCULAS
 - MAIÚSCULAS_SEPARADAS_POR_SUBLINHADOS
-
----
-
-
 - PalavrasComecamPorMaiusculas (Corcova do camelo - CamelCase ou CapWords)
 - palavrasComecamPorMaisculasComExcecaoDaPrimeiraPalavra (Variação da "Corcova do camelo")
 
----
 
-
-#### Nomes a evitar
+### Nomes a evitar
 
 Nunca use os caracteres 'l' (L minúsculo), 'O' (o maiúsculo) ou 'I' (i maiúsculo) sozinhos como nomes de variáveis. Em algumas fontes, esses caracteres são indistinguíveis dos números um e zero.
 
----
 
 ## Nome das variáveis
 
 Geralmente e recomenda-se escolher nomes significativos para as variáveis.
 
-Nomes de variáveis podem ser tão longos quanto você queira
+Nomes de variáveis podem ser tão longos quanto queira.
 
 Podem conter letras com números, mas nunca podem começar com um número.
 
 **A convenção é utilizar apenas letras minúsculas para nomes de variáveis.**
 
----
 
 ### Nomes que revelem o seu propósito
 
@@ -121,9 +93,7 @@ O nome de uma variável, função ou classe deve:
 
 - Como é usado
 
-*Dica: Se um nome requer um comentário de código, então não revela seu propósito.*
-
----
+**Dica: Se um nome requer um comentário de código, então não revela seu propósito.**
 
 
 ```python
@@ -137,18 +107,15 @@ O nome "d" não revela nada. Não indica a ideia de tempo decorrido, nem de dias
 dias_decoridos_pagamento = 25
 ```
 
----
-
 ### Faça distinções significativas
 
 Os programadores criam problemas para si mesmos quando criam um código voltado unicamente para o compilador ou interpretador.
 
+Lembre-se programa-se não para o computador, toda linguagem é construída socialmente.
+
 Se os nomes precisam ser diferentes, então também devem ter significados distintos.
 
 Não basta adicionar números ou palavras comuns, mesmo que o compilador ou interpretador fique satisfeito.
-
----
-
 
 Por exemplo:
 
@@ -167,8 +134,8 @@ Geram confusão, simplesmente não oferecem informação alguma ou dica sobre a 
 ## Certo
 nome_dos_alunos = ['Bernardo', 'Beatriz', 'Caio']
 ```
----
 
+Veremos adiante o que significa a instrução acima.
 
 Palavras muito comuns são outra forma de distinção que nada expressam.
 
@@ -176,7 +143,6 @@ Palavras muito comuns são redundantes. O nome de uma variável jamais deve cont
 
 Faça a distinção dos nomes de uma forma que o leitor compreenda as diferenças
 
----
 
 ### Use nomes pronunciáveis
 
@@ -188,14 +154,24 @@ Use a parte do cérebro que evoluiu para lidar com a língua falada para nomes p
 ## Errado
 gedtamdhms()
 ```
-No caso acima a função gedtamdhms (gerador de data, ano, mês, dia, hora, minuto e segundo). Se pronunciaria como "gê dê tê a  eme dê agá eme ése"
+No caso acima a função gedtamdhms, seu criador usou a seguinte lógica:
+
+- gerador: ge
+- data: dt
+- ano: a
+- mês: m
+- dia: d
+- hora: h
+- minuto: m
+- segundo: s
+
+Se pronunciaria como "gê dê tê a eme dê agá eme ése"
 
 ```python
 ## Certo
-gerador_data()
+gerador_data_completa()
 ```
 
----
 
 ### Use nomes passíveis de busca
 
@@ -207,7 +183,6 @@ Nomes, definições e várias outras expressões que possuem tal número, usado 
 
 Logo, nomes longos se sobressaem aos curtos.
 
----
 
 ### Evite o mapeamento mental
 
@@ -218,7 +193,6 @@ Não use termos do domínio do problema e nem os da solução.
 Esse é o problema com nomes de variáveis de uma só letra.
 Certamente um contador de iterações pode ser chamado de "i", "j" ou "k" - isso já se tornou uma tradição.
 
----
 
 ### Não dê uma de espertinho
 
@@ -239,7 +213,6 @@ Essas brincadeiras em código costumam aparecer na forma de coloquialismos e gí
 
 **Diga o que você quer expressar, expresse o que você quer dizer.**
 
----
 
 ### Adicione um contexto significativo
 
@@ -251,11 +224,12 @@ Imagine as varáveis chamadas *primeiro_nome*, *sobrenome*, *logradouro*, *numer
 
 Mas e se fosse visto as variáveis *numero* e *estado* sozinhas? Seria assumido que fazem parte de um endereço?
 
----
+A variável de nome *estado* poderia estar associada ao valor do estado cível, por exemplo.
+
 
 ## Expressões 
 
-Uma **expressão** é uma combinação de valores, variáveis e operadores.
+**Uma expressão é uma combinação de valores, variáveis e operadores.**
 
 Um valor por si mesmo é considerado uma expressão, assim como uma variável, portanto as expressões seguintes são todas **legais**.
 
@@ -276,7 +250,6 @@ Um valor por si mesmo é considerado uma expressão, assim como uma variável, p
 
 Quando se digita uma expressão no prompt, o interpretador a **avalia**, ou seja, ele encontra o valor da expressão. No exemplo, o *numero_de_dias* tem o valor *17* e *numero_de_dias + 10* tem o valor *27*.
 
----
 ## Instrução
 
 Uma **instrução** é uma unidade de código que tem um efeito, como criar uma variável ou exibir um valor.
@@ -295,11 +268,10 @@ Uma instrução de exibição:
 
 Quando se digita uma instrução, o interpretador a **executa**, o que significa que ele faz exatamente o que a instrução diz.
 
----
 
 ## Operações com strings
 
-Em geral, não é possível executar operações matemáticas com strings, mesmo se elas parecerem números.
+Em geral, não é possível executar operações matemáticas com strings, mesmo se elas parecerem com as operações com números.
 
 ```python
 ## Errado
@@ -310,8 +282,6 @@ Em geral, não é possível executar operações matemáticas com strings, mesmo
 
 Há duas exceções, *+* e *\**
 
----
-
 
 O operador *+* executa uma **concatenação de strings**, ou seja, une as strings pelas extremidades. Por exemplo
 
@@ -321,8 +291,6 @@ O operador *+* executa uma **concatenação de strings**, ou seja, une as string
 >>> print(nome_usuario + servidor_email)
 brenno@gmail.com
 ```
-
----
 
 
 O operador *\** também funciona em strings; ele executa a repetição.
@@ -337,7 +305,6 @@ Se um dos valores for uma string, o outro tem de ser um número inteiro.
 
 O uso de *+* e *\** faz sentido por analogia com a adição e multiplicação.
 
----
 
 ## Comentários
 
@@ -346,29 +313,25 @@ Muitas vezes mesmo que faça o uso de bons nomes para variáveis, funções, cla
 Essas notas são chamadas de **comentários**.
 
 ```python
-## Registra a porcentagem dos minutos que passaram
+# Registra a porcentagem dos minutos que passaram
 
 porcetagem_minutos = (minutos_decorridos / 60) * 100
 ```
 
 Nesse caso, o comentário aparece unicamente em uma linha.
 
----
-
-
 Também é possível pôr comentários no fim das linhas:
 
 ```python
-porcetagem_minutos = (minutos_decorridos / 60) * 100 ## Registra a porcentagem dos minutos que passaram
+porcetagem_minutos = (minutos_decorridos / 60) * 100 # Registra a porcentagem dos minutos que passaram
 ```
 
-Tudo do **##** ao fim da linha é ignorado - não tem efeito na execução do programa.
+Tudo do **#** ao fim da linha é ignorado - não tem efeito na execução do programa.
 
 Bons nomes de variáveis, como discutimos, reduzem a necessidade de comentários.
 
 Nomes longos podem tornar expressões complexas de ler, nessas horas os comentários serão muito bem-vindos.
 
----
 
 ## Depuração
 
@@ -377,8 +340,6 @@ Existem três tipos de erros que podem ocorrer em um programa.
 - Erros de sintaxe
 - Erros de tempo de execução
 - Erros semânticos
-
----
 
 
 ### Erros de sintaxe
@@ -399,9 +360,6 @@ SyntaxError: unmatched ')'
 No inicio você pode passar muito tempo rastreando erros de sintaxe, ao adquirir experiência, você fará menos erros e os encontrará mais rápido.
 
 
----
-
-
 ### Erros de tempo de execução
 
 Esse tipo de erro não aparece até que o programa seja executado. Esses erros também se chamam de **exceções** porque normalmente indicam que algo excepcional (e ruim) aconteceu.
@@ -415,8 +373,6 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
----
-
 
 ### Erros semânticos
 
@@ -426,6 +382,5 @@ Se houver um erro semântico no seu programa, ele será executado sem gerar mens
 
 Identificar erros semânticos pode ser complicado, porque é preciso trabalhar de trás para a frente, vendo a saída do programa e tentando compreender o que ele está fazendo.
 
----
 
 
