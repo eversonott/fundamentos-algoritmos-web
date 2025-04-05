@@ -10,21 +10,19 @@ A intenção deste curso é mesclar os conceitos fundamentais e básicos de algo
 
 Esse curso foi desenvolvido para oferecer uma experiência básica e fundamental de programação. O objetivo é compreender as funcionalidades básicas computacionais, tanto no nível dos algoritmos, quanto no nível da linguagem.
 
+O módulo 1 do curso se concentra nos conceitos básicos de linguagem: como manipular variáveis e instruções, funções, como utilizar expressões booleanas e operadores, iteração, recursão, estruturadas de dados embutidas.
 
-## O que você vai aprender no Módulo 1:
+O módulo 2 está direcionado à aplicação do que foi aprendido no módulo 1. Veremos: Complexidade e análise de algoritmos, como se constrói e integra módulos e pacotes, expressões regulares para reconhecimento e criação de padrões, integração entrada/saída de arquivos, introdução à análise de dados, como realizar scrapping de dados e as principais tendências do uso da linguagem Python.
 
-1. Compreender os fundamentos de algoritmos e lógica de programação com Python.
-2. Declarar variáveis, criar expressões e usar operadores com clareza e boas práticas (PEP 8).
-3. Avaliar condições com operadores relacionais, lógicos e construir fluxos condicionais (`if`, `elif`, `else`).
-4. Criar e usar funções, incluindo funções recursivas com casos base e chamadas de subproblemas.
-5. Implementar loops com `while` e `break`, e reconhecer padrões de iteração como contadores.
-6. Manipular strings com indexação, slicing, operadores e funções embutidas.
-7. Utilizar listas: criação, indexação, fatiamento, operadores, funções embutidas e métodos (`append`, `pop`, `sort`, etc).
-8. Escrever laços `for` simples e compostos, com `range()` e estruturas acumuladoras.
-9. Aplicar os métodos mais utilizados de listas para organização, busca, inserção e extensão.
-10. Entender e utilizar dicionários e tuplas: definição, acesso por chave e principais métodos (`update`, `pop`, `items`, etc).
-11. Aplicar dicionários para contagem de ocorrências e substituição de condicionais múltiplos.
-12. Integrar os conhecimentos desenvolvendo em uma aplicação.
+## O que você vai aprender?
+
+1. Complexidade e análise de algoritmos: aprenderemos como analisar computacionalmente/matematicamente algoritmos.
+2. Módulos e pacotes: Como criar nossas próprias bibliotecas de algoritmos, como integrar com novos projetos.
+3. Expressões regulares: O que é um padrão em computação, e como reconhecê-los por meio de uma expressão.
+4. Arquivos: Integrar a entrada/saída do seu script com qualquer tipo de arquivo.
+5. Pacote pandas: Estatística e análise de dados utilizando Python.
+6. Web Scrapping: Criação de rede ou integração de informações.
+
 
 ## Onde o curso será disponibilizado?
 
@@ -32,11 +30,16 @@ Esse curso foi desenvolvido para oferecer uma experiência básica e fundamental
 2. Em aulas síncronas ao vivo.
 3. Em formato de vídeo (assíncronas): todas as aulas serão disponibilizadas em formato de vídeo.
 
+## Pré-requisitos
+
+Para aproveitar ao máximo todo o conteúdo do curso, é recomendado que você apenas esteja em dia com o conteúdo.
+
+A [Aula 01 - Primeiro contato com a programação](./Módulo 1/aula_01.md) é a aula mais básica do curso, e não exige nenhum pré-requisito.
+
 ## Aulas
 
 ### Módulo 1
 1. [Aula 01 - Primeiro contato com a programação](./Módulo 1/aula_01.md)
-<!--
 2. [Aula 02 - Variáveis, expressões e instruções](./Módulo 1/aula_02.md)
 3. [Aula 03 - Funções](./Módulo 1/aula_03.md)
 4. [Aula 04 - Operadores e manipulação de scripts em Python](./Módulo 1/aula_04.md)
@@ -47,7 +50,15 @@ Esse curso foi desenvolvido para oferecer uma experiência básica e fundamental
 9. [Aula 09 - Métodos de lista](./Módulo 1/aula_09.md)
 10. [Aula 10 - Iteração (continuação), instrução For](./Módulo 1/aula_10.md)
 11. [Aula 11 - Estrutura de dados embutida, dicionários](./Módulo 1/aula_11.md)
--->
+
+### Módulo 2
+1. [Aula 01 - Aula Inaugural do curso e introdução à análise de algoritmos](./Módulo 2/aula_01.md)
+2. [Aula 02 - Análise de algoritmos e suas complexidades (pt. 1)](./Módulo 2/aula_02.md)
+3. [Aula 03 - Análise de algoritmos e suas complexidades (pt. 2) e Módulos em Python](./Módulo 2/aula_03.md)
+4. [Aula 04 - Módulos (pt. 2) e pacotes em Python](./Módulo 2/aula_04.md)
+5. [Aula 05 - Entrada e Saída de arquivos (pt. 1)](./Módulo 2/aula_05.md)
+5. [Aula 06 - Entrada e Saída de arquivos (pt. 2)](./Módulo 2/aula_06.md)
+
 
 
 ### Quem vai ministrar essas aulas?
@@ -72,11 +83,10 @@ Pontos de atenção:
 - Você não pode usar para fins comerciais. Como vender ou usar para obter vantagens comerciais;
 - Todo o material derivado desse material deve ser redistribuído com a licença [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/){:target="_blank"}. -->
 
-## Ferramentas necessárias para acompanhar o curso
+## 🧰 Ferramentas necessárias para acompanhar o curso
 
 1. Um editor de texto ou IDE de sua escolha.
-2. Um terminal. Todos os exemplos do curso são executados e explicados no terminal. 
-    - Você pode usar o que se sentir mais a vontade e for compatível com seu sistema operacional.
+2. Um terminal. Todos os exemplos do curso são executados e explicados no terminal. Você pode usar o que se sentir mais a vontade e for compatível com seu sistema operacional.
 3. Ter um interpretador Python instalado em uma versão igual ou superior a `3.11`
 
 

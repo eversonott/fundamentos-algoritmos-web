@@ -1,79 +1,111 @@
+# Aula 01 – "Olá Mundo" da programação 
+
+##  Antes de qualquer código: uma conversa importante
+
+Vivemos um momento em que **ferramentas de inteligência artificial** (como o ChatGPT, Copilot, Gemini, etc.) são capazes de gerar códigos a partir de comandos escritos em linguagem natural. Isso levanta uma pergunta importante:
+
+> **Ainda faz sentido aprender a programar do zero, linha por linha, com a ajuda de um professor ou professora humana?**
+
+Nossa resposta é: **sim, mais do que nunca**.
+
 ---
-marp: true
-theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
+
+### 🤔 Mas por quê?
+
+#### 1. **A IA não pensa por você**
+As ferramentas de IA **respondem**, mas **não compreendem** o problema que você quer resolver.  
+Sem entender os fundamentos da programação, você pode até copiar um código, mas não saberá **por que** ele funciona — ou **por que falha**.
+
+#### 2. **Programação é pensamento estruturado**
+Aprender a programar é aprender a:
+- **Analisar situações**
+- **Modelar soluções**
+- **Expressar essas soluções com clareza**
+
+Essas habilidades são humanas, transferíveis e vão muito além da programação.
+
+#### 3. **IA erra, e você precisa saber identificar**
+Ferramentas como o ChatGPT podem:
+- Inventar bibliotecas
+- Escrever código incompatível com seu ambiente
+- Usar soluções ineficientes ou ultrapassadas
+
+Você precisa ter **critério técnico** para revisar, corrigir ou adaptar o que foi gerado.
+
+> ⚠️ Uma IA não é um oráculo — é uma ferramenta. Você precisa saber usá-la com senso crítico.
+
+#### 4. **O aprendizado prático constrói autonomia**
+Codar "com as próprias mãos" ensina mais do que apenas repetir comandos.  
+Ajuda você a:
+- Lidar com erros reais
+- Testar hipóteses
+- Depurar, melhorar e documentar
+
+Esse processo **não pode ser terceirizado** se seu objetivo é realmente aprender.
+
 ---
-# Aula 01 - "Olá Mundo" da programação
 
+## 👣 Nosso caminho aqui
 
- A ideia do curso é oferecer um primeiro contato com a programação.
+Este curso foi pensado para quem quer **aprender de verdade**.
 
- Tornar a programação não um fim, mas sim um meio.
+> Vamos juntos do “Olá, Mundo!” até a construção de pequenos programas, entendendo cada passo do caminho.
 
- E principalmente ajudar as pessoas a pensar como um cientista da computação.
+Você não precisa ter experiência prévia, mas precisa estar disposto a experimentar, errar, refletir e seguir em frente.
 
+E sim, **vamos aprender a usar ferramentas modernas**, inclusive IA, **mas só depois de dominar o essencial**.
 
+---
 
-## A primeira ementa do curso
+## 💻 Comece sem instalar nada!
 
-Neste curso introdutório de fundamentos de algoritmos e iniciação à programação em Python, iremos abordar inicialmente os conceitos básicos dos primórdios da construção de software. Avançaremos introduzindo a concepção de variáveis e instruções, bem como técnicas de controle de fluxo, ferramentas essenciais para direcionamento de algoritmos. Também exploraremos estruturas condicionais, que influenciam na tomada de decisões com base em certas condições,sempre partindo do paradigma procedural, que orienta a construção algorítmica dividindo as etapas computacionais em módulos ou funções.
+Para acompanhar as aulas, você pode escolher:
 
-Com esses conceitos fundamentais consolidados, será possível criar algoritmos simples para resolver uma variedade de problemas do mundo real. A linguagem de programação *Python* será utilizada como veículo principal para a implementação prática dos conceitos que serão abordados e discutidos. 
+- Instalar o **Python 3** no seu computador, como mostraremos mais adiante;
+- Ou usar uma **plataformas online**, como:
+  - [Google Colab](https://colab.research.google.com/) – baseado em notebooks, ideal para quem tem conta Google.
 
-Para participar deste curso, não é necessário ter experiência prévia em programação. E recomendável o compromisso com a experimentação e prática regular, uma vez que a programação é uma habilidade que se aprimora com a prática constante. Toda produção prática que compõe o curso poderá ser realizada utilizando um computador (principalmente) ou um smartphone.
-
-
-## Cientista da computação
-
-- Assim como os matemáticos, os cientistas da computação usam linguagens formais para denotar ideias (especificamente operações de computação).
-
-- Como engenheiros, cientistas da computação projetam, reunindo componentes em sistemas e avaliando as melhores opções de retorno.
-
-- A habilidade mais importante de um cientista da computação é a resolução de problemas. Isso significa uma capacidade desenvolvida de formular problemas, pensar criativamente em soluções e expressá-las de forma clara e precisa.
 
 ---
 
 ## O que é um programa ou software?
 
+Um programa é uma sequência de instruções que executa uma operação computacional. Essas operações podem ser:
 
-Um programa é uma sequência de instruções que executa uma operação de computador, especificamente.
+- **Matemáticas**, como calcular médias ou resolver equações;
+- **Simbólicas**, como substituir palavras em um texto;
+- **Gráficas**, como exibir imagens ou animações.
 
-Um operação de computador pode ser algo matemático, como encontrar a solução de um sistema de equações ou encontrar as raízes de um polinômio. Mas também pode ser uma operação computacional simbólica, como busca e substituição de textos em um documento; ou algo de cunho gráfico, como o processamento de uma imagem ou vídeo. 
-
-Esses slides mesmos, foram gerados computacionalmente por meio de uma linguagem de marcação e de um programa que converte o texto simples em slides.
-
----
-
-## A forma básica
-
-Os detalhes mudam em linguagem diferentes, mas algumas instruções básicas aparecem em quase todas
-
-
-_entrada_:
-> Receber dados do teclado, de um arquivo, da rede ou de algum outro dispositivo.
-
-_saída_:
-> Exibir dados na tela, salvá-los em um arquivo, enviá-los pela rede etc.
-
-
-
-_matemática_:
-> Executar operações matemáticas básicas.
-
-_execução condicional_:
-> Executar o código adequado, diante da existência de certas condições.
-
-_repetição_:
-> Executar várias vezes alguma ação, normalmente com variações.
+> Inclusive, este conteúdo que você está lendo agora foi gerado a partir de um programa!
 
 ---
 
-## Instalando o Python 3 no Windows 
+## Cientista da computação: quem é?
+
+- Assim como os matemáticos, usam **linguagens formais** para representar ideias;
+- Como engenheiros, projetam e testam **soluções estruturadas**;
+- Sua principal habilidade? **Resolver problemas** de forma criativa, estruturada e precisa.
+
+---
+
+## A forma básica dos programas
+
+Quase toda linguagem de programação compartilha instruções fundamentais:
+
+- **Entrada** – Receber dados do teclado, arquivo, rede...
+- **Saída** – Exibir ou gravar resultados
+- **Operações matemáticas** – Soma, subtração, multiplicação...
+- **Execução condicional** – Fazer algo **se** uma condição for verdadeira
+- **Repetição** – Executar ações várias vezes (laços)
+
+---
+
+## 🐍 Instalando o Python 3 no Windows
+
+A instalação do Python pode ser feita pelo site:
+
+[https://www.python.org/downloads](https://www.python.org/downloads)
+
 
 ### Passo 1 - Acesso inicial
 
@@ -83,7 +115,7 @@ Para instalar o Python no seu sistema operacional Windows, você precisará baix
 
 ![w:800](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/download_python.png)
 
-Isso fará o download do Python 3 para sitemas 64 bits
+Isso fará o download do Python 3 para sistemas 64 bits
 
 
 ### Passo 2 - Download e customização
@@ -94,8 +126,8 @@ Faça o download do instalador executável do Windows (32 ou 64 bits) e clique d
 
 O processo de instalação é bem simples.
 
-1. Marque a opção "Add Python to PATH"
-2. Clique em "Install Now"
+> ⚠️ Marque a opção **"use admin privileges when installing py.exe"** antes de clicar em "Install Now".
+> ⚠️ Marque a opção **"Add python.exe to PATH"** antes de clicar em "Install Now".
 
 
 ### Passo 3 - Instalação
@@ -120,48 +152,34 @@ Para verificar se a instalação do Python foi bem-sucedida, pesquise no menu in
 
 ![w:500](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/instalacao_python_verificacao.png)
 
+Após instalar, abra o **Prompt de Comando (cmd)** e digite:
 
-
-Digite o seguinte comando 
-
-```bash title='terminal'
-$ python --version
-Python 3.12.3
+```bash
+python --version
 ```
 
-Este comando retornará a versão do python que está instalada em seu computador.
-
-
-## IDLE 
-
-O instalador do Python para Windows contém o módulo IDLE por padrão.
-
-IDLE é um Ambiente de Desenvolvimento e Aprendizagem Integrado.
-
-Para iniciar o shell interativo IDLE, procure o ícone IDLE no menu Iniciar e clique duas vezes nele.
-
-![w:450](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/idle.png)
-
-
-
-Onde efetivamente, o *interpretador* Python, um programa. Lê e executa o código Python.
-
-![w:500](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/idle_uso.gif)
-
----
-
-## Finalmente! O interpretador python
-
-
-
-Essas primeiras linhas contêm informações sobre o interpretador e o sistema operacional em que está sendo executado.
+Se a instalação estiver correta, verá a versão do Python instalada.
 
 Podemos perceber que há uma tríade de número após o nome "Python", esse número indica qual é versão ques está sendo utilizada.
 
-No nosso caso a versão utilizada é `3.11.8`.
+---
 
-A última linha que inicia com `>>>` é um prompt. São caracteres expostos pelo interpretador para indicar que está tudo pronto para receber entradas do usuário.
+## 🌀 Usando o interpretador e o IDLE
 
+O **interpretador Python** pode ser usado via terminal ou através do **IDLE**, um ambiente simples que acompanha o instalador.
+
+Para abrir o IDLE, busque por "IDLE" no menu Iniciar do Windows. 
+
+
+![w:450](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/idle.png)
+
+Você verá algo assim:
+
+
+![w:500](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/idle_uso.gif)
+
+
+A linha com `>>>` é o **prompt** do interpretador.
 
 ### Usando o terminal
 
@@ -169,242 +187,191 @@ Também podemos acessar o interpretador Python via terminal, ou seja, via CMD (W
 
 Basta digitar o comando:
 
-```bash title='terminal'
-$ python
+```bash
+python
 ```
 
 Você terá algo como:
 
 ![](https://raw.githubusercontent.com/eversonott/fundamentos-algoritmos/main/slides/md/imagens/console_python.png)
 
+A última linha que inicia com `>>>` é um prompt. São caracteres expostos pelo interpretador para indicar que está tudo pronto para receber entradas do usuário.
 
-## Nosso "olá mundo"
+---
 
-Se você digitar uma linha de código e pressionar `Enter`, o interpretador exibe o resultado.
+## 🎯 Microdesafio 1 – Interagindo com o Python
 
-Por exemplo:
-```bash
->>> 1 + 1
-```
-Exibe o resultado:
-
-```bash
-2
-```
-A partir de agora iremos começar, já que agora você sabe iniciar o interpretador do Python e executar um código.
-
-## O primeiro programa
-
-Existe uma tradição em ciência da computação, em que o primeiro programa que se escreve em uma nova linguagem chama-se "Hello, Word", ou para nós "Olá, Mundo"), porque tudo o que faz é exibir as essas palavras na tela.:
+Abra o Google Colab ou o IDLE e execute o seguinte código:
 
 ```python
->>> print('Olá, Mundo!')
+print("Olá, Mundo!")
 ```
-Este é um exemplo de um *instrução print* (instrução de impressão), porém a impressão ocorre na tela. Nesse caso, o resultado são as palavras:
+
+- O que aconteceu?
+- O que aconteceria se você **omitisse as aspas**?
+
+
+O comando `print()` é usado para **exibir mensagens na tela**.
+
+Ele pode receber:
+
+- **Textos** entre aspas (ex: `"Olá!"`)
+- **Números** (ex: `42`, `3.14`)
+- **Variáveis** que guardam valores (veremos esse assunto com mais detalhe nas próximas aulas)
+
+Experimente executar os comandos abaixo em sequência:
 
 ```python
-Olá, Mundo!
+print("Olá, Mundo!")
+print(42)
+mensagem = "Bem-vindo à programação!"
+print(mensagem)
 ```
 
-As aspas apenas marcam o começo e o fim do texto a ser exibido, elas não aparecem no resultado.
+- O que aconteceu?
+- O que mudaria se você **omitisse as aspas**?
+- E se mudasse o valor da variável `mensagem`?
 
-## Operadores
-
-### Operadores aritméticos
-
-O python possui *operadores*, que são símbolos especiais representando operações de computação, como adição e multiplicação.
-
-Os operadores `+, - e *` executam a adição, a subtração e a multiplicação.
+> 💡 O `print()` separa automaticamente os valores com espaço quando usamos vírgula.
 
 ```python
->>> 40 + 2
-42
+nome = "Ana"
+idade = 18
+print("Nome:", nome)
+print("Idade:", idade)
 ```
+
+Saída esperada:
 
 ```python
->>> 43 + 1
-44
+Nome: Ana
+Idade: 18
 ```
+---
+
+## 🔄 Programas como algoritmos
+
+Um programa é uma **sequência lógica de passos** para resolver um problema.
+
+Considere o seguinte problema:
+
+> "Quero saber a média de duas notas."
+
+Em linguagem natural, o algoritmo seria:
+
+1. Obter a primeira nota
+2. Obter a segunda nota
+3. Somar as duas
+4. Dividir por 2
+5. Exibir o resultado
+
+Agora em Python:
 
 ```python
->>> 6 * 7
-42
+a = 7.5
+b = 8.0
+media = (a + b) / 2
+print("A média é:", media)
 ```
 
+> 🎯 Conexão feita: o algoritmo em linguagem natural virou código!
 
-### O operador /
+---
 
+## 🧮 Operadores e tipos de dados
+
+Python usa **símbolos especiais** para representar operações:
 
 ```python
->>> 84 / 2
+>>> 6 + 7      # Soma
+>>> 10 - 3     # Subtração
+>>> 4 * 5      # Multiplicação
+>>> 20 / 4     # Divisão
+>>> 2 ** 3     # Exponenciação
 ```
+
+Também há **valores diferentes**:
+
+- `42` → inteiro (`int`)
+- `3.14` → número decimal (`float`)
+- `'Olá!'` → texto (`str`)
+
+Você pode verificar os tipos com a função `type()`:
 
 ```python
-42.0
+>>> type(42)
+<class 'int'>
+>>> type("Olá")
+<class 'str'>
 ```
 
-Perceba que em do resultado 42, o resultado exibido foi 42.0
+---
+
+## 🎯 Microdesafio 2 – Seu primeiro programa
+
+Escreva um código em Python que:
+
+1. Armazene seu nome em uma variável
+2. Imprima uma saudação personalizada com seu nome
+
+---
+
+## 🧪 Mini-projeto – Calculadora de boas-vindas
+
+!!! info "Objetivo"
+    Trabalhar com variáveis do tipo `int`, conversão de minutos para horas, cálculo de porcentagens e exibição formatada com `print()`.
+
+Crie um programa que:
+
+1. Armazene seu **nome** e **idade**
+2. Armazene a quantidade de **minutos por semana na internet** e de **estudo**
+3. Converta os minutos para horas
+4. Calcule a porcentagem de tempo gasto em cada atividade, considerando 168 horas na semana
+5. Exiba os resultados com `print()` e porcentagens arredondadas para duas casas decimais
 
 
-### O operador **
+=== "📤 Saída esperada"
+    ```
+    Nome: Rafa
+    Idade: 17
+    Tempo na internet: 15.18%
+    Tempo de estudo: 7.59%
+    Outras atividades: 77.23%
+    ```
 
+!!! tip "Experimente" 
+    Tente alterar os minutos ou adicionar novas categorias como minutos_sono.
+    Você pode transformar isso em uma visualização da sua rotina semanal!
+
+> 💡 Dica: experimente com valores diferentes, explore erros e veja o que acontece.
+
+---
+
+## 📚 Linguagens naturais vs. formais
+
+- **Linguagens naturais**: como português ou inglês, usadas na fala cotidiana.
+- **Linguagens formais**: criadas para fins específicos (ex: matemática, química, programação)
+
+Programação exige **precisão sintática**:
 
 ```python
->>> 6 ** 2 + 6
+print("Olá")   # Correto
+print(Olá)     # Erro: sem aspas
 ```
 
-```python
-42
-```
+> Um pequeno erro de pontuação pode impedir um programa de funcionar!
 
-O operador `**` executa a exponenciação, eleva um número a uma potência.
+---
 
-Em algumas linguagens, o `^` é utilizado para exponenciação.
+## 🐞 Depuração (debugging)
 
+Erros fazem parte da vida de quem programa:
 
-## Valores e tipos
+- Um **bug** é um erro no código
+- **Depurar** é o processo de encontrar e corrigir erros
 
-Um *valor* é uma das coisas mais básicas com as quais o programa trabalha.
+> Um famoso bug foi literalmente um inseto dentro do computador!
 
-Até agora vimos como valores:
+Aprender a depurar é tão importante quanto escrever código.
 
-```python
-2
-```
-
-```python
-42.0
-```
-
-```python
-Olá, Mundo!
-```
-
-
-Esses valores pertencem a tipos diferentes: `2` é um *número inteiro*, `42.0` é um *número de ponto flutuante* (conhecidos usualmente como número decimais) e `Olá, Mundo!` é uma *string*, chamado assim porque as letras que contém estão em uma sequência em cadeia (como uma corda ou fio).
-
-
-## A função type
-
-O Python possui um função nativa chamada de `type`.
-
-Se executarmos o código:
-
-```python
->>> type(2)
-```
-
-Irá ser exibido para nós:
-
-```python
-<class 'int'> 
-```
-
-A palavra `class` é usada no sentido de *categoria*; Nesse caso, um tipo é uma categoria de valores.
-
-
-
-Teste com os outros valores e verifique o resultado exibido.
-
-```python
->>> type(42.0)
-```
-
-```python
->>> type('Olá, Mundo!')
-```
-
-Número inteiros pertencem ao tipo *int*, strings pertencem ao tipo *str* e os números de ponto flutuante pertencem ao tipo *float* (flutuador).
-
-
-O que acontece se executarmos:
-
-```python
->>> type('2')
-```
-
-```python
->>> type('42.0')
-```
-
-> Lembre-se as aspas marcam o começo e o fim do texto a ser exibido.
-
-
-Parecem número, mas estão entre aspas como se fossem strings:
-
-```python
->>> type('2')
-<class 'str'> 
-```
-
-```python
->>> type('42.0')
-<class 'str'> 
-```
-
-Então são strings.
-
-
-## Linguagens
-
-### As linguagens naturais
-
-São idiomas que as pessoas falam, não foram criados pelas pessoas, desenvolveram-se naturalmente.
-
-### As linguagens formais
-
-São linguagens criadas pelas pessoas paras aplicações específicas.
-
-Por exemplo, notações que os matemáticos usam é uma linguagem formal utilizada, especialmente, para denotar relações entre números e símbolos.
-
-
-As linguagens de programação são idiomas formais criados para expressar operações de computação.
-
-
-### Regras de sintaxe
-
-As linguagens formais geralmente possuem *regras de sintaxe* estritas que governam a estrutura de declarações.
-
-$3 + 3 = 6$, tem uma sintaxe correta, diferente de $3 + =36$
-
-Assim, como na matemática a química também possui uma linguagem formal com regras de sintaxe.
-
-$H_2O$, é uma fórmula sintaticamente correta, diferente de ${}_2Z_Z$.
-
-
-Possuem duas categorias
-
-#### Símbolos
- 
-Elementos básicos da linguagem, como palavras, números, e elementos químicos.
- ${}_2Z_Z$ não é legítimo porque não há nenhum elemento com a abreviatura $Z_Z$
-
-#### Estrutura
-
- A estrutura refere-se a maneira como os elementos são combinados.
- 
- Por exemplo, apesar de que + e = serem símbolos legítimos, não se pode ter um na sequência do outro como em $3 + =3$.
- 
-
-
-As linguagem formais são mais densas que as naturais, então exigem mais tempo para a leitura.
-
-A estrutura é importante, então nem sempre é melhor ler de cima para baixo e da esquerda para a direita. Em vez disso, aprenda a analisar o programa primeiro, identificando os símbolos e interpretando a estrutura.
-
-Os detalhes fazem diferença.
-
-Pequenos erros de ortografia e pontuação, que podem não importar tanto nas linguagens naturais, podem fazer uma grande diferença em uma linguagem formal.
-
-
-## Depuração
-
-Programadores erram. (Erram MUITO!)
-
-Erros de programação são chamados de *bugs* (insetos). Um inseto uma vez entrou dentro de um computador e ele fez algo que não deveria fazer, ou seja, fez algo que não foi "programado" a fazer. Portanto, foi um erro, foi um inseto, foi um bug.
-
-O processo de rastreá-los chama-se *depuração* (debugging).
-
-Programar, e especialmente fazer a depuração, às vezes traz emoções fortes. Prepare-se para essas reações.
-
-Aprender a depurar erros pode ser frustrante, mas é uma habilidade valiosa, útil para muitas atividades além da programação.
-
+---

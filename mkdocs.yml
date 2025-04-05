@@ -3,6 +3,21 @@ site_name: Fundamentos de algoritmos
 #repo_name: eversonott/fundamentos-algoritmos
 edit_uri: tree/main/docs
 
+nav:
+  - Iníicio: index.md
+  - Módulo 1:
+    - Aula 01 - "Olá Mundo" da programação: "Módulo 1/aula_01.md"
+    #- Aula 02: "Módulo 1/aula_02.md"
+    #- Aula 03: "Módulo 1/aula_03.md"
+    #- Aula 04: "Módulo 1/aula_04.md"
+    #- Aula 05: "Módulo 1/aula_05.md"
+    #- Aula 06: "Módulo 1/aula_06.md"
+    #- Aula 07: "Módulo 1/aula_07.md"
+    #- Aula 08: "Módulo 1/aula_08.md"
+    #- Aula 09: "Módulo 1/aula_09.md"
+    #- Aula 10: "Módulo 1/aula_10.md"
+    #- Aula 11: "Módulo 1/aula_11.md"
+    #- Aula 12: "Módulo 1/aula_12.md"
 theme: 
   name: material
   features:
