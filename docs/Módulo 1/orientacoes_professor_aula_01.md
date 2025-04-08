@@ -33,3 +33,17 @@
   - O que foi aprendido.
   - Os principais comandos e ideias (print, variáveis, tipos, operadores).
   - A importância de **manter uma rotina de prática**.
+  
+
+- Diferença entre TI, ciencia de computação, engenharia de software
+- Mecatronicax
+
+- Declaração de presença (própria)
+
+
+- Adriel
+- Diogo
+- Rodrigo
+- Renato
+- José
+- Rafael
