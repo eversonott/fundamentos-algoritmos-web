@@ -1,5 +1,18 @@
 # Aula 01 – "Olá Mundo" da programação 
 
+{% set aula = "01b" %}
+{% set link = "" %}
+{% set objetivos = [
+  "Entender a importância de aprender programação com autonomia e senso crítico",
+  "Executar comandos básicos em Python utilizando o interpretador ou plataformas online",
+  "Declarar variáveis e utilizar tipos de dados como int, float e str",
+  "Escrever e testar pequenos algoritmos em Python com entrada, processamento e saída",
+  "Diferenciar linguagens naturais e formais, compreendendo a precisão exigida na programação"
+]
+%}
+
+{% include "templates/cabecalho_sem_video.md" %}
+
 ##  Antes de qualquer código: uma conversa importante
 
 Vivemos um momento em que **ferramentas de inteligência artificial** (como o ChatGPT, Copilot, Gemini, etc.) são capazes de gerar códigos a partir de comandos escritos em linguagem natural. Isso levanta uma pergunta importante:
@@ -63,7 +76,7 @@ Para acompanhar as aulas, você pode escolher:
 
 - Instalar o **Python 3** no seu computador, como mostraremos mais adiante;
 - Ou usar uma **plataformas online**, como:
-  - [Google Colab](https://colab.research.google.com/) – baseado em notebooks, ideal para quem tem conta Google.
+    - [Google Colab](https://colab.research.google.com/) – baseado em notebooks, ideal para quem tem conta Google.
 
 
 ---
