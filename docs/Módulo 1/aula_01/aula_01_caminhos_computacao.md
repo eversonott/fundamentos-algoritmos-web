@@ -1,7 +1,7 @@
 # Caminhos da computação - Qual curso combina com você?
  
 {% set aula = "01a" %}
-{% set link = "" %}
+{% set link = "H55K5LS-mmc" %}
 {% set objetivos = [
   "Compreender o que é Computação e suas múltiplas áreas de atuação",
   "Conhecer as principais características dos cursos de Sistemas de Informação, Ciência da Computação e Engenharia de Computação da USP",
@@ -11,7 +11,7 @@
 ]
 %}
 
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
  
 

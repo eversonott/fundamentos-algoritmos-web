@@ -1,7 +1,7 @@
 # Aula 01 – "Olá Mundo" da programação 
 
 {% set aula = "01b" %}
-{% set link = "" %}
+{% set link = "H55K5LS-mmc" %}
 {% set objetivos = [
   "Entender a importância de aprender programação com autonomia e senso crítico",
   "Executar comandos básicos em Python utilizando o interpretador ou plataformas online",
@@ -11,7 +11,7 @@
 ]
 %}
 
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 ##  Antes de qualquer código: uma conversa importante
 
