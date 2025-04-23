@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 04 - Módulos (pt. 2) e pacotes em Python
 
 {% set aula = "04" %}

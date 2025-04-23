@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 08 - Selenium
 
 {% set aula = "08" %}

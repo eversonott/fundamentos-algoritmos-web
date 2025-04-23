@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 
 # Aula 06 - Códigos
 

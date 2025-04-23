@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # 📄 Lista de Exercícios – Aula 01
 
 !!! info "Recomendações"

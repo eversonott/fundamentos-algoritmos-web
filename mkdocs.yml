@@ -6,10 +6,10 @@ edit_uri: tree/main/docs
 nav:
   - Início: index.md
   - Módulo 1:
-    - Aula 00 - Apresentações: "Módulo 1/aula_00.md"
-    - Aula 01 - "Olá Mundo" da computação:
-      - Aula 01 - Caminhos na computação: "Módulo 1/aula_01/aula_01_caminhos_computacao.md"
-      - Aula 01 - Meu primeiro código: "Módulo 1/aula_01/aula_01_ola_mundo.md"
+    - Aula 00 - Apresentações 05/04: "Módulo 1/aula_00.md"
+    - Aula 01 - Caminhos na computação 12/04: "Módulo 1/aula_01.md"
+    - Aula 02 - "Olá Mundo" da computação 19/04: "Módulo 1/aula_02_.md"
+      #- Aula 02 - Variávies, expressões e instruções: "Módulo 1/aula_02.md"
     #- Aula 02: "Módulo 1/aula_02.md"
     #- Aula 03: "Módulo 1/aula_03.md"
     #- Aula 04: "Módulo 1/aula_04.md"

@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 05 - Códigos
 
 ## Refinando a formatação de saída

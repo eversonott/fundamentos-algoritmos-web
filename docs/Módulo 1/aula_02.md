@@ -1,11 +1,56 @@
+---
+search:
+  exclude: true
+---
 # Aula 02 - Variáveis, expressões e instruções
+{% set aula = "03" %}
+{% set link = "" %}
+{% set objetivos = [
+  "Diferenciar linguagens naturais e formais, compreendendo a precisão exigida na programação"
+]
+%}
+{% include "templates/cabecalho_sem_video.md" %}
+
+
+## 📚 Linguagens naturais vs. formais
+
+- **Linguagens naturais**: como português ou inglês, usadas na fala cotidiana.
+- **Linguagens formais**: criadas para fins específicos (ex: matemática, química, programação)
+
+Programação exige **precisão sintática**:
+
+```python
+print("Olá")   # Correto
+print(Olá)     # Erro: sem aspas
+```
+
+> Um pequeno erro de pontuação pode impedir um programa de funcionar!
+
+---
+
+## 🐞 Depuração (debugging)
+
+Erros fazem parte da vida de quem programa:
+
+- Um **bug** é um erro no código
+- **Depurar** é o processo de encontrar e corrigir erros
+
+> Um famoso bug foi literalmente um inseto dentro do computador!
+
+Aprender a depurar é tão importante quanto escrever código.
+
+---
 
 ## Variável
 
-Um dos recursos eficientes de uma linguagem de programação é a capacidade de manipular variáveis.
+Um dos recursos eficientes de uma linguagem de programação é a capacidade de 
+manipular variáveis.
 
 **Uma variável é um nome que se refere a um valor.**
 
+!!! tip "Experimente"
+    Crie uma variável chamada `mensagem` com o valor `'Olá, Python!'` e use `print(mensagem)` para exibir.
+    Em seguida, mude o valor da variável para `'Aprendendo variáveis'` e exiba novamente.
 
 ## Instruções de atribuição
 
@@ -25,6 +70,21 @@ A segunda dá o número inteiro 17 a variável chamada numero.
 
 A terceira atribui o valor (aproximado) de π a variável denominada de "pi".
 
+### 💼 Mini-projeto – Assinatura de e-mail automática
+
+Crie variáveis para armazenar:
+
+- Seu nome
+- Seu curso ou cargo
+- Sua instituição (real ou fictícia)
+
+Combine os dados em um `print()` que exiba uma assinatura:
+
+```sh
+Rafael Souza  
+Estudante de Informática  
+IF do Norte
+```
 
 ## PEP 8
 
@@ -226,6 +286,16 @@ Mas e se fosse visto as variáveis *numero* e *estado* sozinhas? Seria assumido 
 
 A variável de nome *estado* poderia estar associada ao valor do estado cível, por exemplo.
 
+### 🎯 Microdesafio – Nome confuso vs. nome claro
+
+Crie duas variáveis:
+
+- Uma com nome ruim (ex: x, a2)
+- Uma com nome claro (ex: media_final)
+
+Atribua valores e exiba com print(). Depois responda:
+
+> Se você visse esse código daqui a 15 dias, qual nome te ajudaria a entender o que ele faz?
 
 ## Expressões 
 
@@ -250,6 +320,52 @@ Um valor por si mesmo é considerado uma expressão, assim como uma variável, p
 
 Quando se digita uma expressão no prompt, o interpretador a **avalia**, ou seja, ele encontra o valor da expressão. No exemplo, o *numero_de_dias* tem o valor *17* e *numero_de_dias + 10* tem o valor *27*.
 
+
+!!! tip "Teste você mesmo"
+    Crie uma variável `dias = 5`
+    Depois, calcule e imprima quantas **horas** e quantos **minutos** há nesses 5 dias. 
+
+
+
+### Mini-projeto 2 – Inventário do Mochileiro Espacial 🚀🪐
+
+!!! info "Objetivo"
+    Aplicar expressões matemáticas com variáveis e valores decimais em um contexto criativo, utilizando operações de soma, multiplicação, subtração e divisão para resolver um problema com múltiplas etapas.
+
+#### 🌌 Contexto
+
+Você é o comandante de uma missão intergaláctica que sofreu um pouso forçado em um planeta. Para sobreviver até o resgate, você depende do conteúdo da sua **mochila de emergência**.
+
+Na mochila, há:
+
+- `12` cápsulas de oxigênio (cada uma ocupa `1.5` unidades de volume)
+- `8` porções de comida liofilizada (cada uma ocupa `2.2` unidades)
+- `3` kits de reparo (cada um ocupa `3.75` unidades)
+
+A mochila suporta **no máximo 40 unidades de volume**.
+
+---
+
+#### 📋 Tarefas
+
+1. Crie variáveis para representar as quantidades e volumes dos itens.
+2. Calcule o **volume total ocupado atualmente**.
+3. Calcule **quanto espaço ainda está disponível**.
+4. Calcule **quantas cápsulas extras de oxigênio** (1.5 de volume) você poderia adicionar com o espaço restante.
+5. Agora, **remova 1 kit de reparo** e refaça os cálculos dos passos 3 e 4 com a nova configuração.
+
+---
+
+#### Desafio bônus
+
+> E se você pudesse montar **duas mochilas diferentes**:  
+> uma com foco em sobrevivência, e outra com foco em manutenção da nave.  
+> Quais itens priorizaria em cada uma? Justifique sua escolha.
+
+---
+
+
+
 ## Instrução
 
 Uma **instrução** é uma unidade de código que tem um efeito, como criar uma variável ou exibir um valor.
@@ -267,6 +383,16 @@ Uma instrução de exibição:
 ```
 
 Quando se digita uma instrução, o interpretador a **executa**, o que significa que ele faz exatamente o que a instrução diz.
+
+### 🎯 Microdesafio – Me apresente ao Python!
+
+Crie três variáveis:
+
+- Seu nome (str)
+- Sua idade (int)
+- Sua altura (float)
+
+Depois, use `print()` para se apresentar, como se o Python estivesse te conhecendo.
 
 
 ## Operações com strings
@@ -305,6 +431,17 @@ Se um dos valores for uma string, o outro tem de ser um número inteiro.
 
 O uso de *+* e *\** faz sentido por analogia com a adição e multiplicação.
 
+### 🎯 Microdesafio – Bio de rede social
+
+Crie três variáveis:
+
+- `nome_usuario` = "larinha"
+
+- `emoji` = "✨"
+
+- `plataforma` = "@insta"
+
+> Experimente trocar os símbolos e nomes para criar outras bios.
 
 ## Comentários
 
@@ -332,6 +469,18 @@ Bons nomes de variáveis, como discutimos, reduzem a necessidade de comentários
 
 Nomes longos podem tornar expressões complexas de ler, nessas horas os comentários serão muito bem-vindos.
 
+
+!!! tip "Pratique"
+    Escreva um pequeno código com 2 variáveis e 1 operação.
+    Adicione um comentário explicando o que cada linha faz.
+
+
+### 🎯 Microdesafio – Código comentado
+
+Crie um código simples que calcule a quantidade de passos por minuto de uma caminhada.
+Comente cada linha com `#` explicando o que está sendo feito:
+
+> Agora reescreva o mesmo código sem comentários. Qual versão você prefere ler?
 
 ## Depuração
 

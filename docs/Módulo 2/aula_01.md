@@ -1,3 +1,12 @@
+---
+search:
+  exclude: true
+---
+---
+search:
+  exclude: true
+---
+
 # Aula 01 - Aula Inaugural do curso e introdução à análise de algoritmos
 
 

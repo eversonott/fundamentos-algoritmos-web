@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 05 - Entrada e Saída de arquivos (pt. 1)
 
 {% set aula = "05" %}

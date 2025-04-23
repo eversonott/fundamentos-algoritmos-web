@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 04 - Códigos
 
 ## Módulos

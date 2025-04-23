@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 
 # Aula 03 - Análise de algoritmos e suas complexidades (pt. 2) e Módulos em Python
 

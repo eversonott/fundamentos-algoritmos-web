@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 07 - Gerenciamento de pacotes e a biblioteca Pandas
 
 {% set aula = "07" %}

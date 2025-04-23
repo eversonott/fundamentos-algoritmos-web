@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 ## 🎯 Microdesafio 1 – Interagindo com o Python
 
 Abra o Google Colab ou o IDLE e execute o seguinte código:

@@ -1,4 +1,8 @@
 ---
+search:
+  exclude: true
+---
+---
 marp: true
 theme: rose-pine
 style: |

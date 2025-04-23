@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aula 03 -  Códigos
 
 ## Análise de algoritmos

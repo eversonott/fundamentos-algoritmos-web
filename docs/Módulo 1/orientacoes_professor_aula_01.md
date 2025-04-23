@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 ## 👨‍🏫 Orientações para condução da Aula 01
 
 - Comece estabelecendo **conexão com o cotidiano** dos alunos:

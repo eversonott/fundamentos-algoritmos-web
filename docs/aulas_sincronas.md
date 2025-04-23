@@ -1,3 +1,7 @@
+---
+search:
+  exclude: true
+---
 # Aulas síncronas
 
 Faremos 11 encontros para aulas síncronas em formato de live via Jitsi Meet entre os dias 27/07 e 26/10.

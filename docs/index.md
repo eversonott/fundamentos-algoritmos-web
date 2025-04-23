@@ -35,19 +35,9 @@ Esse curso foi desenvolvido para oferecer uma experiência básica e fundamental
 ## Aulas
 
 ### Módulo 1
-1. [Aula 01 - Primeiro contato com a programação](./Módulo 1/aula_01.md)
-<!--
-2. [Aula 02 - Variáveis, expressões e instruções](./Módulo 1/aula_02.md)
-3. [Aula 03 - Funções](./Módulo 1/aula_03.md)
-4. [Aula 04 - Operadores e manipulação de scripts em Python](./Módulo 1/aula_04.md)
-5. [Aula 05 - Expressões boolenas, operadores e execução condicional](./Módulo 1/aula_05.md)
-6. [Aula 06 - Recursividade](./Módulo 1/aula_06.md)
-7. [Aula 07 - Introdução à iteração](./Módulo 1/aula_07.md)
-8. [Aula 08 - Iteração (continuação)](./Módulo 1/aula_08.md)
-9. [Aula 09 - Métodos de lista](./Módulo 1/aula_09.md)
-10. [Aula 10 - Iteração (continuação), instrução For](./Módulo 1/aula_10.md)
-11. [Aula 11 - Estrutura de dados embutida, dicionários](./Módulo 1/aula_11.md)
--->
+00. [Aula 00 - Aula Inaugural do curso e Apresentações](./Módulo 1/aula_00.md)
+01. [Aula 01 - Caminhos da computação; Instalação Python](./Módulo 1/aula_01.md)
+03. [Aula 02 – "Olá Mundo" da programação](./Módulo 1/aula_02_.md)
 
 
 ### Quem vai ministrar essas aulas?
