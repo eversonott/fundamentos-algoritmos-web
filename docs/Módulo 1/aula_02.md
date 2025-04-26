@@ -1,8 +1,4 @@
----
-search:
-  exclude: true
----
-# Aula 02 - Variáveis, expressões e instruções
+# Aula 03 - Variáveis, expressões e instruções
 {% set aula = "03" %}
 {% set link = "" %}
 {% set objetivos = [
