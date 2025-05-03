@@ -1,4 +1,6 @@
 
+# Aula 04 - Expressões, Instruções, Funções, Docstring e Entrada de teclado
+
 {% set aula = "04" %}
 {% set link = "" %}
 {% set objetivos = [
@@ -9,7 +11,6 @@
 
 
 
-# Aula 04 - Expressões, Instruções, Funções, Docstring e Entrada de teclado
 
 ## Expressões 
 
