@@ -1,5 +1,5 @@
-![logo do projeto](assets/logo_fundamentos_algoritmos.png){width="300" .center} 
-# Fundamentos de algoritmos e introdução à programação em Python
+![logo do projeto](assets/cobra_python.jpg){width="300" .center} 
+# Fundamentos de algoritmos e introdução à programação em Python - Módulo 1
 
 Olá, boas vindas ao curso de Fundamentos de algoritmos e iniciação à programação em Python!
 
@@ -35,16 +35,17 @@ Esse curso foi desenvolvido para oferecer uma experiência básica e fundamental
 ## Aulas
 
 ### Módulo 1
-00. [Aula 00 - Aula Inaugural do curso e Apresentações](./Módulo 1/aula_00.md)
-01. [Aula 01 - Caminhos da computação; Instalação Python](./Módulo 1/aula_01.md)
-03. [Aula 02 – "Olá Mundo" da programação](./Módulo 1/aula_02_.md)
-
+00. [ Aula 00 - Apresentações 05/04](./Módulo 1/aula_00.md)
+01. [Aula 01 - Caminhos na computação 12/04](./Módulo 1/aula_01.md)
+02. [Aula 02 - "Olá Mundo" da computação 19/04](./Módulo 1/aula_02.md)
+03. [Aula 03 - Variáveis e conveções de nomenclatura 26/04](./Módulo 1/aula_03.md)
+04. [Aula 04 - Expressões, instruções e funções 03/05](./Módulo 1/aula_04.md)
 
 ### Quem vai ministrar essas aulas?
 
 Prazer! Eu me chamo Everson.
 
-![uma fotografia minha, Everson, de chapéu ao lado de uma cachoeira](/assets/everson.jpg){ align=left width="300" .shadow}
+![uma fotografia minha, Everson, de chapéu ao lado de uma cachoeira](assets/everson.jpg){ align=left width="300" .shadow}
 Sou programador Python e professor de ciências da natureza e matemática no ensino médio. Este é o primeiro material que desenvolvo do zero para ensinar conceitos de programação e algoritmos.
 
 Programação é uma das minhas paixões. E espero que você também se divirta, conhecendo esse mundo novo.

@@ -1,1312 +1,302 @@
-
-# Aula 04 - Expressões, Instruções, Funções, Docstring e Entrada de teclado
-
-{% set aula = "04" %}
-{% set link = "" %}
-{% set objetivos = [
-  ""
+# Aula 03 - Variáveis e convenções de nomenclatura
+{% set aula = "03" %}
+{% set link = "_BUCyRxZutM" %}
+{% set objetivos =
+[
+  "Compreender o conceito de variável e como usá-las em instruções de atribuição",
+  "Aplicar boas práticas de nomenclatura seguindo a PEP 8",
+  "Evitar nomes confusos e criar nomes claros, pronunciáveis e com propósito",
+  "Identificar e corrigir erros comuns de sintaxe e depuração relacionados a variáveis",
+  "Valorizar a legibilidade e o contexto dos nomes em códigos escritos para humanos"
 ]
+
 %}
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 
+## 📚 Linguagens naturais vs. formais
 
+- **Linguagens naturais**: como português ou inglês, usadas na fala cotidiana.
+- **Linguagens formais**: criadas para fins específicos (ex: matemática, química, programação)
 
-## Expressões 
-
-**Uma expressão é uma combinação de valores, variáveis e operadores.**
-
-Um valor por si mesmo é considerado uma expressão, assim como uma variável, portanto as expressões seguintes são todas **legais**.
-
-```python
->>> 42
-42
-```
+Programação exige **precisão sintática**:
 
 ```python
->>> numero_de_dias
-17
+print("Olá")   # Correto
+print(Olá)     # Erro: sem aspas
 ```
 
-```python
->>> numero_de_dias + 10
-27
-```
-
-Quando se digita uma expressão no prompt, o interpretador a **avalia**, ou seja, ele encontra o valor da expressão. No exemplo, o *numero_de_dias* tem o valor *17* e *numero_de_dias + 10* tem o valor *27*.
-
-
-!!! tip "Teste você mesmo"
-    Crie uma variável `dias = 5`
-    Depois, calcule e imprima quantas **horas** e quantos **minutos** há nesses 5 dias. 
-
-
-
-### Mini-projeto 2 – Inventário do Mochileiro Espacial 🚀🪐
-
-!!! info "Objetivo"
-    Aplicar expressões matemáticas com variáveis e valores decimais em um contexto criativo, utilizando operações de soma, multiplicação, subtração e divisão para resolver um problema com múltiplas etapas.
-
-#### 🌌 Contexto
-
-Você é o comandante de uma missão intergaláctica que sofreu um pouso forçado em um planeta. Para sobreviver até o resgate, você depende do conteúdo da sua **mochila de emergência**.
-
-Na mochila, há:
-
-- `12` cápsulas de oxigênio (cada uma ocupa `1.5` unidades de volume)
-- `8` porções de comida liofilizada (cada uma ocupa `2.2` unidades)
-- `3` kits de reparo (cada um ocupa `3.75` unidades)
-
-A mochila suporta **no máximo 40 unidades de volume**.
+> Um pequeno erro de pontuação pode impedir um programa de funcionar!
 
 ---
 
-#### 📋 Tarefas
+## 🐞 Depuração (debugging)
 
-1. Crie variáveis para representar as quantidades e volumes dos itens.
-2. Calcule o **volume total ocupado atualmente**.
-3. Calcule **quanto espaço ainda está disponível**.
-4. Calcule **quantas cápsulas extras de oxigênio** (1.5 de volume) você poderia adicionar com o espaço restante.
-5. Agora, **remova 1 kit de reparo** e refaça os cálculos dos passos 3 e 4 com a nova configuração.
+Erros fazem parte da vida de quem programa:
 
----
+- Um **bug** é um erro no código
+- **Depurar** é o processo de encontrar e corrigir erros
 
-#### Desafio bônus
+> Um famoso bug foi literalmente um inseto dentro do computador!
 
-> E se você pudesse montar **duas mochilas diferentes**:  
-> uma com foco em sobrevivência, e outra com foco em manutenção da nave.  
-> Quais itens priorizaria em cada uma? Justifique sua escolha.
+Aprender a depurar é tão importante quanto escrever código.
 
 ---
 
+## Variável
 
+Um dos recursos eficientes de uma linguagem de programação é a capacidade de 
+manipular variáveis.
 
-## Instrução
+**Uma variável é um nome que se refere a um valor.**
 
-Uma **instrução** é uma unidade de código que tem um efeito, como criar uma variável ou exibir um valor.
+!!! tip "Experimente"
+    Crie uma variável chamada `mensagem` com o valor `'Olá, Python!'` e use `print(mensagem)` para exibir.
+    Em seguida, mude o valor da variável para `'Aprendendo variáveis'` e exiba novamente.
 
-Uma instrução de atribuição:
+## Instruções de atribuição
 
-```python
->>> nota_de_matematica = 9.5
-```
-
-Uma instrução de exibição:
-
-```python
->>> print(nota_de_matematica)
-```
-
-Quando se digita uma instrução, o interpretador a **executa**, o que significa que ele faz exatamente o que a instrução diz.
-
-### 🎯 Microdesafio – Me apresente ao Python!
-
-Crie três variáveis:
-
-- Seu nome (str)
-- Sua idade (int)
-- Sua altura (float)
-
-Depois, use `print()` para se apresentar, como se o Python estivesse te conhecendo.
-
-
-## Operações com strings
-
-Em geral, não é possível executar operações matemáticas com strings, mesmo se elas parecerem com as operações com números.
+Uma *instrução de atribuição* cria uma nova variável e dá um valor a ela:
 
 ```python
-## Errado
-'2' - '1'
-'python' / 'programação'
-'leitura' * 'prática'
+>>> mensagem = 'Esta é uma mensagem de teste'
+>>> numero = 17
+>>> pi = 3.141592653589793
 ```
 
-Há duas exceções, *+* e *\**
+Existem aqui três atribuições.
 
+A primeira atribui uma string a uma nova variável chamada mensagem.
 
-O operador *+* executa uma **concatenação de strings**, ou seja, une as strings pelas extremidades. Por exemplo
+A segunda dá o número inteiro 17 a variável chamada numero.
 
-```python
->>> nome_usuario = 'brenno'
->>> servidor_email = '@gmail.com'
->>> print(nome_usuario + servidor_email)
-brenno@gmail.com
+A terceira atribui o valor (aproximado) de π a variável denominada de "pi".
+
+### 💼 Mini-projeto – Assinatura de e-mail automática
+
+Crie variáveis para armazenar:
+
+- Seu nome
+- Seu curso ou cargo
+- Sua instituição (real ou fictícia)
+
+Combine os dados em um `print()` que exiba uma assinatura:
+
+```sh
+Rafael Souza  
+Estudante de Informática  
+IF do Norte
 ```
 
+## PEP 8
 
-O operador *\** também funciona em strings; ele executa a repetição.
+### PEP
 
-```python
->>> nome_usuario = 'brenno'
->>> print(nome_usuario * 3)
-brennobrennobrenno
-```
+Documento que fornece convenções de codificação para o código Python que compreende a biblioteca padrão na distribuição principal do Python.
 
-Se um dos valores for uma string, o outro tem de ser um número inteiro.
+### A PEP 8 
+Escrito pelo próprio fundador do Python, o Guido van Rossum.
 
-O uso de *+* e *\** faz sentido por analogia com a adição e multiplicação.
+Guia de estilo que evolui com tempo à medida que convenções adicionais são identificadas ou se tornem obsoletas devido a mudanças na própria linguagem.
 
-### 🎯 Microdesafio – Bio de rede social
-
-Crie três variáveis:
-
-- `nome_usuario` = "larinha"
-
-- `emoji` = "✨"
-
-- `plataforma` = "@insta"
-
-> Experimente trocar os símbolos e nomes para criar outras bios.
-
-## Comentários
-
-Muitas vezes mesmo que faça o uso de bons nomes para variáveis, funções, classes entre outras atribuições. Haverá a necessidade de acrescentar notas aos programas desenvolvidos.
-
-Essas notas são chamadas de **comentários**.
-
-```python
-# Registra a porcentagem dos minutos que passaram
-
-porcetagem_minutos = (minutos_decorridos / 60) * 100
-```
-
-Nesse caso, o comentário aparece unicamente em uma linha.
-
-Também é possível pôr comentários no fim das linhas:
-
-```python
-porcetagem_minutos = (minutos_decorridos / 60) * 100 # Registra a porcentagem dos minutos que passaram
-```
-
-Tudo do **#** ao fim da linha é ignorado - não tem efeito na execução do programa.
-
-Bons nomes de variáveis, como discutimos, reduzem a necessidade de comentários.
-
-Nomes longos podem tornar expressões complexas de ler, nessas horas os comentários serão muito bem-vindos.
+É um conjunto de diretrizes que têm como objetivo melhorar a legibilidade do código e torná-lo consistente em todo o amplo espectro do código Python.
 
 
-!!! tip "Pratique"
-    Escreva um pequeno código com 2 variáveis e 1 operação.
-    Adicione um comentário explicando o que cada linha faz.
+## Convenções de nomenclatura
+
+Existem algumas convenções,que sugerem certos padrões de nomenclatura que atualmente são recomendados.
+
+### Princípio primordial
+
+Os nomes que são visíveis para o usuário devem seguir convenções que reflitam o uso e não a implementação.
+
+O nome explicita o seu uso.
 
 
-### 🎯 Microdesafio – Código comentado
+### Estilos de nomenclatura
 
-Crie um código simples que calcule a quantidade de passos por minuto de uma caminhada.
-Comente cada linha com `#` explicando o que está sendo feito:
+Os seguintes estilos de nomenclatura são comumente distinguidos em:
 
-> Agora reescreva o mesmo código sem comentários. Qual versão você prefere ler?
-
-## Depuração
-
-Existem três tipos de erros que podem ocorrer em um programa.
-
-- Erros de sintaxe
-- Erros de tempo de execução
-- Erros semânticos
+- b (única letra minúscula)
+- B (única letra MAIÚSCULA)
+- minúsculas
+- minúsculas_separadas_por_sublinhados
+- MAIÚSCULAS
+- MAIÚSCULAS_SEPARADAS_POR_SUBLINHADOS
+- PalavrasComecamPorMaiusculas (Corcova do camelo - CamelCase ou CapWords)
+- palavrasComecamPorMaisculasComExcecaoDaPrimeiraPalavra (Variação da "Corcova do camelo")
 
 
-### Erros de sintaxe
+### Nomes a evitar
 
-A "sintaxe" refere-se à estrutura de um programa e suas respectivas regras.
-
-Por exemplo, estruturalmente os parênteses devem vir em pares correspondentes.
-
-```python
-## Errado
-1 + 2)
-File "<stdin>", line 1
-    1 + 2)
-         ^
-SyntaxError: unmatched ')'
-```
-
-No inicio você pode passar muito tempo rastreando erros de sintaxe, ao adquirir experiência, você fará menos erros e os encontrará mais rápido.
+Nunca use os caracteres 'l' (L minúsculo), 'O' (o maiúsculo) ou 'I' (i maiúsculo) sozinhos como nomes de variáveis. Em algumas fontes, esses caracteres são indistinguíveis dos números um e zero.
 
 
-### Erros de tempo de execução
+## Nome das variáveis
 
-Esse tipo de erro não aparece até que o programa seja executado. Esses erros também se chamam de **exceções** porque normalmente indicam que algo excepcional (e ruim) aconteceu.
+Geralmente e recomenda-se escolher nomes significativos para as variáveis.
 
+Nomes de variáveis podem ser tão longos quanto queira.
+
+Podem conter letras com números, mas nunca podem começar com um número.
+
+**A convenção é utilizar apenas letras minúsculas para nomes de variáveis.**
+
+
+### Nomes que revelem o seu propósito
+
+Escolher bons nomes leva tempo, mas economiza mais.
+
+O nome de uma variável, função ou classe deve:
+
+- Lhe dizer porque existe
+
+- O que faz
+
+- Como é usado
+
+**Dica: Se um nome requer um comentário de código, então não revela seu propósito.**
 
 
 ```python
->>> 10 * (1/0)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ZeroDivisionError: division by zero
+d = 25 ## dias decorridos do pagamento
 ```
 
+O nome "d" não revela nada. Não indica a ideia de tempo decorrido, nem de dias e nem com o que o tempo está relacionado.
 
-### Erros semânticos
-
-O terceiro tipo de erro é "semântico", ou seja, relacionado ao significado.
-
-Se houver um erro semântico no seu programa, ele será executado sem gerar mensagens de erro, mas não vai fazer a coisa **certa**. Vai fazer algo diferente, mas especificamente, vai fazer o que você disse para fazer.
-
-Identificar erros semânticos pode ser complicado, porque é preciso trabalhar de trás para a frente, vendo a saída do programa e tentando compreender o que ele está fazendo.
-
-
-
-
-## Funções
-
-Função é uma sequência nomeada de instruções.
-
-Ou seja, ao definir uma função, você específica o nome e a sequência de instruções.
-
-Depois de declarada, podemos "chamar" a função pelo nome.
-
-
-### Chamada de função
-
-Já vimos algumas "funções".
 
 ```python
->>> type(42)
-<class 'int'>
->>> type('Oi')
-<class 'str'>
->>> type(4.6)
-<class 'float'>
+dias_decoridos_pagamento = 25
 ```
 
-```python
->>> print("Essa é uma mensagem.")
-Essa é uma mensagem.
->>> mensagem = 'Olá'
->>> print(mensagem)
-Olá
-```
+### Faça distinções significativas
 
-Já vimos que os parêntese das funções sempre precisam estar em dupla.
+Os programadores criam problemas para si mesmos quando criam um código voltado unicamente para o compilador ou interpretador.
 
-Em uma função a expressão entre os parênteses é chamada de **argumento**.
+Lembre-se programa-se não para o computador, toda linguagem é construída socialmente.
 
-No caso da função de nome `type`.
+Se os nomes precisam ser diferentes, então também devem ter significados distintos.
 
-```python
->>> type(42)
-<class 'int'>
-```
-
-O argumento é o número `42`.
-
-O **resultado da função** é `<class 'int'>`. Que nesse caso é o tipo do argumento.
-
-É comum dizer que uma função **"recebe"** um argumento e **"retorna"** um resultado. Por isso, as vezes, chamamos o resultado de retorno.
-
-
-### Funções que convertem valores
-
-O Python oferece funções que convertem valores de um tipo em outro.
-
-A função `int` recebe qualquer valor e o converte em um número inteiro, se for possível, ou declara que há um erro.
-
-```python
->>> int('32')
-32
-```
-
-```python
->>> int('Olá')
-ValueError: invalid literal for int() with base 10: 'Olá'
-```
-
-
-
-`int` pode converter valores de ponto flutuante em números inteiros, mas não realiza arredondamentos, apenas ignora a parte decimal.
-
-```python
->>> int(3.9999)
-3
-```
-
-
-Portanto também temos a função `float`, que converte números inteiros e strings em números de ponto flutuante:
-
-```python
->>> float(23)
-23.0
-```
-
-```python
->>> float('3.14')
-3.14
-```
-
-Logo, também teremos a `str` que converte o argumento em uma string.
-
-```python
->>> str(32)
-'32'
-```
-
-```python
->>> str(3.14)
-'3.14'
-```
-
-
-
-### Funções matemáticas
-
-O Python possui um módulo matemático que oferece a maioria das funções matemáticas comuns.
-
-> Um **módulo** é um arquivo que contém uma coleção de funções relacionadas.
-
-Para usar funções em um módulo, precisamos importá-lo com um **instrução de importação**.
-
-Veremos posteriormente sobre importação de módulos.
+Não basta adicionar números ou palavras comuns, mesmo que o compilador ou interpretador fique satisfeito.
 
 Por exemplo:
 
 ```python
->>> import math
+## Errado
+a1 = 'Bernado'
+a2 = 'Beatriz'
+a3 = 'Caio'
 ```
+Usar números sequenciais em nomes (a1, a2, a3,...,aN) é o oposto de nome expressivos.
 
-Essa instrução cria um objeto de módulo chamado **math** (matemática).
-
-
-O objeto de módulo contém as funções e variáveis definidas no módulo.
-
-Para acessar uma das funções, é preciso especificar o nome do módulo e o nome da função, separador por um ponto. Esse formato é chamado de **notação de ponto**.
-
-```python
->>> import math
->>> relacao_sinal_ruido = potencia_sinal / potencia_ruido
->>> decibeis = 10 * math.log10(relacao_sinal_ruido)
-```
-
-O exemplo acima, usa `math.log10` para calcular a proporção de sinal e de ruído em decibéis (assumindo que *potencia_sinal* e *potencia_ruido* tenham sido declarados).
-
-O módulo matemático também oferece as funções `log`, `log2` que calcula logaritmos de base **e** (logaritmo natural) e logaritmos com base **2**.
-
-
-
-#### Algumas funções trigonométricas
-
-```python
->>> import math
->>> graus_radianos = 0.7
->>> altura = math.sin(radians)
-```
-
-Nesse exemplo encontramos o seno de *graus_radianos*. 
-
-O nome da variável indica que funções trigonométricas aceitam seu parâmetro, apenas em radianos.
-
-
-Para converter graus em radianos, divida por 180 e multiplique por π.
-
-```python
->>> import math
->>> angulo_em_graus = 45
->>> angulo_em_radianos = angulo_em_graus / 180.0 * math.pi
->>> math.sin(angulo_em_radianos)
-0.7071067811865475
-```
-
-A expressão `math.pi` recebe a variável pi do módulo matemático, seu valor é uma aproximação de ponto flutuante de π, com precisão aproximada de 15 dígitos.
-
-#### Todas as funções de math
-
-
-<table>
-    <tr>
-        <td colspan="2"><center><strong>Funções teóricas dos números</strong><center></td>
-    </tr>
-    <tr>
-        <td>comb(n,k)</td>
-        <td>Número de maneiras de escolher k itens de n itens sem repetição e sem ordem </td>
-    </tr>
-    <tr>
-        <td>factorial(n)</td>
-        <td>n fatorial </td>
-    </tr>
-    <tr>
-        <td>gcd(*integers)</td>
-        <td>Maior divisor comum dos argumentos inteiros </td>
-    </tr>
-    <tr>
-        <td>isqrt(n)</td>
-        <td>Raiz quadrada inteira de um inteiro não negativo n </td>
-    </tr>
-    <tr>
-        <td>lcm(*integers)</td>
-        <td>Mínimo múltiplo comum dos argumentos inteiros </td>
-    </tr>
-    <tr>
-        <td>perm(n,k)</td>
-        <td>Número de maneiras de escolher k itens de n itens sem repetição e com ordem </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Aritmética de ponto flutuante </strong><center></td>
-    </tr>
-    <tr>
-        <td>ceil(x)</td>
-        <td>Teto de x , o menor número inteiro maior ou igual a x </td>
-    </tr>
-    <tr>
-        <td>fabs(x)</td>
-        <td>Valor absoluto de x </td>
-    </tr>
-    <tr>
-        <td>floor(x)</td>
-        <td>Piso de x , o maior número inteiro menor ou igual a x </td>
-    </tr>
-    <tr>
-        <td>fma(x,y,z)</td>
-        <td>Operação de adição múltipla fundida: (x * y) + z</td>
-    </tr>
-    <tr>
-        <td>fmod(x,y)</td>
-        <td>Restante da divisão x / y</td>
-    </tr>
-    <tr>
-        <td>modf(x)</td>
-        <td>Partes fracionárias e inteiras de x </td>
-    </tr>
-    <tr>
-        <td>remainder(x,y)</td>
-        <td>Resto de x em relação a y </td>
-    </tr>
-    <tr>
-        <td>trunc(x)</td>
-        <td>Parte inteira de x </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Funções de manipulação de ponto flutuante </strong><center></td>
-    </tr>
-    <tr>
-        <td>copysign(x,y)</td>
-        <td>Magnitude (valor absoluto) de x com o sinal de y </td>
-    </tr>
-    <tr>
-        <td>frexp(x)</td>
-        <td>Mantissa e expoente de x </td>
-    </tr>
-    <tr>
-        <td>isclose(a,b,rel_tol,abs_tol)</td>
-        <td>Verifique se os valores aeb estão próximos um outro do </td>
-    </tr>
-    <tr>
-        <td>isfinite(x)</td>
-        <td>Verifique se x não é infinito nem NaN </td>
-    </tr>
-    <tr>
-        <td>isinf(x)</td>
-        <td>Verifique se x é um infinito positivo ou negativo </td>
-    </tr>
-    <tr>
-        <td>isnan(x)</td>
-        <td>Verifique se x é um NaN (não um número) </td>
-    </tr>
-    <tr>
-        <td>ldexp(x,i)</td>
-        <td>x * (2**i), inverso da função frexp()</td>
-    </tr>
-    <tr>
-        <td>nextafter(x,y,steps)</td>
-        <td>O valor de ponto flutuante avança após x em direção a y </td>
-    </tr>
-    <tr>
-        <td>ulp(x)</td>
-        <td>Valor do bit menos significativo de x </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Funções de potência, exponenciais e logarítmicas </strong><center></td>
-    </tr>
-    <tr>
-        <td>cbrt(x)</td>
-        <td>Raiz cúbica de x </td>
-    </tr>
-    <tr>
-        <td>exp(x)</td>
-        <td>e elevado à potência x </td>
-    </tr>
-    <tr>
-        <td>exp2(x)</td>
-        <td>2 elevado à potência x </td>
-    </tr>
-    <tr>
-        <td>expm1(x)</td>
-        <td>e elevado à potência x , menos 1 </td>
-    </tr>
-    <tr>
-        <td>log(x,base)</td>
-        <td>Logaritmo de x para a base fornecida ( e por padrão) </td>
-    </tr>
-    <tr>
-        <td>log1p(x)</td>
-        <td>Logaritmo natural de 1+x (base e ) </td>
-    </tr>
-    <tr>
-        <td>log2(x)</td>
-        <td>Logaritmo de base 2 de x </td>
-    </tr>
-    <tr>
-        <td>log10(x)</td>
-        <td>Logaritmo de base 10 de x </td>
-    </tr>
-    <tr>
-        <td>pow(x,y)</td>
-        <td>x elevado à potência y </td>
-    </tr>
-    <tr>
-        <td>sqrt(x)</td>
-        <td>Raiz quadrada de x </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Funções de soma e produto </strong><center></td>
-    </tr>
-    <tr>
-        <td>dist(p,q)</td>
-        <td>Distância euclidiana entre dois pontos p e q dada como um iterável de coordenadas </td>
-    </tr>
-    <tr>
-        <td>fsum(iterable)</td>
-        <td>Soma dos valores no iterável de entrada </td>
-    </tr>
-    <tr>
-        <td>hypot(*coordinates)</td>
-        <td>Norma euclidiana de um iterável de coordenadas </td>
-    </tr>
-    <tr>
-        <td>prod(iterable,start)</td>
-        <td>Produto de elementos na entrada iterável com um inicial valor </td>
-    </tr>
-    <tr>
-        <td>sumprod(p,q)</td>
-        <td>Soma dos produtos de dois iteráveis ​​p e q </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Conversão angular </strong></center></td>
-    </tr>
-    <tr>
-        <td>degrees(x)</td>
-        <td>Converta o ângulo x de radianos para graus </td>
-    </tr>
-    <tr>
-        <td>radians(x)</td>
-        <td>Converta o ângulo x de graus para radianos </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Funções trigonométricas <strong><center></td>
-    </tr>
-    <tr>
-        <td>acos(x)</td>
-        <td>Arco cosseno de x </td>
-    </tr>
-    <tr>
-        <td>asin(x)</td>
-        <td>Arco seno de x </td>
-    </tr>
-    <tr>
-        <td>atan(x)</td>
-        <td>Arco tangente de x </td>
-    </tr>
-    <tr>
-        <td>atan2(y,x)</td>
-        <td>atan(y / x)</td>
-    </tr>
-    <tr>
-        <td>cos(x)</td>
-        <td>Cosseno de x </td>
-    </tr>
-    <tr>
-        <td>sin(x)</td>
-        <td>Seno de x </td>
-    </tr>
-    <tr>
-        <td>tan(x)</td>
-        <td>Tangente de x </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Funções hiperbólicas </strong></center></td>
-    </tr>
-    <tr>
-        <td>acosh(x)</td>
-        <td>Cosseno hiperbólico inverso de x </td>
-    </tr>
-    <tr>
-        <td>asinh(x)</td>
-        <td>Seno hiperbólico inverso de x </td>
-    </tr>
-    <tr>
-        <td>atanh(x)</td>
-        <td>Tangente hiperbólica inversa de x </td>
-    </tr>
-    <tr>
-        <td>cosh(x)</td>
-        <td>Cosseno hiperbólico de x </td>
-    </tr>
-    <tr>
-        <td>sinh(x)</td>
-        <td>Seno hiperbólico de x </td>
-    </tr>
-    <tr>
-        <td>tanh(x)</td>
-        <td>Tangente hiperbólica de x </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Funções especiais </strong><center></td>
-    </tr>
-    <tr>
-        <td>erf(x)</td>
-        <td>Função de erro  em x </td>
-    </tr>
-    <tr>
-        <td>erfc(x)</td>
-        <td>Função de erro complementar  em x </td>
-    </tr>
-    <tr>
-        <td>gamma(x)</td>
-        <td>Função gama  em x </td>
-    </tr>
-    <tr>
-        <td>lgamma(x)</td>
-        <td>Logaritmo natural do valor absoluto da função Gamma  em x </td>
-    </tr>
-    <tr>
-        <td colspan="2"><center><strong>Constantes </strong></center></td>
-    </tr>
-    <tr>
-        <td>pi</td>
-        <td>π = 3,141592… </td>
-    </tr>
-    <tr>
-        <td>e</td>
-        <td>e = 2.718281… </td>
-    </tr>
-    <tr>
-        <td>tau</td>
-        <td>τ = 2 π = 6,283185… </td>
-    </tr>
-    <tr>
-        <td>inf</td>
-        <td>Infinito positivo </td>
-    </tr>
-    <tr>
-        <td>nan</td>
-        <td>“Não é um número” (NaN) </td>
-    </tr>
-</table>
-
-	
-
-
-### A composição das funções
-
-Já falamos sobre variáveis, expressões e instruções, agora vamos começar a combinar esses elementos.
-
-O argumento de uma função pode ser qualquer tipo de expressão, inclusive expressões com operadores aritméticos.
-
-```python
->>> import math
->>>  x = math.sin(angulo_em_graus / 360.0 * 2 * math.pi)
-```
-
-
-
-Também é possível passar como argumento chamadas de outras funções:
-
-```python
->>> import math
->>>  x = math.exp(math.log(x + 1))
-```
-
-`math.exp(x)` retorna *e* elevado à potência *x*.
-
-
-
-### Novas funções
-
-Por enquanto só utilizamos funções que vêm com o Python.
-
-#### Mas como criar novas funções?
-
-Uma definição de função especifica o nome de uma nova função e a sequência de instruções que serão executadas quando ela for **chamada**
-
-
+Geram confusão, simplesmente não oferecem informação alguma ou dica sobre a intenção de seu criador.
 
 
 ```python
->>> def imprime_letra_musica():
-...     print('Todos os dias quando acordo')
-...     print('Não tenho mais o tempo que passou')
-...
+## Certo
+nome_dos_alunos = ['Bernardo', 'Beatriz', 'Caio']
 ```
 
-- **def** é uma palavra-chave que indica uma definição de função.
+Veremos adiante o que significa a instrução acima.
 
-- O nome da função é *imprime_letra_musica*.
+Palavras muito comuns são outra forma de distinção que nada expressam.
 
-- Os parênteses vazios depois do nome indicam que esta função não usa argumentos.
+Palavras muito comuns são redundantes. O nome de uma variável jamais deve conter a palavra "variável".
 
-- Os ":" indicam o inicio do escopo da função e a tabulação indica esse próprio escopo.
+Faça a distinção dos nomes de uma forma que o leitor compreenda as diferenças
 
 
+### Use nomes pronunciáveis
+
+Use a parte do cérebro que evoluiu para lidar com a língua falada para nomes pronunciáveis.
+
+**A programação é uma atividade social**
 
 ```python
->>> def imprime_letra_musica():
+## Errado
+gedtamdhms()
 ```
+No caso acima a função gedtamdhms, seu criador usou a seguinte lógica:
 
-A primeira linha da definição de função chama-se cabeçalho. E sempre termina em dois pontos.
+- gerador: ge
+- data: dt
+- ano: a
+- mês: m
+- dia: d
+- hora: h
+- minuto: m
+- segundo: s
+
+Se pronunciaria como "gê dê tê a eme dê agá eme ése"
 
 ```python
-...     print('Todos os dias quando acordo')
-...     print('Não tenho mais o tempo que passou')
-...
+## Certo
+gerador_data_completa()
 ```
 
-O restante é o corpo da função e necessariamente precisa ser endentado. 
 
-Por convenção, a endentação sempre é de quatro espaços.
+### Use nomes passíveis de busca
 
-No interpretador interativo que estamos usando é exibido `...` para mostrar que a definição não está completa. Para terminar a função, é preciso inserir uma linha vazia.
+Nomes de uma só letra ou números não são fáceis de localizá-los ao longo de um texto.
+
+Por exemplo, pode-se localizar facilmente a variável *quantidade_max_materias_por_estudante*, do que localizar o número *7*.
+
+Nomes, definições e várias outras expressões que possuem tal número, usado para outros propósitos podem ser resultados da busca.
+
+Logo, nomes longos se sobressaem aos curtos.
 
 
+### Evite o mapeamento mental
+
+Os leitores não devem ter de traduzir mentalmente os nomes que você escolheu por outros que eles conheça.
+
+Não use termos do domínio do problema e nem os da solução.
+
+Esse é o problema com nomes de variáveis de uma só letra.
+Certamente um contador de iterações pode ser chamado de "i", "j" ou "k" - isso já se tornou uma tradição.
 
 
-A definição de uma função cria um **objeto de função**, que tem como tipo *function*.
+### Não dê uma de espertinho
+
+Se os nomes forem muito "espertinhos", apenas as pessoas que compartilhem do mesmo senso de humor que seu dono irão entendê-los ou lembrá-los.
 
 ```python
->>> print(imprime_letra_musica)
-<function imprime_letra_musica at 0x752887cbf7e0>
+## Certo
+granada()
 ```
+Saberão o que a função *granada* faz? Talvez. É engraçado, mas talvez seja melhor uma função chamada de *apaga_itens*.
 
 ```python
->>> type(imprime_letra_musica)
-<class 'function'>
+## Certo
+apaga_itens()
 ```
 
+Essas brincadeiras em código costumam aparecer na forma de coloquialismos e gírias. E até mesmo piadas de baixo calão.
 
-A sintaxe para chamar a nova função é a mesma que a das funções integradas:
+**Diga o que você quer expressar, expresse o que você quer dizer.**
 
-Ou seja, o nome da função e seus argumentos ou não dentro de parenteses.
 
-```python
->>> imprime_letra_musica()
-Todos os dias quando acordo
-Não tenho mais o tempo que passou
-```
+### Adicione um contexto significativo
 
-Uma vez que a função tenha sido definida, é possível usá-la dentro de outra função.
+Há poucos nomes que são significativos por si só - a maioria não é.
 
+Utilize nomes que façam parte do contexto do leitor. E em último recurso adicione prefixos ao nome.
 
-A definição de funções tem que ser executada antes que a função seja chamada. Ou seja, não faz sentido chamar uma função que ainda não foi criada.
+Imagine as varáveis chamadas *primeiro_nome*, *sobrenome*, *logradouro*, *numero*, *cidade*, *estado*, *cep*. Vistas juntas, fica bem claro que ela formam um endereço.
 
-```python
->>> imprime_letra_musica()
-NameError: name 'imprime_letra_musica' is not defined
-```
+Mas e se fosse visto as variáveis *numero* e *estado* sozinhas? Seria assumido que fazem parte de um endereço?
 
+A variável de nome *estado* poderia estar associada ao valor do estado cível, por exemplo.
 
-A grosso modo, as instruções de um programa são sempre executadas uma após a outra, de cima para baixo. Isso é chamado de **fluxo de execução**.
+### 🎯 Microdesafio – Nome confuso vs. nome claro
 
-As definições de função não alteram o fluxo da execução do programa, mas é necessário lembrar que as instruções dentro da função não são executadas até a função ser chamada.
+Crie duas variáveis:
 
-Uma chamada de função é como um desvio no fluxo de execução. 
+- Uma com nome ruim (ex: x, a2)
+- Uma com nome claro (ex: media_final)
 
-O fluxo salta para o corpo da função, executa as instruções lá, e então volta para continuar de onde parou.
+Atribua valores e exiba com print(). Depois responda:
 
+> Se você visse esse código daqui a 15 dias, qual nome te ajudaria a entender o que ele faz?
 
 
-#### Parâmetros e argumentos
-
-Algumas funções exigem argumentos.
-
-Por exemplo, `math.pow` exige dois argumentos, a base e o expoente.
-
-
-```python title='Documentação do math.pow'
-math.pow(x, y, /)
-    Retorna x**y (x elavado à potência de y).
-```
-
-```python
->>> import math
->>> math.pow(2,3)
-8.0
-```
-
-Se chamarmos `pow` sem passar os argumentos:
-
-```python
-    math.pow()
-    ~~~~~~~~^^
-TypeError: pow expected 2 arguments, got 0
-# Erro de tipo: pow esperava 2 argumentos, obteve 0
-```
-
-Mas, dentro da função os argumentos são atribuídos a variáveis chamadas **parâmetros**.
-
-Os parâmetros só existem dentro do escopo da função, por isso podemos atribuir o valor passado por argumento a outro nome.
-
-```python
->>> nome_aluno = 'Thais'
->>> def imprime_nome(nome):
-...     print(nome)
-...
-```
-
-```python
->>> imprime_nome(nome_aluno)
-Thais
-```
-
-Perceba que a nossa função atribui o valor do argumento a um parâmetro chamado **nome**.
-
-Mas perceba que essa função funciona com qualquer valor que possa ser exibido, desde que seja passado por argumento. Até mesmo com expressões podem ser passadas.
-
-```python
->>> imprime_nome('João')
-João
-```
-```python
->>> imprime_nome('José' * 4)
-JoséJoséJoséJosé
-```
-Não importa o argumento, dentro da função `imprime_nome` qualquer argumento corresponde ao parâmetro `nome`.
-
-
-
-#### As variáveis e os parâmetros são locais
-
-Quando uma variável é criada dentro de uma função seja ela parâmetro ou não, ela é local, ou seja, só existe dentro da função. Só existe dentro do escopo da função.
-
-```python
->>> def imprime_concatenacao_duas_strings(parte_inicial, parte_final):
-...     texto = parte_inicial + parte_final
-...     imprime_nome(texto)
-...
-```
-
-Essa função recebe dois argumentos, concatena-os e exibe o resultado utilizando a função `imprime_nome`, que acabamos de criar.
-
-
-```python
->>> terceiro_verso = 'Mas tenho muito tempo, '
->>> quarto_verso = 'temos todo tempo do mundo'
->>> imprime_concatenacao_duas_strings(terceiro_verso, quarto_verso)
-Mas tenho muito tempo, temos todo tempo do mundo
-```
-Quando `imprime_concatenacao_duas_strings` é encerrada, a variável `texto` é destruída.
-
-```python
->>> print(texto)
-NameError: name 'texto' is not defined.
-```
-
-
-
-#### Funções com resultado e funções sem resultados (métodos)
-
-Até o momento criamos funções que apenas exibem algo na tela e não especificamente possuem um valor de retorno, ou um resultado retornado.
-
-Vamos criar agora uma função que tenha como mesmo princípio que a função `math.pow`.
-
-```python
->>> def calcula_potencia(base, expoente):
-...     potencia = base ** expoente
-...     return potencia
-...
-
-
->>> print(calcula_potencia(2,3))
-8
-```
-
-Com o uso do termo `return` nossa função gera um resultado ou nos devolve um objeto.
-
-
----
-
-#### Mais exemplos de funções
-
-```python title='funcoes.py'
-def resolutiva_primeiro_grau(a, b):
-    raiz = -b/a
-    return raiz
-```
-Agora conseguimos resolver equações de primeiro grau, usando programação.
-Por exemplo, qual é a raiz da função de primeiro grau: $2x + 16$?
-
-Basta:
-
-```python title='terminal: python -i funcoes.py'
-resolutiva_primeiro_grau(2, 16):
--8.0
-```
-
-Vamos além!
-
-Vamos tentar fazer um algoritmo da resolutiva de segundo grau:
-
-```python title='funcoes.py'
-import math
-def resolutiva_segundo_grau(a, b, c):
-    delta = b**2 - (4 * a * c) # Ou delta = math.pow(b, 2) - (4 * a * c)
-    raiz_1 = (-b + math.sqrt(delta))/(2* a)
-    raiz_2 = (-b - math.sqrt(delta))/(2* a)
-    return raiz_1, raiz_2
-```
-
-Testando:
-
-```python title='terminal: python -i funcoes.py'
->>> resolutiva_segundo_grau(2,3,-5)
-(1.0, -2.5)
-```
-
-O exemplo acima resolve a função de segundo grau $2x^2 + 3x -5$
-
-Mas o que aconteceria se por acaso confundirmos a ordem na passagem dos argumentos?
-
-Bom, teríamos equações diferentes. Uma vez que, mudando a ordem, mudamos os coeficientes.
-
-Por exemplo, alternando a ordem dos números 2 e 3 teríamos a equação $2x^2 + 2x - 5$, logo a raiz também seria diferente.
-
-Para passar a ordem correta, precisamos ter acesso a declaração literal da função ou pedimos ajuda!
-
-
-Ajuda em inglês é: help.
-
-```python title='terminal'
-import math
-help(math.pow)
-```
-
-Como saída, obtemos um sistema interativo de ajuda do python
-
-```txt
-Help on built-in function pow in module math:
-
-pow(x, y, /)
-    Return x**y (x to the power of y).
-~
-```
-
-Traduzindo:
-
-```txt
-Ajuda sobre a função interna pow no módulo math:
-
-pow(x, y, /)
-Retorna x**y (x elevado à potência de y).
-~
-```
-
-Veja, não precisamos ir até o arquivo responsável pela implementação da função `pow` do módulo embutido do Python.
-Basta passar por parâmetro o nome do objeto que queiramos consultar.
-
-#### Usando o `help` como nossas funções
-
-```python title='terminal'
->>> help(resolutiva_segundo_grau)
-```
-
-Obtemos:
-
-```txt
-Help on function resolutiva_segundo_grau in module __main__:
-
-resolutiva_segundo_grau(a, b, c)
-```
-
-Ops! Conseguimos ver o nome dos parâmetros, lembra-se de nomear corretamente.
-Esses nomes não parecem ser significativos.
-
-Primeiro vamos deixar os nomes mais claros:
-
-```python title='funcoes.py'
-import math
-def resolutiva_segundo_grau(coeficiente_a, coeficiente_b, coeficiente_c):
-    delta = coeficiente_b**2 - (4 * coeficiente_a * coeficiente_c) # Ou delta = math.pow(b, 2) - (4 * a * c)
-    raiz_1 = (-coeficiente_b + math.sqrt(delta))/(2* coeficiente_a)
-    raiz_2 = (-coeficiente_b - math.sqrt(delta))/(2* coeficiente_a)
-    return raiz_1, raiz_2
-```
-
-Agora temos:
-
-```txt
-Help on function resolutiva_segundo_grau in module __main__:
-
-resolutiva_segundo_grau(coeficiente_a, coeficiente_b, coeficiente_c)
-```
-
-Agora está mais claro, mas parece falta um maior detalhamento sobre o que nossa função faz.
-
-Está faltando uma documentação!
-
-Está faltando `DocString`
-
-## DocString
-
-As convenções das DocString é oficializada por meio de uma PEP (Vimos [PEP](../../Módulo 1/aula_02/#pep) na aula anterior).
-
-### PEP 257 - Convenções DocString
-
-Criada por David Goodger e pelo fundador do Python Guido van Rossum
-
-
-Essa PEP documenta a semântica e as convenções a Documentos Python.
-
-Existem duas formas de docstrings: Única-linha ou Múltiplas-linhas
-
-### Única linha
-
-Única-linha são usadas para caso realmente óbvios. Portanto devem caber em uma linha, uma frase.
-
-```python title='funcoes.py'
-def calcula_potencia(base, expoente):
-    """Fornecido a base e expoente, retorna a potência."""
-    potencia = base ** expoente
-    return potencia
-```
-
-```python title='terminal: python -i funcoes.py'
-help(calcula_potencia)
-```
-
-Resulta em:
-
-```txt
-Help on function calcula_potencia in module __main__:
-
-calcula_potencia(base, expoente)
-    Fornecido a base e expoente, retorna a potência.
-```
-
-Perceba que a docstring documentada na função agora aparece quando passamos o nome da função para o `help` do Python.
-
-
-Vale destacar alguns pontos:
-
-- Aspas triplas são usadas mesmo que a string caiba em uma linha. Isso torna mais fácil expandi-lo posteriormente.
-- As aspas de fechamento estão na mesma linha das aspas de abertura. Esse parece melhor para frases simples.
-- Não há linha em branco antes ou depois da docstring.
-- A docstring é uma frase que termina em um ponto final. Ela prescreve o função ou efeito do método como um comando (“Faça isto”, “Retorne aquilo”), não como uma descrição; por exemplo, não escreva “Retorna a potência...”. 
-- A doutrina de uma linha NÃO deve ser uma “assinatura” reiterando a parâmetros de função/método (que podem ser obtidos por introspecção).
-    - Não faça:
-    ```python title='funcoes.py'
-            def calcula_potencia(base, expoente):
-            """function(base, expoente) -> float"""
-            potencia = base ** expoente
-            return potencia
-    ```
-
-### Múltiplas-linhas
-
-Vamos começar pelo exemplo:
-
-
-```python title='funcoes.py'
-import math
-def resolutiva_segundo_grau(coeficiente_a, coeficiente_b, coeficiente_c):
-    """Retorna as raízes de uma equação de segundo grau.
-
-    Argumentos:
-    coeficiente_a -- Coeficiente que multiplica x^2.
-    coeficiente_b -- Coeficiente que multiplica x.
-    coeficiente_c -- Coeficiente independente.
-    """
-    delta = coeficiente_b**2 - (4 * coeficiente_a * coeficiente_c) # Ou delta = math.pow(b, 2) - (4 * a * c)
-    raiz_1 = (-coeficiente_b + math.sqrt(delta))/(2* coeficiente_a)
-    raiz_2 = (-coeficiente_b - math.sqrt(delta))/(2* coeficiente_a)
-    return raiz_1, raiz_2
-```
-
-Documentos multilinhas consistem em uma linha de resumo, assim como uma linha docstring, seguido por uma linha em branco, seguido por um texto mais elaborado descrição. 
-
-##### Linha de resumo:
-
-- A linha de resumo pode ser usada pela indexação automática ferramentas; 
-- É importante que caiba em uma linha e esteja separado de o restante da documentação por uma linha em branco. 
-
-#### Docstring:
-
-- O inteiro docstring é recuado da mesma forma que as aspas em sua primeira linha.
-
-
-##### Docstring para funções:
-
-- A docstring para uma função ou método deve resumir seu comportamento e documentar seus argumentos, valores de retorno, efeitos colaterais, exceções levantado e restrições sobre quando pode ser chamado (todos, se aplicável). 
-- Argumentos opcionais devem ser indicados. 
-- Deve ser documentado se os argumentos de palavras-chave fazem parte da interface.
-
-##### Alguns exemplos de novas funções utilizando Docstring
-
-```python title='formulas_muv.py'
-# Fórmulas da aceleração do MUV
-
-def aceleracao_muv(velocidade_final, velocidade_inicial, tempo):
-    """ Fornecido a velocidade final (m/s), velocidade inicial (m/s) e o tempo (s), retorna a aceleração do movimento uniformemente variado (m/s²).
-    
-    Argumentos:
-    velocidade_final -- Velocidade final do Movimento Uniformemente Variado
-    velocidade_inicial -- Velocidade inicial do Movimento Uniformemente Variado
-    tempo -- Tempo decorrido do Movimento Uniformemente Variado
-    """
-    aceleracao = (velocidade_final - velocidade_inicial) / tempo
-    return aceleracao
-
-
-def espaco_final_muv(espaco_inicial, velocidade_inicial, tempo, aceleracao):
-    """ Fornecido o espaço inicial (m), velocidade inicial (m/s), tempo (s) e a aceleração (m/s²), retorna o espaço final.
-    
-    Argumentos:
-    espaco_inicial -- Espaço inicial do Movimento Uniformemente Variado
-    velocidade_inicial -- Velocidade inicial do Movimento Uniformemente Variado
-    tempo -- Tempo decorrido do Movimento Uniformemente Variado
-    aceleracao -- Aceleração do Movimento Uniformemente Variado
-    """
-    espaco_final_muv = espaco_inicial + velocidade_inicial * tempo + (aceleracao * tempo ** 2)/2
-    return espaco_final_muv
-```
-
-
-```python title="Terminal - python -i formulas_muv.py"
-help(aceleracao_muv)
-```
-
-```txt title='help interativo'
-Help on function aceleracao_muv in module __main__:
-
-aceleracao_muv(velocidade_final, velocidade_inicial, tempo)
-    Fornecido a velocidade final (m/s), velocidade inicial (m/s) e o tempo (s), retorna a aceleração do movimento uniformemente variado (m/s²).
-
-    Argumentos:
-    velocidade_final -- Velocidade final do Movimento Uniformemente Variado
-    velocidade_inicial -- Velocidade inicial do Movimento Uniformemente Variado
-    tempo -- Tempo decorrido do Movimento Uniformemente Variado
-```
-
-
-```python title="Terminal - python -i formulas_muv.py"
-# Calculando a aceleração de um objeto móvel de velocidade final 10 m/s, velocidade inicial de 2 m/s decorridos 5 segundos.
-aceleracao_muv(10, 2, 5)
-1.6
-```
-
-
-
-## Entrada de teclado
-
-Para interagirmos com nossas funções estamos passando seu argumento manualmente.
-
-Podemos fazer isso de maneira mais interativa, no sentido de que o próprio usuário que está interagindo com a função carregue seus argumentos.
-
-O Python fornece uma função integrada chamada `input` que interrompe o programa e espera que usuário digite algo.
-
-Quando o usuário pressionar Enter, o programa volta a ser executado e input, que é uma função **retorna** o que o usuário digitou como uma string.
-
-```python
->>> texto = input()
-Teste de texto
->>> texto
-'Teste de texto'
-```
-
-
-A função `input` tem como parâmetro uma string que é exibida ao usuário como orientação, a chamamos de argumento prompt.
-
-```python
->>> nome = input('Insira seu nome: ')
-Insira seu nome: Everson
->>> nome
-'Everson'
-```
-
-
-Podemos passar por meio de uma variável o argumento prompt
-
-```python
->>> mensagem_usuario_nome = 'Insira seu nome: '
->>> nome = input(mensagem_usuario_nome)
-Insira seu nome: Everson
->>> nome
-'Everson'
-```
-
-
-Se `input` retorna um valor do tipo string, como fazer entradas numéricas?
-
-Basta usar as funções que convertem valores.
-
-```python
->>> idade = int(input('Insira sua idade: '))
-29
->>> idade
-29
->>> type(idade)
-<class 'int'>
->>> idade
-29
-```
-
-
-
-## A função dir do Python
-
-Existem duas funções fundamentais para qualquer objeto em python.
-
-A função `dir(object)` sem argumentos devolve a lista de nomes no escopo local atual. 
-
-Com um argumento, tentará devolver uma lista de atributos válidos para esse objeto.
-
-O mecanismo padrão `dir()` se comporta de maneira diferente com diferentes tipos de objetos, pois tenta produzir as informações mais relevantes e não completas.
-
-Temos uma variável do tipo **string**.
-
-```python
->>> quarto_verso
-'temos todo tempo do mundo'
-```
-
-```python
->>> dir(quarto_verso)
-['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__',
-'__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getstate__',
-'__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__',
-'__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__',
-'__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold',
-'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index',
-'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric',
-'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans',
-'partition', 'removeprefix', 'removesuffix', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition',
-'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate',
-'upper', 'zfill']
-```
-
-Usamos a função `dir()` para descobrir o nome de um método das strings.
-Podemos utilizar a função `help` para detalhamento desse método:
-
-```python
->>> help(quarto_verso.capitalize)
-capitalize() method of builtins.str instance
-    Return a capitalized version of the string.
-    More specifically, make the first character have upper case and the rest lower
-```
-
-De fato, o primeiro caractere se torna maiúsculo.
-
-```python
->>> quarto_verso.capitalize()
-'Temos todo tempo do mundo'
-```
-
-### Outro exemplo
-
-```python
->>> help(quarto_verso.isnumeric)
-isnumeric() method of builtins.str instance
-    Return True if the string is a numeric string, False otherwise.
-    A string is numeric if all characters in the string are numeric and there is at 
-    least one character in the string. 
-```
-
-
-**Utilize as funções embutidas `dir(object)` e `help(request)` sempre que houver dúvidas ou quiser explorar mais o Python essas são funções que irão ajudar.**
