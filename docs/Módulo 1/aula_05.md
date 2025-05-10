@@ -1,8 +1,3 @@
----
-search:
-  exclude: true
----
-
 
 ## Funções
 
