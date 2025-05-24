@@ -1,18 +1,5 @@
----
-search:
-  exclude: true
----
----
-marp: true
-theme: rose-pine
-style: |
-  .columns {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-  }
----
-# Aula 06 - Recursividade
+
+# Aula 07 - Função dir; Novos operadores; Expressões booleanas, Operadores Relacionais, Operadores Lógicos e Execução Condicional
 
 Fundamentos de algoritmos e introdução à programação em Python 
 Prof. Everson Otoni
@@ -20,397 +7,373 @@ Prof. Everson Otoni
 
 ---
 
-## Recursão
 
-Já vimos que uma função pode chamar outra.
+## A função dir do Python!
 
-Mas uma função pode chamar a si mesma.
+Existem duas funções fundamentais para qualquer objeto em python.
 
-Pode não ser óbvio, mas esse é um dos recursos computacionais muito utilizado em programação e não é apenas uma chamada de função diferente da usual.
+A função `dir(object)` sem argumentos devolve a lista de nomes no escopo local atual. 
 
----
+Com um argumento, tentará devolver uma lista de atributos válidos para esse objeto.
 
-A recursão é uma **técnica** de solução de problemas que expressa a solução para um problema em termos de soluções para **subproblemas do problema original**.
+O mecanismo padrão `dir()` se comporta de maneira diferente com diferentes tipos de objetos, pois tenta produzir as informações mais relevantes e não completas.
 
-Como já mencionado, as funções desenvolvidas solucionando um problema recursivamente chamarão a si mesmas, e nos referimos a elas como **funções recursivas**.
-
-Enquanto discutimos quando a recursão deve ou não ser usada, aparece a questão do **tempo de execução do programa**.
-Até agora, não nos preocupamos muito com a eficiência de nossos programas. A recursividade muda isso.
-
-
----
-
-## Funções Recursivas
-
-Exemplo de um função que chama a si mesma:
+Temos uma variável do tipo **string**.
 
 ```python
->>> def contagem_regressiva(numero):
-...     print(numero)
-...     contagem_regressiva(numero - 1)
-...
+>>> quarto_verso
+'temos todo tempo do mundo'
 ```
 
-Perceba que na **implementação** da função `contagem_regressiva`, a própria função `contagem_regressiva` é **chamada**.
-
-Portanto, a função `contagem_regressiva` chama a si mesma. Logo, trata-se de uma **chamada recursiva**.
-
---- 
-
-
 ```python
->>> def contagem_regressiva(numero):
-...     print(numero)
-...     contagem_regressiva(numero - 1)
-...
-```
-Qual é o comportamento dessa função, se executarmos a chamada de função `contagem_regressiva(3)` ?
-
-```python
->>> contagem_regressiva(3)
-```
----
-
-
-```python
->>> def contagem_regressiva(numero):
-...     print(numero)
-...     contagem_regressiva(numero - 1)
-...
+>>> dir(quarto_verso)
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__', '__doc__', '__eq__',
+'__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getstate__',
+'__gt__', '__hash__', '__init__', '__init_subclass__', '__iter__', '__le__', '__len__', '__lt__',
+'__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__',
+'__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'capitalize', 'casefold',
+'center', 'count', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'format_map', 'index',
+'isalnum', 'isalpha', 'isascii', 'isdecimal', 'isdigit', 'isidentifier', 'islower', 'isnumeric',
+'isprintable', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans',
+'partition', 'removeprefix', 'removesuffix', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition',
+'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate',
+'upper', 'zfill']
 ```
 
-- Quando executamos `contagem_regressiva(3)`: 
-    - A entrada 3 é exibida.
-    - `contagem_regressiva()` é chamada sobre a entrada decrementada uma unidade, ou seja, 3 - 1 = 2
-    - Continuamos rastreando a execução `contagem_regressiva(2)`.
-
-
----
-
+Usamos a função `dir()` para descobrir o nome de um método das strings.
+Podemos utilizar a função `help` para detalhamento desse método:
 
 ```python
->>> def contagem_regressiva(numero):
-...     print(numero)
-...     contagem_regressiva(numero - 1)
-...
+>>> help(quarto_verso.capitalize)
+capitalize() method of builtins.str instance
+    Return a capitalized version of the string.
+    More specifically, make the first character have upper case and the rest lower
 ```
 
-- Quando executamos `contagem_regressiva(2)`: 
-    - A entrada 2 é exibida.
-    - `contagem_regressiva()` é chamada sobre a entrada decrementada uma unidade, ou seja, 2 - 1 = 1
-    - Continuamos rastreando a execução `contagem_regressiva(1)`.
-
-
----
-
+De fato, o primeiro caractere se torna maiúsculo.
 
 ```python
->>> def contagem_regressiva(numero):
-...     print(numero)
-...     contagem_regressiva(numero - 1)
-...
+>>> quarto_verso.capitalize()
+'Temos todo tempo do mundo'
 ```
 
-- Quando executamos `contagem_regressiva(1)`: 
-    - A entrada 1 é exibida.
-    - `contagem_regressiva()` é chamada sobre a entrada decrementada uma unidade, ou seja, 1 - 1 = 0
-    - Continuamos rastreando a execução `contagem_regressiva(0)`.
-
----
-
+### Outro exemplo
 
 ```python
->>> def contagem_regressiva(numero):
-...     print(numero)
-...     contagem_regressiva(numero - 1)
-...
+>>> help(quarto_verso.isnumeric)
+isnumeric() method of builtins.str instance
+    Return True if the string is a numeric string, False otherwise.
+    A string is numeric if all characters in the string are numeric and there is at 
+    least one character in the string. 
 ```
 
-- Quando executamos `contagem_regressiva(0)`: 
-    - A entrada 0 é exibida.
-    - `contagem_regressiva()` é chamada sobre a entrada decrementada uma unidade, ou seja, 0 - 1 = -1
-    - Continuamos rastreando a execução `contagem_regressiva(-1)`.
 
----
+**Utilize as funções embutidas `dir(object)` e `help(request)` sempre que houver dúvidas ou quiser explorar mais o Python essas são funções que irão ajudar.**
 
 
-- Quando executamos `contagem_regressiva(-1)`:
-    - ...
 
-Parece que a execução nunca terminará.
+## Novos operadores - Divisão por piso e módulo
 
----
+O operador de **divisão pelo piso**, `//`, divide dois números e arredonda o resultado para um número inteiro para baixo.
 
 
-Vamos verificar:
+Por exemplo, suponha que o tempo de execução de um filme seja de 105 minutos.
+
+Podemos querer saber a quanto isso corresponde em horas.
+
+Usando a divisão convencional, temos um ponto flutuante como resposta.
+
 
 ```python
->>> contagem_regressiva(3)
-3
-2
+>>> minutos_total_filme = 105
+>>> minutos_total_filme / 60
+1.75
+```
+
+ 
+
+Não é comum escrever horas com números decimais. 
+
+A divisão pelo piso devolve o número inteiro de horas, ignorando a parte fracionária.
+
+```python
+>>> minutos_total_filme = 105
+>>> horas_filme = minutos_filme // 60
+>>> horas_filme
 1
-0
--1
--2
-...
 ```
 
-O comportamento da função é fazer a contagem regressiva, começando com o número da entrada original.
-
----
 
 
-Se "deixarmos" a chamada de função `contagem_regressiva(3)` executar por um tempo, obteremos:
+
+Se ainda queremos obter o restante, podemos subtrair a hora inteira recém descoberta da quantidade inicial de minutos:
 
 ```python
->>> contagem_regressiva(3)
-...
--2
-...
--994
--995
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "<stdin>", line 3, in contagem_regressiva
-  File "<stdin>", line 3, in contagem_regressiva
-  File "<stdin>", line 3, in contagem_regressiva
-  [Previous line repeated 996 more times]
-RecursionError: maximum recursion depth exceeded
+>>> minutos_restante_filme = minutos_total_filme - horas_filme * 60
+>>> minutos_restante_filme
+45
 ```
 
----
 
 
-Temos diversas linhas de mensagem de erro, e somos informados que a **profundidade máxima de recursão foi excedida**.
 
-A execução estava seguindo **indefinidamente**, mas o interpretador Python parou com isso.
-
-O ponto principal a se entender aqui, é que uma **função recursiva** chamará a si mesma **indefinidamente**, a menos que modifiquemos a função de modo que haja uma **condição de parada**.
-
----
-
-
-Suponha que o comportamento que queríamos alcançar com a função `contagem_regressiva` fosse:
+Uma alternativa para descobrir os minutos restante, seria usar o **operador módulo**, %, que divide dois números e devolve o resto.
 
 ```python
->>> contagem_regressiva(3)
-3
-2
+>>> minutos_restante_filme = minutos_total_filme % 60
+>>> minutos_restante_filme
+45
+```
+
+Perceba que apenas utilizando os novos operadores conseguiríamos responder a pergunta inicial, em duas instruções.
+
+```python
+>>> minutos_total_filme = 105
+>>> minutos_total_filme // 60
 1
-Lançar!!!
+>>> minutos_total_filme % 60
+45
 ```
 
-```python
->>> contagem_regressiva(1)
-1
-Lançar!!!
-```
-
-```python
->>> contagem_regressiva(0)
-Lançar!!!
-```
----
 
 
-```python
->>> contagem_regressiva(3)
-3
-2
-1
-Lançar!!!
-```
+## Novos operadores - Módulo
 
-A função `contagem_regressiva()` deverá contar até 0, começando de uma entrada informada;
+O operador por módulo é mais útil do que parece.
 
-Quando 0 (zero) for alcançado, o texto `Lançar!!!` deverá ser apresentado.
+É possível, por meio de seu uso verificar se um número é divisível por outro.
+
+Se `x % y` for zero, então x é divisível por y.
+
+Também é possível extrair o dígito ou dígitos mais à direita de um número.
+
+Por exemplo, `x % 10` produz o dígito mais à direita de x (na base 10).
+Da mesma forma que `x % 100` produz os dois últimos dígitos.
+
+
 
 ---
+## Expressões booleanas 
 
+Uma expressão booleana é uma expressão que pode ser verdadeira ou falsa.
 
-Para implementar essa versão de `contagem_regressiva()`, consideramos dois casos que dependem do valor da entrada:
-- Quando a entrada `numero` é 0 (zero) ou negativa.
-    - Chamamos esse caso de **`caso básico`** da recursão.
-    - Essa é condição que garantirá que a função recursiva **não irá chamar a si mesma indefinidamente**.
-- Quando a entrada `numero` é positiva.
-    - Executará a mesma coisa de antes.
+Os exemplos seguintes usam o operador `==`, que **compara** dois operando e produz `True` se forem iguais e `False` se não forem
 
+```python
+>>> 5 == 5
+True
+>> 5 == 6
+False
+```
 
 ---
 
 
-Temos então:
+`True` e `False` são valores especiais que pertencem ao tipo booleano.
+
+Não são strings.
 
 ```python
->>> def contagem_regressiva(numero):
-...     if numero <= 0:                 ## caso básico
-...         print('Lançar!!!')          
-...     else:                                       ## numero > 0 (positivo): etapa recursiva                   
-...         print(numero)                           ## exibe numero primeiro
-...         contagem_regressiva(numero - 1)         ## regride a partir de numero - 1
+>>> type(True)
+<class 'bool'>
+>> type(False)
+<class 'bool'>
+```
+
+---
+
+### Operadores relacionais
+
+Dentre os **operadores relacionais**, temos:
+
+O operador `==`, que compara se dois valores são iguais.
+
+O operador `!=`, que compara se dois valores são diferentes.
+
+O operador `>`, que compara se um valor é maior a outro.
+
+O operador `<`, que compara se um valor é menor a outro.
+
+O operador `>=`, que compara se um valor é maior ou igual a outro.
+
+O operador `<=`, que compara se um valor é menor ou igual a outro.
+
+---
+
+
+Alguns símbolos do Python são diferentes dos símbolos matemáticos.
+
+Um erro comum é usar apenas um sinal de igual (=) em vez de um sinal duplo (==).
+
+`=` é um sinal de atribuição e `==` é um operador relacional.
+
+---
+
+### Operadores lógicos
+
+Há três **operadores lógicos**: `and`, `or` e `not`. 
+
+Sua semântica é referente ao significado em inglês.
+
+Por exemplo, 
+
+`x > 0 and x < 10` só é verdade (`True`) se x for maior que 0 `e` menor que 10.
+
+`n % 2 == 0 or n % 3 == 0` é verdadeiro (`True`) se *uma ou as duas* condição(ões) for(em) verdadeira(s), isto é, se o número for divisível por 2 `ou` 3.
+
+`not (x > y)` é verdade (`True`) se x > y for falso, isto é, se x for `menor que ou igual a` y. 
+O operador `not` nega uma expressão booleana.
+
+---
+
+
+O Python não é muito estrito com os operandos dos operadores lógicos.
+
+E aceita qualquer número que não seja zero como `True`.
+
+Essa característica possui sua utilidade, mas há sutilezas que podem ser confusas. 
+
+Portanto use com moderação.
+
+
+---
+
+## Execução condicional
+
+Para escrever programas, quase sempre precisamos da capacidade de **verificar condições** e mudar o comportamento do programa de acordo com essas condições.
+
+É por meio das **instruções condicionais** que essa capacidade é possível.
+
+A forma mais simples de uma instrução desse tipo é a instrução `if` ("Se", em português).
+
+---
+
+## Execução condicional
+
+```python
+>>> if x > 0:
+...     print('x é positivo')
+...
+```
+
+Perceba que há um expressão booleana (`x > 0`) após o `if`. Ela é chamada de **condição**. 
+
+Perceba também que a instrução após a condição é endentada e delimitada por `:`.
+
+Isso significa que assim como a função, aqui também temos um escopo de existência.
+
+Ou melhor, todas as instruções endentadas após a condição, só serão executadas se a condição for verdadeira (possuir valor `True`)
+
+---
+
+### Execução alternativa
+
+A execução alternativa (else ou "senão ou caso contrário") é utilizada quando há duas possibilidades e a condição determina qual será executada.
+
+```python
+>>> if num % 2 == 0:
+...     print('É par')
+... else:
+...     print('É impar')
+...
+```
+
+Se o resto quando num for dividido por 2 for 0, então sabemos que x é par e o programa exibe a uma mensagem para par.
+
+Se a condição for falso, o segundo conjunto de instruções é executado. Logo x é impar e uma mensagem de acordo é exibida.
+
+Como há apenas duas possibilidade para uma condição, ou verdadeira ou falsa, exatamente uma das alternativas será executada. Essas duas alternativas são ramos no fluxo de execução.
+
+---
+
+Meio limitante apenas duas opções, não?
+
+---
+
+## Condicionais encadeadas
+
+As vezes, há mais de duas possibilidades e precisamos de mais de dois ramos no fluxo de execução.
+
+Podemos utilizar condicionais encadeadas (no sentindo de interligadas).
+
+```python
+>>> if x < y:
+...     print('x é menor que y <=> y é maior que x')
+... elif x > y
+...     print('x é maior que y <=> y é menor que x')
+... else:
+...     print('x é igual à y <=> y é igual à x')
+...
+```
+
+`elif` é uma abreviatura de "else if" (caso contrário, se)
+
+---
+
+### elif
+
+É importante notar, que cada condição é verificada em ordem.
+
+Se uma delas for verdadeira, o ramo correspondente é executado e a instrução é encerrada.
+
+Mesmo, se por acaso, mais de uma condição for verdade, só o primeiro ramo verdadeiro é executado.
+
+
+---
+## Condicionais aninhadas
+
+Condicionais podem ser aninhados (dentro) de outros condicionais.
+
+Por exemplo,
+
+
+```python
+>>> if x == y:
+...     print('x é igual à y <=> y é igual a x')
+... else:
+...     if x < y:
+...         print('x é menor que y <=> y é maior que x')
+...     else:
+...         print('x é maior que y <=> y é menor que x')
+...
+```
+
+O condicional mais externo, possui dois ramos.
+O primeiro ramo contém uma instrução simples **(if)**.
+O segundo ramo contém mais duas instruções internas, onde inclusive uma delas, possui uma outra instrução condicional.
+
+---
+
+
+
+ Embora seja possível, **condicionais aninhadas** são difíceis de ler rapidamente.
+
+ É uma boa ideia evitá-las quando for possível.
+
+Os operadores lógicos muitas vezes oferecem uma resolução mais simples para instruções aninhadas.
+
+---
+
+
+
+
+Usando condicionais aninhadas
+
+```python
+>>> if x > 0:
+...     if x < y:
+...         print('x é um número positivo de um único dígito')
+...
+```
+
+Usando operadores lógicos
+
+```python
+>>> if x > 0 and x < 10:
+...     print('x é um número positivo de um único dígito')
 ...
 ```
 
 ---
-
-
-Uma função recursiva que termina sempre terá:
-- Um ou mais casos básicos, que oferecem a condição de término para a recursão.
-    - Na função `contagem_regressiva()`, o caso básico é a condição `numero <= 0`, em que `numero` é a entrada.
-
-- Uma ou mais chamadas recursivas, que precisam estar nos argumentos que ficam "mais próximos" do caso básico do que a entrada da função.
-    - Na função `contagem_regressiva()`, a única chamada recursiva é feita sobre `numero - 1`, que está "mais próxima" do caso básico do que a entrada `numero`.
-
----
-
-
-O significado de "mais próximo" depende do problema resolvido pela função recursiva.
-
-A ideia é que cada chamada recursiva seja feita sobre entradas do problema que estejam mais próximas do caso básico.
-Isso garante que as chamadas recursivas, por fim, cheguem ao caso básico que encerrará a execução.
-
----
-
-
-Para desenvolver funções recursivas, é necessário aprender a pensar recursivamente.
-
-Ou seja, descrever a solução de um problema em termos de soluções de seus subproblemas.
-
----
-
-## Pensamento Recursivo
-
-Precisamos desenvolver uma função recursiva `exibe_numero_vertical()`, que aceita um número inteiro não negativo como entrada e exibe seus dígitos empilhados verticalmente. Por exemplo:
-
-```python
->>> exibe_numero_vertical(3124)
-3
-1
-2
-4
-```
-
----
-
-
-1. Precisamos definir o caso básico da recursão
-    - Podemos fazer isso respondendo à pergunta: 
-    `Quando o problema de exibir verticalmente é fácil?`
-    `Para que tipo de número inteiro não negativo?`
-        - Certamente o problema é fácil, quando a entrada tiver apenas um dígito.
-        - Nesse caso exibimos a própria entrada.
-
-```python
->>> exibe_numero_vertical(6)
-6
-```
-
----
-
-
-1. (continuação). Tomamos a decisão de que o caso básico é quando temos: 
-`numero <  10`, logo:
-
-```python
->>> def exibe_numero_vertical(numero):
-...     if numero < 10:             ## Caso Básico: numero tem 1 dígito.
-...         print(numero)          
-...     else:                       ## Etapa recursiva: numero tem 2 ou mais dígitos.                 
-...         ...         ## Restante da função.
-...
-```
-
----
-
-
-Temos então, a função `exibe_numero_vertical()` que exibe `numero` se este for menor que 10 (ou seja, se `numero` for um número de único dígito:
-
-```python
->>> exibe_numero_vertical(4):
-4
-```
-
-```python
->>> exibe_numero_vertical(15):
->>> 
-```
-
----
-
-
-2. Consideramos agora o caso em que a entrada `numero` tem dois ou mais dígitos.
-    - Nesse caso gostaríamos de quebrar o problema de exibição vertical do número em subproblemas "mais fáceis".
-    - Esses subproblemas precisam envolver, necessariamente, a exibição de números "menores" que a entrada original `numero`.
-        - Nesse problema "menor" deverá nos levar para mais perto do caso básico, um número de único dígito.
-        - Isso sugere que nossa chamada recursiva deverá ser sobre um número que tenha menos dígitos que a entrada original.
-
----
-
-
-Por exemplo, para `numero` com dois dígitos, quebramos o problema:
-a. Exibir verticalmente o número obtido removendo o último dígito. Esse número é "menor" porque tem menos um dígito.
-- Para `numero = 3124`, isso significaria chamar a função `exibe_numero_vertical()` sobre 312.
-b. Exibir o último dígito. Para `numero = 3124`, isso significa exibir 4.
-
----
-
-
-Lembra dos últimos operadores que aprendemos?
-
-O último número pode ser obtido, utilizando o operador módulo (%):
-
-```python
->>> numero = 3124
->>> numero % 10
-4
-```
-
-Podemos "remover" o último dígito, usando o operador de divisão inteira (//):
-
-```python
->>> numero = 3124
->>> numero // 10
-312
-```
-
-Agora podemos escrever a função recursiva completa.
-
----
-
-
-```python
->>> def exibe_numero_vertical(numero):
-...     if numero < 10:             ## Caso Básico: numero tem 1 dígito.
-...         print(numero)               ## Exibe número.
-...     else:                       ## Etapa recursiva: numero tem 2 ou mais dígitos.                 
-...         exibe_numero_vertical(numero // 10)     ## Exibe recursivamente todos menos o último dígito.
-...            
-...         print(numero % 10)                      ## Exibe último dígito.
-...
-```
-
-```python
->>> exibe_numero_vertical(3124)
-3
-1
-2
-4
-```
-
----
-
-### Resumo
-
-1. Primeiro, decida sobre o caso básico ou casos do problema que podem ser resolvidos diretamente, sem recursão.
-
-2. Descubra como quebrar o problema para que sejam mais próximos do caso básico;
-Os subproblemas devem ser resolvidos recursivamente. As soluções para os subproblemas são usadas para construir a solução do problema original.
-
----
-
-## Chamadas de Função Recursivas e a Pilha de Programa
-
-O que acontece quando uma função de recursão é executada?
-
 
 
