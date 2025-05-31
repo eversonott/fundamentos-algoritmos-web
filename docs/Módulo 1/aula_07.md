@@ -1,11 +1,19 @@
 
-# Aula 07 - Função dir; Novos operadores; Expressões booleanas, Operadores Relacionais, Operadores Lógicos e Execução Condicional
+# Aula 07 - Execução Condicional
 
-Fundamentos de algoritmos e introdução à programação em Python 
-Prof. Everson Otoni
+{% set aula = "07" %}
+{% set link = "MTGywDavSrI" %}
+{% set objetivos = 
+[
+  "Explorar atributos e métodos de objetos usando as funções dir() e help()",
+  "Utilizar os operadores // e % para divisão inteira e resto de divisão",
+  "Construir expressões booleanas com operadores relacionais e lógicos",
+  "Aplicar estruturas condicionais com if, else, elif e aninhamentos",
+  "Escrever programas que tomam decisões com base em múltiplas condições"
+]
 
-
----
+%}
+{% include "templates/cabecalho.md" %}
 
 
 ## A função dir do Python!

@@ -1,15 +1,18 @@
-# Aula 06 - Expressões booleanas, Operadores Relacionais, Operadores Lógicos e Execução Condicional
-
+# Aula 06 - Funções e Docstrings
 
 {% set aula = "06" %}
-{% set link = "" %}
+{% set link = "N3aN16o57Pk" %}
 {% set objetivos = 
 [
+  "Compreender o escopo local de variáveis e parâmetros em funções",
+  "Criar funções com retorno utilizando a palavra-chave return",
+  "Aplicar boas práticas de documentação com Docstrings conforme a PEP 257",
+  "Utilizar a função input para capturar dados do usuário de forma interativa",
+  "Resolver problemas práticos com funções que recebem argumentos e retornam valores"
 ]
-%}
-{% include "templates/cabecalho_sem_video.md" %}
 
-## Funções (continuação)
+%}
+{% include "templates/cabecalho.md" %}## Funções (continuação)
 
 ### Novas funções (continuação)
 

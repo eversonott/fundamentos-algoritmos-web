@@ -1,3 +1,17 @@
+# Aula 05 -  Introdução à funções
+
+{% set aula = "05" %}
+{% set link = "6qb3ZnMwcSA" %}
+{% set objetivos = 
+[
+  "Compreender o conceito de função como sequência nomeada de instruções",
+  "Utilizar funções integradas do Python e interpretar argumentos e retornos",
+  "Importar e usar funções do módulo math com notação de ponto",
+  "Definir funções próprias com parâmetros e aplicar o conceito de escopo",
+  "Compor e encadear funções para resolver problemas matemáticos e lógicos"
+]
+%}
+{% include "templates/cabecalho.md" %}
 
 ## Funções
 

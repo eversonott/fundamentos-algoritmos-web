@@ -1,5 +1,20 @@
 
-# Recursividade
+# Aula 08 - Recursividade
+
+{% set aula = "08" %}
+{% set link = "jBWWcD6BRH4" %}
+{% set objetivos = 
+[
+  "Compreender o conceito de recursão como solução baseada em subproblemas",
+  "Reconhecer a estrutura de uma função recursiva com caso básico e chamada a si mesma",
+  "Evitar chamadas infinitas garantindo uma condição de parada adequada",
+  "Desenvolver o pensamento recursivo por meio de exemplos guiados",
+  "Construir funções recursivas simples, como contagem regressiva e exibição vertical de dígitos"
+]
+
+%}
+{% include "templates/cabecalho.md" %}
+
 
 ## Recursão
 

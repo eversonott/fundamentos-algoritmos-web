@@ -1,5 +1,5 @@
 
-# Aula 04 - Expressões, Instruções, Funções, Docstring e Entrada de teclado
+# Aula 04 -  Expressões, Instruções e Comentários
 
 {% set aula = "04" %}
 {% set link = "ChKzqUPZTNI" %}
