@@ -1,13 +1,17 @@
----
-search:
-  exclude: true
----
-# Aula 07 - Introdução à iteração : instrução While e Break
-Fundamentos de algoritmos e introdução à programação em Python 
+# Aula 10 - Introdução à iteração: instrução while, break e continue
 
-Prof. Everson Otoni
-
----
+{% set aula = "10" %}
+{% set link = "" %}
+{% set objetivos = 
+[
+  "Compreender o conceito de iteração e utilizar a instrução `while` em Python",
+  "Aplicar reatribuições, atualizações e atribuições aumentadas em variáveis",
+  "Utilizar `break` e `continue` para controlar o fluxo de execução em laços",
+  "Construir algoritmos com somatórias, contagens e condições de parada dinâmicas",
+  "Implementar métodos iterativos como o de Newton para aproximação de raízes"
+]
+%}
+{% include "templates/cabecalho_sem_video.md" %}
 
 ## Iteração
 
@@ -15,7 +19,7 @@ Prof. Everson Otoni
 
 Vimos iteração, usando a recursividade.
 
----
+
 
 ## Reatribuição
 
@@ -31,7 +35,6 @@ Uma nova atribuição faz uma variável existente referir-se a um novo valor.
 >>> x
 7
 ```
----
 
 
 Perceba que uma atribuição não é uma igualdade matemática.
@@ -42,7 +45,7 @@ Interpretar `a = b` como iguais é equivocado, na verdade o valor de `b` é atri
 >>> 7 = x
 SyntaxError: cannot assign to literal here. Maybe you meant '==' instead of '='?
 ```
----
+
 
 
 
@@ -53,15 +56,15 @@ Em Python, uma instrução de atribuição pode tornar duas variáveis iguais, m
 
 ```python
 >>> a = 5
->>> b = a ## Agora "a" e "b" são iguais.
->>> a = 3
+>>> b = a # Agora "a" e "b" são iguais.
+>>> a = 3 # A variável "b" possui o mesmo valor da variável "a"
 >>> b
 5
 ```
 
 A terceira linha modifica o valor de *a*, mas não muda o valor de *b*, então após a terceira linha elas já não são iguais.
 
----
+
 
 ## Atualização de variáveis
 
@@ -78,10 +81,10 @@ Antes de poder atualizar uma variável é preciso **inicializa-lá**, normalment
 >>> x = x + 1
 ```
 
-Atualizar uma variável acrescentando 1 chama-se **incremento**
-Subtrair 1 chama-se **decremento**.
+Atualizar uma variável acrescentando 1 chama-se **incremento** 
+subtrair 1 chama-se **decremento**.
 
----
+
 
 ## Instrução While
 
@@ -91,14 +94,382 @@ Em um programa de computador, a repetição também é chamada de **iteração**
 
 Vimos que usando condicionais, executamos um bloco de código quando uma certa condição é verdadeira.
 
----
+
 
 
 Assim como em condicionais, a instrução `while` executa o bloco de código se a condição é verdadeira. Porém depois que o bloco é executado o programa **volta** a verificar se a condição é verdadeira. Se for, então o bloco é executado novamente.
 
 Quando a condição for avaliada como falsa, então a execução "salta" para a instrução não endentada.
 
+### Incremento simples
+
+Vamos criar uma função `incremento_simples()` que imprime os números de 1 a 5 usando um laço `while`. A função não recebe parâmetros e imprime os números em linhas separadas.
+
+```py
+def incremento_simples():
+    x = 1
+    while x < 6:
+        print(x)
+        x = x + 1
+# A saída será 1,2,3,4,5. Demonstra reatribuição básica no laço.
+```
+
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=def%20incremento_simples%28%29%3A%0A%20%20%20%20x%20%3D%201%0A%20%20%20%20while%20x%20%3C%206%3A%0A%20%20%20%20%20%20%20%20print%28x%29%0A%20%20%20%20%20%20%20%20x%20%3D%20x%20%2B%201%0A%0Aincremento_simples%28%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=20&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Perceba que apenas quando `x = 6`, é verificado que `6 < 6 = False` (passo 21) e a execução "sai" do `while`.
+
+
+
+
+### Contador decrescente
+Crie uma função `contador_decrescente()` que imprime os números de 5 até 0 em ordem decrescente. 
+Use um laço `while` e decremento.
+
+```py
+def contador_decrescente():
+    n = 5
+    while n >= 0:
+        print(n)
+        n = n - 1
+    #  Imprime 5,4,3,2,1,0. Ensina decremento e condição de parada.
+```
+
+### Atribuições
+
+Já vimos que as instruções de atribuição são usadas para (re)vincular 
+nomes a valores e modificar atributos ou itens de objetos mutáveis:
+
+A mais frequente e comumente usada é a instrução de atribuição 
+básica.
+
+Neste tipo de atribuição, atribuiremos o valor diretamente à 
+variável.
+
+
+<span style="color:#B87333;">nome_objeto</span> = <span style="color:#4A5D23;"> valor</span>
+
+
+#### Atribuição aumentada
+
+A atribuição aumentada é a combinação, em uma única instrução, de uma
+operação binária e uma instrução de atribuição:
+
+Uma instrução de atribuição aumentada como `x -= 1` pode ser 
+reescrita como `x = x - 1` para obter um efeito semelhante, mas não 
+exatamente igual. 
+
+
+Na versão aumentada, `x` é avaliado apenas uma vez.
+
+
+Além disso, quando possível, a operação real é executada no local, o 
+que significa que, em vez de criar um novo objeto e atribuí-lo ao 
+alvo, o objeto antigo é modificado.
+
+
+Ao contrário das atribuições normais, as atribuições aumentadas 
+avaliam o lado esquerdo antes de avaliar o lado direito. 
+
+Por exemplo, `a += f(x)` primeiro procura `a`, então avalia `f(x)` e 
+executa a adição e, por último, escreve o resultado de volta para a.
+
+Como temos qualquer operação binária associada com a instrução 
+aumentada, teremos:
+
+##### Atribuição de adição (+=)
+
+
+###### Atribuição normal/básica
+
+```py
+a = 10
+a = a + 5
+# Saída: 15
+```
+
+###### Atribuição aumentada
+
+```py
+a = 10
+a += 5 
+# Saída: 15
+```
+
+
+##### Atribuição de subtração (-=)
+
+###### Atribuição normal/básica
+
+```py
+b = 20
+b = b - 4
+# Saída: 16
+```
+
+###### Atribuição aumentada
+
+```py
+b = 20
+b -= 4
+# Saída: 16
+```
+
+##### Atribuição de multiplicação (*=)
+
+###### Atribuição normal/básica
+
+```py
+c = 12
+c = c * 5
+# Saída: 60
+```
+
+###### Atribuição aumentada
+
+```py
+c = 12
+c *= 5
+# Saída: 60
+```
+
+##### Atribuição de divisão (/=)
+
+###### Atribuição normal/básica
+
+```py
+d = 21
+d = d / 3
+# Saída: 7
+```
+
+###### Atribuição aumentada
+
+```py
+d = 21
+d /= 3
+# Saída: 7
+```
+
+
+### Laço sem executar
+Crie uma função `laco_sem_execucao()` que utiliza um laço `while` com condição falsa desde o início. Verifique que nada será impresso.
+
+Por exemplo:
+
+```py
+def laco_sem_execucao():
+    x = 10
+    while x < 5:
+        print("Não vai aparecer")
+```
+Perceba que nada é impresso. 
+
+Isso mostra que `while` verifica antes.
+
+Parece trivial, mas há muita confusão com a última iteração e 
+condição quando é falsa.
+
+
+### Soma de 1 a 10
+Crie uma função `soma_1_a_10()` que retorna a soma dos números de 1 
+até 10 utilizando um laço `while`.
+
+```py
+def soma_1_a_10():
+    soma_progressiva = 0
+    numero_atual = 1
+
+    while numero_atual <= 10:
+        soma_progressiva += numero_atual
+        numero_atual += 1
+
+    print(soma_progressiva)
+
+# Retorna 55. É soma de 1 a 10 com acumulador (soma progressiva).
+```
+
+
+
+#### O que é uma **somatória**?
+
+Na matemática, a **somatória** é uma forma compacta de escrever a soma de vários termos seguindo uma **regra**.
+
+A notação mais comum é:
+
+$$
+\sum_{i=a}^{b} f(i)
+$$
+
+Onde:
+
+* $\sum$ é o símbolo de soma (sigma)
+* $i$ é a **variável de controle** (como um contador)
+* $a$ é o valor **inicial**
+* $b$ é o valor **final**
+* $f(i)$ é a **expressão** que define o que somar (ex.: $i$, $i^2$, $2i$, etc.)
+
 ---
+
+#### E o código em Python?
+
+```python
+soma_progressiva = 0
+numero_atual = 1
+
+while numero_atual <= 10:
+    soma_progressiva += numero_atual
+    numero_atual += 1
+
+print(soma_progressiva)
+```
+
+---
+
+#### Agora, vamos relacionar cada parte do código com a notação matemática:
+
+| Elemento da somatória matemática | Parte equivalente no código Python | Função                               |
+| -------------------------------- | ---------------------------------- | ------------------------------------ |
+| $\sum$                           | `soma_progressiva += ...`          | Acumula o valor a cada passo         |
+| $i = 1$ (início do índice)       | `numero_atual = 1`                 | Inicializa o contador                |
+| $i \leq 10$ (limite final)       | `while numero_atual <= 10:`        | Define a condição de parada          |
+| $i \leftarrow i + 1$             | `numero_atual += 1`                | Atualiza o índice a cada passo       |
+| $f(i) = i$                       | `soma_progressiva += numero_atual` | Soma o valor atual de `i` à variável |
+| resultado da soma                | `print(soma_progressiva)`          | Mostra o valor acumulado ao final    |
+
+---
+
+
+!!! warning "Conclusão:" 
+    A somatória é como um **loop** que começa de um número inicial, soma cada valor calculado pela **regra da função**, e **para quando chega no valor final**. O que a matemática escreve com $\sum$, a programação escreve com `while`, `for` (veremos em breve), `+=` e variáveis.
+
+---
+
+#### Exemplo:
+
+**Somatória matemática:**
+
+$$
+\sum_{i=1}^{4} i = 1 + 2 + 3 + 4 = 10
+$$
+
+**Código equivalente:**
+
+```python
+soma = 0
+i = 1
+while i <= 4:
+    soma += i
+    i += 1
+print(soma)  # saída: 10
+```
+
+---
+
+
+
+A ligação entre código e notação matemática é muito clara quando pensamos que:
+
+* O **índice da somatória** vira o **contador da repetição**.
+* O **limite inferior e superior** da somatória viram a **condição do loop**.
+* A **função $f(i)$** é o que está sendo **acumulado** no código.
+* E o **símbolo de somatório $\sum$** é substituído por um **acumulador** com `+=`.
+
+---
+
+
+Se variarmos **a regra da somatória**, podemos criar algoritmos inspirados no original, mudando:
+
+- 🔁 **O intervalo** (início e fim)
+- ➕ **A função de soma** (quadrado, cubo, pares, ímpares, múltiplos, etc.)
+- ➕ **O passo do incremento**
+
+---
+
+#### Exemplos de variações com base no algoritmo inicial
+
+
+##### 1. Somar os **números pares de 2 a 20**
+\[
+\sum_{i=2,4,\dots,20} i
+\]
+
+```python
+soma_progressiva = 0
+numero_atual = 2
+
+while numero_atual <= 20:
+    soma_progressiva += numero_atual
+    numero_atual += 2  # passo 2 para pular ímpares
+
+print(soma_progressiva)
+```
+
+---
+
+##### 2. Somar os **quadrados** dos números de 1 a 5
+\[
+\sum_{i=1}^{5} i^2 = 1^2 + 2^2 + 3^2 + 4^2 + 5^2
+\]
+
+```python
+soma_progressiva = 0
+numero_atual = 1
+
+while numero_atual <= 5:
+    soma_progressiva += numero_atual ** 2
+    numero_atual += 1
+
+print(soma_progressiva)
+```
+
+---
+
+##### 3. Somar os **múltiplos de 3** de 3 até 30
+\[
+\sum_{i=3,6,\dots,30} i
+\]
+
+```python
+soma_progressiva = 0
+numero_atual = 3
+
+while numero_atual <= 30:
+    soma_progressiva += numero_atual
+    numero_atual += 3
+
+print(soma_progressiva)
+```
+
+---
+
+##### 4. Somar os números de **10 a 1 (decrescente)**
+\[
+\sum_{i=10}^{1} i
+\]
+
+```python
+soma_progressiva = 0
+numero_atual = 10
+
+while numero_atual >= 1:
+    soma_progressiva += numero_atual
+    numero_atual -= 1
+
+print(soma_progressiva)
+```
+
+---
+
+#### Moral da história
+
+O algoritmo original é um **modelo base de somatória**, e qualquer **função somatória** pode ser implementada variando:
+
+- O **intervalo de varredura** (`inicio`, `fim`)
+- A **função aplicada a cada termo** (ex: \(i\), \(i^2\), \(2i\))
+- O **incremento ou passo** (1, 2, 3, etc.)
+
+!!! warning "Faça você mesmo!" 
+    Agora construa uma **função genérica** de somatória com esses parâmetros.
 
 
 ```Python
@@ -110,51 +481,37 @@ def contagem_regressiva(numero):
 ```
 
 Podemos ler a instrução `while` como "enquanto".
-Ou seja, "Enquanto `numero` for maior que 0, mostre o valor de `numero` e então decremente `numero`.
-
-Quando chegar a 0, mostre a palavra *Lançar*.
-
----
 
 
 1. Determine se a condição é verdadeira ou falsa.
-2. Se a condição for verdadeira, execute o bloco de código e então volte ao passo 1.
-3. Se for falsa, saia da instrução `while` e continue a execução.
+2. "Enquanto" a condição for verdadeira, execute o bloco de código e então volte "ao `while`".
+3. Se for falsa, saia da instrução `while` e continue a execução, seguindo um fluxo linear.
 
 
 Esse tipo de fluxo chama-se loop, porque o terceiro passo faz um volta (loop) de volta ao topo.
 
-Perceba que, o corpo do loop deve mudar o valor de uma ou mais variáveis para que, a certa altura, a condição fique falsa e o loop termine.
+!!! warning ""
+    Perceba que, o corpo do loop deve mudar o valor de uma ou mais variáveis para que, a certa altura, a condição fique falsa e o loop termine.
 
 Senão o loop vai se repetir para sempre, e teremos um **looop infinito**
 
----
+
 
 
 Um laço `while` é perfeito para situações em que precisamos repetir, mas não sabemos quantas vezes.
 
-Suponha que temos que calcular os primeiros múltiplos de 73 que sejam maiores que 3951.
-Uma forma de resolver esse problema é gerar sucessivamente os múltiplos positivos de 73 até alcançarmos um número que 3951.
+Suponha que temos que determinar o primeiro múltiplo de 73 após 3951.
+Uma forma de resolver esse problema é gerar sucessivamente os múltiplos positivos de 73 até alcançarmos 3951.
 
-Em outras palavras, *enquanto múltiplo ≤ 73, geramos o próximo múltiplo*.
+Perceba que não sabemos quantas iterações são necessárias.
 
-```Python
-multiplo = 73
-while multiplo <= 3951:
-    multiplo = multiplo + 73
-print(multiplo)
-```
-
-```Python
-4015
-```
----
-
+Em outras palavras, *enquanto múltiplo ≤ 3951, geramos o próximo múltiplo*.
 
 ```Python
 multiplo = 73
 while multiplo <= 3951:
     multiplo = multiplo + 73
+
 print(multiplo)
 ```
 
@@ -162,41 +519,48 @@ print(multiplo)
 4015
 ```
 
-Quando a condição do laço `while` é avaliada como `False`, a execução do laço termina. O valor de `multiplo` é então, maior que 3951.
+Quando a condição do laço `while` é avaliada como `False`, a execução 
+do laço termina. O valor de `multiplo` é então, maior que 3951.
 
-Como o valor anterior de `multiplo` não foi maior, ele terá o valor que queremos: o menor múltiplo maior do que 3951.
+Como o valor anterior de `multiplo` não foi maior, ele terá o valor 
+que queremos: o menor múltiplo maior do que 3951.
 
----
+
 
 ## Instrução break
 
-As vezes não se sabe que está na hora de terminar um loop até que já esteja na metade do corpo.
+As vezes não se sabe que está na hora de terminar um loop até que já 
+esteja na metade do corpo.
 
-Nesse caso, pod usar a instrução `break` para sair do loop.
+Nesse caso, podemos usar a instrução `break` para sair do loop.
 
-Por exemplo, suponha que você quer receber uma entrada do usuário até que este digite "Fim". 
+Por exemplo, suponha que você quer receber uma entrada do usuário até 
+que este digite "fim". 
 
-```Python
+
+A condição do loop é `True`, que sempre é verdade, então o loop roda 
+até que chegue à instrução de interrupção.
+
+
+```py
+msg = 'Para sair do programa digite "fim".: '
+entrada_usuario = input(msg)
 while True:
-    linha = input('> ')
-    if linha == 'fim':
+    entrada_usuario = input(msg)
+    if msg.lower() == 'fim':
+        print('Até mais...')
         break
-    print(linha)
-print('Fim!')
 ```
 
-A condição do loop é `True`, que sempre é verdade, então o loop roda até que chegue à instrução de interrupção.
 
----
-
-
-Cada vez que passa pelo loop, o programa apresenta um colchete angular.
+Cada vez que passa pelo loop, o programa apresenta uma mensagem.
 
 Se o usuário digitar **fim**, a instrução **break** sai do loop.
 
-Senão, o programa ecoa o quer que o usuário digite e volta ao topo do loop.
+Senão, o programa **ecoa** o quer que o usuário digite e volta ao topo do loop.
  
-Perceba que com essa instrução `break` podemos verificar a condição em qualquer lugar do loop (não somente no topo)
+Perceba que com essa instrução `break` podemos verificar a condição 
+em qualquer lugar do loop (não somente no topo)
 
 Podemos exprimir a condição de parada afirmativamente:
 - "Pare quando isto acontecer"
@@ -204,16 +568,332 @@ Podemos exprimir a condição de parada afirmativamente:
 Em vez de negativamente
 - "Continue a seguir até que isso aconteça"
 
+Crie uma função `primeiro_par_maior_que_um()` que encontra o menor 
+número par maior ou igual a 1 usando `while True` e `break`.
+
+```Python
+def primeiro_par_maior_que_um():
+    n = 1
+    while True:
+        if n % 2 == 0:
+            break
+        n += 1
+    print(n)
+```
+
+Esse método parece até simples, mas a ideia é sempre aumentar a 
+complexidade do problema a parte de uma resolução trivial.
+
+Agora, vamos criar uma função `primeiro_par_maior(n)` que encontra o menor
+número par maior ou igual a qualquer número, usando `while True` e 
+`break`.
+
+Para isso, `n` se torna um parâmetro recebido
+
+```Python
+def primeiro_par_maior(n):
+    while True:
+        if n % 2 == 0:
+            break
+        n += 1
+    print(n)
+```
+
+Podemos usar `break` para somatórios também, como:
+
+### 1. Somar os números pares de 2 a 20
+
+```python
+soma_progressiva = 0
+numero_atual = 2
+
+while True:
+    if numero_atual > 20:
+        break
+    soma_progressiva += numero_atual
+    numero_atual += 2
+
+print(soma_progressiva)
+```
+
+---
+
+### 2. Somar os quadrados dos números de 1 a 5
+
+```python
+soma_progressiva = 0
+numero_atual = 1
+
+while True:
+    if numero_atual > 5:
+        break
+    soma_progressiva += numero_atual ** 2
+    numero_atual += 1
+
+print(soma_progressiva)
+```
+
+---
+
+### 3. Somar os múltiplos de 3 de 3 até 30
+
+```python
+soma_progressiva = 0
+numero_atual = 3
+
+while True:
+    if numero_atual > 30:
+        break
+    soma_progressiva += numero_atual
+    numero_atual += 3
+
+print(soma_progressiva)
+```
+
+---
+
+### 4. Somar os números de 10 a 1 (decrescente)
+
+```python
+soma_progressiva = 0
+numero_atual = 10
+
+while True:
+    if numero_atual < 1:
+        break
+    soma_progressiva += numero_atual
+    numero_atual -= 1
+
+print(soma_progressiva)
+```
+
+---
+
+A estrutura `while True` com `break` pode parecer mais “livre” e é útil em casos em que a condição de parada depende de **mais de uma verificação** ou **decisões internas ao laço**.
+
+
+Nos exemplos acima, ela substitui com clareza o `while` com condição explícita, mantendo o controle de fluxo visível com o `break`.
+
+
+---
+
+## Instrução `continue`
+
+O `continue` faz com que a **iteração atual seja interrompida 
+imediatamente**, pulando o restante do bloco dentro do laço (`while` 
+ou `for`) e **indo direto para a próxima iteração**.
+
+Só pode ser usado dentro de um laço, não é permitido dentro de 
+funções ou classes aninhadas sem estarem dentro de um `while` ou 
+`for`.
+
+---
+
+### Exemplo: ignorar o valor 3 e exibir outros números
+
+```python
+i = 0
+while i < 6:
+    i += 1
+    if i == 3:
+        continue  # pula o print quando i == 3
+    print(i)
+```
+
+**Saída:**
+```
+1
+2
+4
+5
+6
+```
+
+- Quando `i == 3`, o `continue` faz com que o `print(i)` seja 
+ignorado, e o laço continua normalmente.
+
+---
+
+### Quando usar `continue`
+
+- **Remover/ignorar casos específicos**, especialmente entradas 
+inválidas ou indesejadas:
+  
+  ```python
+  i = 0
+  while i < 10:
+      i += 1
+      if i % 2 == 0:
+          continue  # ignora pares
+      print(i)      # imprime apenas ímpares
+  ```
+  **Saída:**
+  ```
+  1
+  3
+  5
+  7
+  9
+  ```
+  Aqui o `continue` permite manter a lógica clara e evitar colisões 
+  no código.
+
+**Reduzir níveis excessivos de indentação**:
+
+Com `continue`, evita-se criar blocos `else` grandes para cada 
+condição de filtro — o código fica mais limpo e legível.
+
+---
+
+### Exemplo: separar múltiplos de 3
+
+Vamos ignorar números múltiplos de 3 ao listar:
+
+```python
+n = 0
+while n < 15:
+    n += 1
+    if n % 3 == 0:
+        continue  # ignora múltiplos de 3
+    print(n)
+```
+
+**Saída:**
+```
+1
+2
+4
+5
+7
+8
+10
+11
+13
+14
+```
+
+- O `continue` salta o `print` que estaria após, evitando que 
+múltiplos de 3 sejam exibidos.
+
+---
+
+### Regras sintáticas
+
+- Só pode ser usado dentro de `while` ou `for` — utilizá-lo fora de 
+laço gera erro .
+- Ele afeta **apenas o laço em que está inserido**, sem quebrar estruturas externas como `if` ou funções.
+
+---
+
+### O uso do `continue`
+
+Facilita a **leitura** do código, destacando rapidamente condições 
+que devem ser ignoradas.
+
+**Torna a lógica mais clara**, evitando complexidade com muitos 
+`if/else`.
+
+É um **controle de fluxo direto e intencional**, equivalente a um 
+“goto” (vá para) eficiente que vai ao início do laço.
+
+---
+
+### Resumo
+
+```python
+while condição:
+    # … operações anteriores …
+    if caso_especial:
+        continue  # pula direto para o início do laço
+    # … operações principais …
+```
+
 ---
 
 
-# Aula 08 - Conclusão da instrução while (Iteração), strings e listas
+## Contexto: `if/elif/else` com `continue` e `break`
 
-Fundamentos de algoritmos e introdução à programação em Python 
-
-Prof. Everson Otoni
+* `continue`: interrompe a *iteração atual* e vai imediatamente para a próxima, pulando o restante do bloco do laço .
+* `break`: encerra **todo o laço**, saindo completamente dele .
+* São frequentemente usados dentro de `if/elif/else` para controlar o fluxo de forma seletiva .
 
 ---
+
+### Exemplo prático: laço `while` com `if/elif/else`, `continue` e `break`
+
+```python
+n = 0
+while True:
+    n += 1
+    if n % 7 == 0:
+        print(f"{n} é múltiplo de 7 → ignorado")
+        continue  # pula esta iteração
+    elif n % 5 == 0:
+        print(f"{n} é múltiplo de 5 → laço encerrado")
+        break     # sai completamente do laço
+    else:
+        print(f"{n} não é múltiplo de 5 nem 7")
+```
+
+**O que acontece:**
+
+1. `n` começa em 1, será incrementado até encontrar um múltiplo de 7 ou 5.
+2. Ao encontrar **múltiplo de 7**, executa `continue`: ignora o resto e volta ao início do laço sem sair do loop.
+3. Ao encontrar **múltiplo de 5**, executa `break`: sai do laço imediatamente.
+4. Nos outros casos, imprime uma mensagem padrão.
+
+---
+
+**Comparando comportamento: `continue` x `break`**
+
+| Situação | `n % 7 == 0`      | `n % 5 == 0`   | Outro caso    |
+| -------- | ----------------- | -------------- | ------------- |
+| Ação     | Ignora (continua) | Encerra o laço | Executa else  |
+| Teste    | `if` clause       | `elif` clause  | `else` clause |
+
+```python
+# Exemplo simplificado
+while True:
+    n += 1
+    if n == 3:
+        continue  # vai para próxima iteração; não imprime
+    elif n == 5:
+        break     # sai do laço por completo
+    print(n)
+```
+
+**Saída esperada**: 1, 2, 4 — e depois sai.
+
+---
+
+### Por que usar as duas instruções juntas?
+
+* `continue` limpa rapidamente casos que você quer **ignorar**, sem precisar envolver toda a lógica em indentação de `else`.
+* `break` detecta uma **condição de término** (ex: limite atingido, sinal de parada) e permite encerrar o laço.
+
+Esse padrão é comum quando há múltiplas condições:
+
+```python
+while True:
+    valor = ler_valor()
+    if valor inválido:
+        continue  # ignora e tenta novamente
+    elif valor == valor_de_saida:
+        break     # para o laço
+    processar(valor)
+```
+
+Uma estrutura clara, legível e eficiente .
+
+---
+
+* Use `continue` dentro de `if` para **pular imediatamente** a iteração atual.
+* Use `break` dentro de `elif` (ou `if`) para **sair completamente** do laço.
+* Essa combinação, junto com `else`, torna seu laço `while` **mais legível** e **seletivo**.
+* Evita aninhamentos complexos e melhora a clareza da lógica.
+
+
+
 
 ## Raízes quadradas
 
@@ -227,7 +907,7 @@ $$
 \text{raiz} = \dfrac{\text{estimativa} + \text{radicando} / \text{estimativa}}{2}
 $$
 
----
+
 
 
 ```Python
@@ -249,7 +929,7 @@ Se repetirmos o processo com a nova estimativa, chegamos ainda mais perto:
 2.0064102564102564
 ```
 
----
+
 
 
 ```Python
@@ -267,7 +947,7 @@ Em geral, não sabemos com antecedência quantos passos são necessários para c
 
 Ou seja, quando raiz == estimativa, podemos parar.
 
----
+
 
 
 ```Python
@@ -281,7 +961,7 @@ while True:
 
 Para maior parte de valores de `radicando` funciona bem, mas pode ser perigoso testar para alguns tipos de valores.
 
----
+
 
 
 Em vez de verificar se `raiz` e `estimativa` são exatamente iguais, é mais seguro usar a função integrada `abs` para calcular o valor absoluto ou magnitude da diferença entre eles:
@@ -295,7 +975,7 @@ while True:
     estimativa = raiz
 ```
 
----
+
 
 ## Algoritmos
 
@@ -307,814 +987,7 @@ Algoritmos, são processos mecânicos, nos quais cada passo segue a partir do ú
 
 Algumas coisas que as pessoas fazem naturalmente, sem dificuldade ou pensamento consciente, são as mais difíceis para exprimir algoritmicamente.
 
----
 
-## Strings
 
-Já sabemos que o tipo string em Python é denominado de `str`.
-
-Usado para representar e manipular dados de texto.
-
-Uma **sequência** de caracteres, incluindo espaços, pontuação e diversos símbolos.
-
-Um valor de string é representado como uma sequência de caracteres delimitada por apóstrofos.
-
----
-
-### Operadores relacionais
-
-Além de ser possível comparar se duas strings são iguais ou diferentes com os operadores de comparação: `==` e `!=`.
-
-Os operadores de comparação `<`e `>` comparam strings usando a ordem do dicionário.
-
-```Python
-primeiro_nome = 'abc'
-segundo_nome = 'abd'
-primeiro_nome < segundo_nome
-True
-```
-
----
-
-### Operador in
-
-Como uma string é uma sequência de caracteres.
-
-Podemos verificar se um caractere aparece em uma string, usando o operador **in**:
-
-```Python
->>> linguagem = 'Python'
->>> 'y' in linguagem
-True
->>> 's' in linguagem
-False
-```
-
----
-
-
-O operador **in** também pode ser usado para verificar se uma string aparece em outra:
-
-```Python
->>> 'th' in linguagem
-True
-```
-
-Como 'th' aparece na string `linguagem`, dizemos que 'th' é uma **substring** de `linguagem`.
-
----
-
-### Operador de indexação
-
-Os caracteres individuais de uma string podem ser acessados usando o **operador de indexação [ ]**.
-
-Índice de um caractere em uma string é o deslocamento do caractere (ou seja, a posição na string) com relação ao primeiro caractere.
-
-O primeiro caractere tem sempre índice 0, o segundo tem índice 1 (pois está a uma distância do primeiro caractere)
-
-```Python
->>> linguagem[0]
-'P'
->>> linguagem[1]
-'y'
->>> linguagem[5]
-'n'
-```
----
-
-#### Representação gráfica
-
----
-
-### Operador de indexação negativo
-
-Índices negativos podem ser usados para acessar os caracteres do final (lado direito) da string.
-
-Por exemplo, o último caractere e o penúltimo caractere podem ser acessados usando os índices negativos -1 e -2, respectivamente.
-
-```Python
->>> linguagem[-1]
-'n'
->>> linguagem[-2]
-'o'
-```
----
-
-#### Representação gráfica
-
----
-
-### Operadores - Resumo
-
-| Uso          | Explicação                                                                      |
-|--------------------|---------------------------------------------------------------------------------|
-| x in s       | Verdadeiro se x for uma substring da string s, e falso caso contrário           |
-| x not in s   | Falso se a string x for uma substring da strings s, e verdadeiro caso contrário |
-| s + t        | Concatenação da string s com a string t                                         |
-| s * n | Concatenação de n cópias de s                                                   |
-| n * s | Concatenação de n cópias de s                                                   |
----
-
-
-| Uso          | Explicação                                                                      |
-|--------------------|---------------------------------------------------------------------------------|
-| s[i]         | Caractere da strings s no índice i                                              |
-| len(s)       | Comprimento da strings s                                                        |
----
-
-## Listas
-
-Podemos organizar os dados em uma lista.
-
-Fazemos isso cotidianamente, uma lista de compras, uma lista de cursos, uma lista de contatos, uma lista de músicas e assim por diante.
-
-Em Python, as listas são armazenadas em um tipo de objeto denominado `lista`
-
-Assim como uma string, uma lista é uma sequência de valores.
-Porém em uma lista, eles podem ser de qualquer tipo, portanto é uma sequência de objetos.
-
-```Python
->>> animais = ['peixe', 'cachorro', 'gato']
-```
-
----
-
-
-A variável `animais` é avaliada como a lista:
-
-```Python
->>> animais
-['peixe', 'cachorro', 'gato']
-```
-Em Python, uma lista é representada como uma sequência de objetos separados por vírgulas, dentro colchetes.
-
-Uma lista vazia é representada como [ ].
-
----
-
-
-As listas podem conter itens de diferentes tipos.
-
-```Python
->>> coisas = ['um', 2, [3, 4]]
-```
-
-A lista `coisas` tem três itens: 
-- o primeiro é uma string 'um'. 
-- o segundo é um inteiro 2.
-- o terceiro é a lista [3, 4].
-
-Uma lista dentro de outra lista é uma lista aninhada.
-
----
-
-### Operadores de Lista
-
-A maioria dos operadores que utilizamos para strings, podem ser utilizados para listas.
-
-Os itens na lista podem ser acessados individualmente usando o operador de indexação ([ ]).
-
-### Operador de indexação
-
-```Python
->>> animais = ['peixe', 'cachorro', 'gato']
->>> animais[0]
-'peixe'
->>> animais[1]
-'cachorro'
->>> animais[-1]
-'gato'
-```
-
----
-
-### Representação gráfica
-
----
-
-### Comprimento
-
-O comprimento de uma lista, ou seja, o número de itens nela, é calculado usando a função `len()`.
-
-```Python
->>> len(animais)
-3
-``` 
-
----
-
-### Operadores de lista - "Adição e multiplicação"
-
-Assim como as strings, as listas podem ser "adicionadas" ou "multiplicadas" por um número inteiro qualquer, isso significam que podem ser *concatenadas*.
-
-
-```Python
->>> animais + animais
-['peixe', 'cachorro', 'gato', 'peixe', 'cachorro', 'gato']
-```
-
-```Python
->>> animais * 3
-['peixe', 'cachorro', 'gato', 'peixe', 'cachorro', 'gato', 'peixe', 'cachorro', 'gato']
-```
-
----
-
-### Operadores de lista - Operador in
-
-Para verificar se determinados elementos estão presentes na lista, utilizamos o operador `in` em uma expressão booleana.
-
-Por exemplo, é avaliado como `True`, se a string `'coelho'` estiver presente como elemento na lista `animais`.
-
-```Python
->>> 'coelho' in animais
-False
-```
-
-```Python
->>> 'peixe' in animais
-True
-```
-
----
-
-### Algumas funções embutidas para listas
-
-
-Temos as funções `min()`, `max()` e `sum()`, que possuem como entrada um objeto iterável e retornam, respectivamente, o menor item, o maior item e a soma dos itens da lista.
-
-```Python
->>> notas = [23.99, 19.99, 34.50, 120.99]
->>> min(notas)
-19.99
-```
-
-```Python
->>> notas = [23.99, 19.99, 34.50, 120.99]
->>> max(notas)
-120.99
-```
-
-```Python
->>> notas = [23.99, 19.99, 34.50, 120.99]
->>> sum(notas)
-199.47
-```
-
----
-
-
-E para elementos que não são numéricos?
-
----
-### Resumo dos operadores e funções de listas
-
-| Uso| Explicação|
-|----|-----------|
-|x in lst| Verdadeiro se o objeto x estiver na lista lst, caso contrário, falso.|
-|x not in lst| Falso se o objeto x estiver na lista lst, caso contrário, verdadeiro.|
-|lstA + lstB| Concatenação das listas lstA e lstB|
-|lst * n ou n * lst| Concatenação de *n* cópias da lista lst|
-|lst[i]| Item no índice **i** da lista lst|
-|len(lst)| Comprimento ou tamanho da lista lst|
-|min(lst)| Menor item da lista lst|
-
----
-
-| Uso| Explicação|
-|----|-----------|
-|max(lst)| Maior item na lista lst|
-|sum(lst)| Soma dos itens na lista lst|
-
----
-
-### Métodos de lista ou funções **sobre** listas
-
-Diferente de funções que recebem como entrada as listas, como vimos com as funções: min(), max() e sum().
-
-Existem as funções **sobre** listas. Elas fazem parte de todo tipo de objeto lista e por isso são conhecidas como métodos.
-
-Por exemplo, para adicionar um novo animal a lista `animais` sem precisar realizar toda a atribuição novamente. Podemos utilizar o método `append()` [acrescentar].
-
-```Python
->>> animais.append('tartaruga')
->>> animais
-['peixe', 'cachorro', 'gato', 'tartaruga']
-```
-
----
-
-#### append(object)
-
-```Python
->>> animais.append('tartaruga')
-```
-
-Observe como chamamos o método `append`. 
-
-Utilizamos uma notação de ponto.
-
-Passamos com entrada o novo elemento a ser adicionado sobre a lista em questão. Ou seja, a função `append()` é uma função lst, não pode ser chamada por si só. Deve sempre ser chamada sobre alguma lista `lst`.
-
-E por fim o novo elemento é acrescentado ao final da lista.
-
----
-
-#### count(value)
-
-Até o momento temos:
-```Python
->>> animais
-['peixe', 'cachorro', 'gato', 'tartaruga']
-```
-
-Vamos realizar um novo acréscimo. Um novo item.
-
-```Python
->>> animais.append('gato')
->>> animais
-['peixe', 'cachorro', 'gato', 'tartaruga', 'gato']
-```
-
----
-
-
-Existe também o método `count()` [contar]. Quando chamado sobre uma lista com um argumento de entrada, ele retorna o número de vezes que o argumento aparece como item na lista.
-
-```python
->>> animais.count('gato')
-2
-```
-
----
-
-#### remove(value)
-
-```python
->>> animais
-['peixe', 'cachorro', 'gato', 'tartaruga', 'gato']
-```
-
-Para remover um item da lista, utilizamos o método `remove()` [remover]. Que necessita também de um argumento.
-
-
-```python
->>> animais.remove('gato')
->>> animais
-['peixe', 'cachorro', 'tartaruga', 'gato']
-```
-
-Perceba que o método `remove()`, remove a primeira ocorrência do item que é passado como parâmetro.
-
----
-
-#### pop(index=-1)
-
-Ainda sobre remover itens, temos também o método `pop()`.
-
-`pop()` remove o item na posição fornecida (indexada) na lista e retorna o item removido. Se nenhum índice for especificado, `pop()` remove e retorna o ultimo item da lista.
-
-```python
->>> animais
-['peixe', 'cachorro', 'tartaruga', 'gato']
-```
-
-```python
->>> animais.pop()
-'gato'
->>> animais
-['peixe', 'cachorro', 'tartaruga']
-```
-
----
-
-
-```python
->>> animais.pop(0)
-'peixe'
->>> animais
-['cachorro', 'tartaruga']
-```
-
----
-
-
-# Aula 09 - Métodos de lista
-
-Fundamentos de algoritmos e introdução à programação em Python 
-
-Prof. Everson Otoni
-
----
-
-## Métodos de lista ou funções **sobre** listas 
-
-Como vimos na aula anterior, existe funções associadas diretamente as listas e elas chamamos de métodos de listas.
-
----
-
-
-Até agora vimos:
-
-|Método|Descrição|
-|-----|-----|
-|append(object)| Novo elemento é acrescentado ao final da lista (como último item)|
-|count(value)| Retorna o número de vezes que o argumento aparace como item|
-|remove(value)| Remove a primeira ocorrência do item que é passado como parâmetro|
-|pop(index=-1)| Caso há argumento, remove o item na posição fornecida. Por padrão remove o último item.|
-
----
-
-### reverse()
-
-O método de listas, `reverse()`, reverte a ordem dos objetos.
-
-
-```python
->>> animais
-['cachorro', 'tartaruga']
-```
-
-```python
->>> animais.reverse()
-['tartaruga', 'cachorro']
-```
-
----
-
-### sort(key=None, reverse=False)
-
-O método `sort()` classifica os itens na lista em ordem crescente, usando a ordenação que se aplica "naturalmente" aos objetos na lista.
-
-Por exemplo, como a lista `animais` contém objetos do tipo string, a ordem será lexicográfica (ordem do dicionário ou alfabética)
-
----
-
-
-Para demonstrar vamos adicionar novos elementos.
-
-```python
->>> animais.append('gato')
->>> animais.append('arara')
->>> animais.append('coelho')
-```
-
-```python
->>> animais
-['tartaruga', 'cachorro', 'gato', 'arara', 'coelho']
-```
-
-```python
->>> animais.sort()
->>> animais
-['arara', 'cachorro', 'coelho', 'gato', 'tartaruga']
-```
-
----
-
-
-Em uma lista de números, a ordem de classificação é numérica crescente.
-
-```python
->>> frequencias = [4, 2, 8, 5]
->>> frequencias.sort()
->>> frequencias
-[2, 4, 5, 8]
-```
-
----
-
-
-Podemos ordenar decrescentemente, utilizando o parâmetro `reverse` com o valor booleano `True`.
-
-Por padrão, esse parâmetro é definido como `False`, já que por padrão as ordenações com `sort()` são do tipo `crescente`.
-
-```python
->>> frequencias
-[2, 4, 5, 8]
->>> frequencias.sort(reverse=True)
->>> frequencias
-[8, 5, 4, 2]
-```
----
-
-
-### Como ordenar uma lista aninhada?
-
-Por exemplo, como ordenar a lista que armazena uma lista de nome de estudantes e suas respectivas notas?
-
-```python
-avaliacoes = [['Ana', 8], ['Amanda',9], ['Leonardo', 4]]
-```
-
-O método `sort()` irá ordenar pelo nome (ordenação lexicográfica) ou ordenação numérica por notas?
-
----
-
-#### sort(key=None, reverse=False)
-
-Por padrão o método `sort()` ordenará pelo primeiro item das listas ordenadas.
-
-Ou seja, ordenará pelo elemento de índice zero de cada item da lista principal.
-
-No nosso caso são strings, portanto a ordenação será lexicográfica.
-
-```python
->>> avaliacoes = [['Ana', 8], ['Amanda',9], ['Leonardo', 4]]
->>> avaliacoes.sort()
-[['Amanda', 9], ['Ana', 8], ['Leonardo', 4]]
-```
-
-Perceba que `['Amanda', 9]` está como primeiro item, diferente de `['Ana', 8]`, porque segundo a ordem de dicionário, `m < n`.
-
----
-
-E se quisermos ordenar pelas notas de cada estudante?
-
----
-
-
- Nesse caso devemos fornecer uma função chave (`key fuction`) para direcionar a ordenação.
-
- Essa função é aplicada uma única vez para cada item da lista e é utilizada para classificá-lo na ordenação.
-
-Para isso precisamos criar uma função, que no nosso caso irá receber cada lista aninhada, ou seja, cada item da lista mais externa.
-
-Como queremos que cada lista aninhada seja ordenada pelo seu segundo item, temos que retornar justamente esse item em nossa função.
-
-```python
-def ordena_notas(lista_aninhada):
-    return lista_aninhada[1] ## Segundo item (nota) de cada lista aninhada.
-```
-
----
-
-
-
-Utilizamos o parâmetro `key` do método `sort()`, é através desse parâmetro que passamos a nossa função que direcionará a classificação dos itens ma ordenação da lista.
-
-```python
->>> avaliacoes
-[['Amanda', 9], ['Ana', 8], ['Leonardo', 4]]
->>> avaliacoes.sort(key=ordena_notas)
->>> avaliacoes
-[['Leonardo', 4], ['Ana', 8], ['Amanda', 9]]
-```
-
-Perceba que passamos apenas o nome da função, se "chamamento" ocorre quando a ordenação é executada comparada item a item (dentro do método `sort()`.
-
----
-
-
-### insert(index, object)
-
-Vimos que podemos remover itens de uma lista passando um valor (`remove()`) ou um índice (`pop()`).
-
-Para inserir temos, o método `append()`, que insere um novo item ao final da lista.
-
-- Mas como inserir itens em outras posições da lista?
-
----
-
-
-Nesse caso usamos o método `insert()`, que recebe como argumentos, um índice e um valor, respectivamente.
-
-O primeiro argumento é o índice do elemento antes da inserção.
-
-O segundo argumento é objeto ou valor que é será inserido.
-
----
-
-
-Por exemplo, consideramos nossa lista de frequências.
-```python
->>> frequencias
-[8, 5, 4, 2]
-```
-
-Se queiramos que o novo item seja inserido entre o elemento `4` e o elemento `2`:
-
-```python
->>> frequencias.insert(3, 6)
->>> frequencias
-[8, 5, 4, 6, 2]
-```
-
-Antes da inserção o novo valor assume índice igual à 3.
-
----
-
-
-Parece trivial, mas não tanto quando queremos fazer um `append()` usando `insert()`.
-
-Para inserir na última posição, temos que passar como índice, uma valor que até então não está alocado.
-
-```python
->>> frequencias.insert(5, 7)
->>> frequencias
-[8, 6, 5, 4, 2, 7]
-```
-Perceba que nosso primeiro argumento não é igual ao nosso último índice existente antes da inserção.
-
----
-
-### extend(iterable)
-
-Ainda sobre adicionar novos itens.
-
-- Como faríamos para adicionar novos elementos ao final de uma lista, em uma única vez?
-
-A resposta imediata seria: concatenando!
-
-Vejamos...
-
-----
-
-
-Por exemplo,
-
-
-```python
->>> letras = ['C', 'u', 'r', 's', 'o']
->>> linguagem = 'Python'
-```
-
-Como adicionar os elementos (letras) da string `'Python'` na lista `letras`?
-
-Se tentarmos por concatenação, temos:
-```python
->>> letras + linguagem
-TypeError: can only concatenate list (not "str") to list
-```
-
-Temos um erro de tipo, não é possível concatenar tipos de objetos diferentes.
-
-----
-
-
-O tipo de objeto string é iterável, uma vez que toda string é um conjunto de elementos. Um espécie de estrutura de dados.
-
-Podemos iterar sobre seus elementos, que chamamos de caracteres.
-
-Em listas, possuímos um método específico que adiciona qualquer objeto iterável em Python à uma lista, veremos mais adiante outros objetos como listas que são iteráveis.
-
-----
-
-
-Esse método é o `extend` que recebe como argumento qualquer objeto iterável, e adiciona os elementos desse objeto à lista.
-
-```python
->>> letras.extend(linguagem)
->>> letras
-['C', 'u', 'r', 's', 'o', 'P', 'y', 't', 'h', 'o', 'n']
-```
-
-A lista foi "estendida" anexando elementos do objeto iterável.
-
----
-
-
-### index(value, start=0, stop=9223372036854775807)
-
-O método `index()` devolve o índice (base-zero) do primeiro item cujo valor é igual ao passado como argumento.
-
-Retorna "ValueError", se o valor passado não existe.
-
-```python
->>> letras
-['C', 'u', 'r', 's', 'o', 'P', 'y', 't', 'h', 'o', 'n']
->>> letras.index('z')
-ValueError: 'z' is not in list
->>> letras.index('o')
-4
-```
-
----
-
-
-Existe o conceito de fatiamento em objetos que indexáveis e iteráveis do tipo str e lst.
-
-Uma fatia é um segmento, uma parte desses objetos.
-
-O operador `[n:m]` retorna a parte da string ou lista do "enésimo" elemento ao "emésimo". Incluindo o primeiro e excluindo o último.
-
-Se o primeiro índice for omitido, a fatia começa do início do objeto.
-
-Se omitir o segundo índice, a fatia vai até o fim do objeto.
-
-Se omitir ambos, a fatia é uma cópia.
-
----
-
-
-Alguns exemplos:
-
-```Python
->>> linguagem = 'Python'
->>> linguagem[0:2]
-'Py'
->>> linguagem[:5]
-'Pytho'
->>> linguagem[:6]
-'Python'
->>> linguagem[:len(linguagem)]
-'Python'
-```
-Perceba que o segundo índice do operador de fatiamento é excludente, e por isso para que a fatia seja o próprio "todo" é necessário passar o tamanho total e não o último índice (base-zero)
-
----
-
-
-Mais alguns exemplos:
-
-```Python
->>> animais
-['tartaruga', 'cachorro', 'gato', 'arara', 'coelho']
->>> animais[2:]
-['gato', 'arara', 'coelho']
->>> animais[0:4]
-['tartaruga', 'cachorro', 'gato', 'arara']
->>> animais[5:5]
-[] ## índices iguais equivalem ao objeto vazio.
->>> animais[0:15] ## Se o índice de fim for maior que o último índice,
-['tartaruga', 'cachorro', 'gato', 'arara', 'coelho'] 
-## A fatia equivale ao "todo". [n:m > len(object)] = [n:len(object)]
-```
-
----
-
-
-Podemos utilizar a referência com índices negativos
-
-```Python
->>> animais
-['tartaruga', 'cachorro', 'gato', 'arara', 'coelho']
->>> animais[2:-1]
-['gato', 'arara']
->>> animais[-2:-1]
-['arara']
->>> animais[-4:-2]
-['cachorro', 'gato']
->>> animais[0:-2]
-['tartaruga', 'cachorro', 'gato']
-```
-
----
-
-
-Os argumentos opcionais `start` e `end` são interpretados como nas noções de fatiamento que acabamos de ver.
-
-São usados portanto, para limitar a busca para uma subsequência específica da lista.
-
-```python
->>> letras
-['C', 'u', 'r', 's', 'o', 'P', 'y', 't', 'h', 'o', 'n']
->>> letras.index('o')
-4
->>> letras.index('o',5)
-9
->>> letras.index('o',10,len(letras))
-ValueError: 'o' is not in list
-```
-
----
-
-## Métodos de lista ou funções **sobre** listas 
-
-
-Até agora vimos:
-
-|Método|Descrição|
-|-----|-----|
-|append(object)| Novo elemento é acrescentado ao final da lista (como último item)|
-|count(value)| Retorna o número de vezes que o argumento aparace como item|
-|remove(value)| Remove a primeira ocorrência do item que é passado como parâmetro|
-|pop(index=-1)| Caso há argumento, remove o item na posição fornecida. Por padrão remove o último item.|
-
-
----
-
-
-
-Até agora vimos:
-
-|Método|Descrição|
-|-----|-----|
-|reverse()| Reverte a ordem dos itens.|
-|sort(key=None, reverse=False)|Ordena os itens decrescentemente ou crescentemente.|
-|insert(index, object)| Insere um item na lista de acordo com o índice passado por argumento.|
-|extend(iterable)|Adiciona os itens de um objeto iterável em uma lista.|
-
----
-
-
-
-E por fim:
-
-|Método|Descrição|
-|-----|-----|
-|index(value, start=0, stop=9223372036854775807)| Busca a primeira ocorrência do item, por seu valor e retorna seu índice. Podendo ou não fatiar a lista.|
-
----
 
 
