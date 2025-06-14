@@ -1,7 +1,7 @@
 # Aula 10 - Introdução à iteração: instrução while, break e continue
 
 {% set aula = "10" %}
-{% set link = "" %}
+{% set link = "KPdA7La-yJg" %}
 {% set objetivos = 
 [
   "Compreender o conceito de iteração e utilizar a instrução `while` em Python",
@@ -11,7 +11,7 @@
   "Implementar métodos iterativos como o de Newton para aproximação de raízes"
 ]
 %}
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 ## Iteração
 
