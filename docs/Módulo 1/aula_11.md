@@ -2,7 +2,7 @@
 # Aula 11 - Strings, Listas e seus Operadores e Métodos
 
 {% set aula = "11" %}
-{% set link = "" %}
+{% set link = "xAVeJmq5dMs" %}
 {% set objetivos = 
 [
   "Compreender o tipo `str` como sequência de caracteres e utilizar seus operadores: `in`, `[]`, `+`, `*`",
@@ -12,7 +12,7 @@
   "Resolver problemas práticos manipulando listas com diferentes tipos de dados e estruturas aninhadas"
 ]
 %}
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 
 
