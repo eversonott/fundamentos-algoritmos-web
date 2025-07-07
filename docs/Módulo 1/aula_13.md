@@ -3,12 +3,18 @@
 # Aula 13 - For
 
 {% set aula = "13" %}
-{% set link = "" %}
+{% set link = "YgTkxC5kAhg" %}
 {% set objetivos = 
 [
+  "Compreender o funcionamento da instrução `for` e sua aplicação em sequências",
+  "Percorrer strings e listas com `for`, utilizando variáveis significativas no laço",
+  "Utilizar a função `range()` para criar sequências numéricas em diferentes formatos",
+  "Comparar padrões de uso do `for` com o `while`, como contadores e acumuladores",
+  "Combinar `for` com `if` para aplicar filtros condicionais sobre os itens iterados"
 ]
+
 %}
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 
 

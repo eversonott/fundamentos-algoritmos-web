@@ -2,12 +2,18 @@
 # Aula 12 - Métodos de lista
 
 {% set aula = "12" %}
-{% set link = "" %}
+{% set link = "66oAGjWo46Y" %}
 {% set objetivos = 
 [
+  "Compreender os efeitos dos métodos `reverse` e `sort` sobre a ordem dos elementos de uma lista",
+  "Utilizar o parâmetro `key` no método `sort` para ordenar listas aninhadas por critérios específicos",
+  "Inserir elementos em posições específicas de uma lista com o método `insert`",
+  "Adicionar múltiplos elementos a uma lista com `extend`, respeitando a natureza iterável dos dados",
+  "Buscar a posição de elementos em listas com o método `index`, usando ou não intervalos delimitados"
 ]
+
 %}
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 ## Listas
 
