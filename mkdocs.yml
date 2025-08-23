@@ -20,6 +20,7 @@ nav:
     - Aula 11 - Strings, Listas e seus Operadores e Métodos 21/06: "Módulo 1/aula_11.md"
     - Aula 12 - Métodos de listas - 28/06: "Módulo 1/aula_12.md"
     - Aula 13 - Instrução For - 05/07: "Módulo 1/aula_13.md"
+    - Aula 14 - Dicionários - 23/08: "Módulo 1/aula_14.md"
 theme: 
   name: material
   features:
