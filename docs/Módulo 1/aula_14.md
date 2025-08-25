@@ -1,7 +1,7 @@
 # Aula 14 - Dicionários
 
 {% set aula = "14" %}
-{% set link = "" %}
+{% set link = "ro9Y35OG85w" %}
 {% set objetivos = 
 [
   "Compreender a estrutura de dados do tipo dicionário (dict) e seu formato de pares chave-valor",
@@ -11,7 +11,7 @@
   "Aplicar dicionários em contextos práticos como substituição de estruturas condicionais e contagem de ocorrências"
 ]
 %}
-{% include "templates/cabecalho_sem_video.md" %}
+{% include "templates/cabecalho.md" %}
 
 
 
