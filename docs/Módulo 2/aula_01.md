@@ -1,20 +1,11 @@
----
-search:
-  exclude: true
----
----
-search:
-  exclude: true
----
-
 # Aula 01 - Aula Inaugural do curso e introdução à análise de algoritmos
 
 
 {% set aula = "01" %}
-{% set link = "hhKYfALDc3s" %}
+{% set link = "" %}
 {% set objetivos = ["Recursos computacionais", "Modelo RAM", "Discussão inicial de como analisar algoritmos"] %}
 
-{% include "templates/cabecalho.md" %}
+{% include "templates/cabecalho_sem_video.md" %}
 
 
 ---
@@ -22,9 +13,7 @@ search:
 
 - Em que estágio educacional estão? (ano escolar, curso técnico ...)
 
-- Qual graduação ou licenciatura pretende fazer?
-
-- Por que se inscreveram no módulo 2?
+- Qual graduação ou licenciatura pretende fazer ou começaram a fazer?
 
 - O que esperam do módulo 2?
 
@@ -34,7 +23,9 @@ search:
 
 O presente curso é a continuação do Módulo 1 ofertado no primeiro semestre.
 
-A iniciativa de criar um novo curso e não ofertar o mesmo surgiu em diálogo com os estudantes e por conta da extensão dos conceitos ainda considerados fundamentais na aprendizagem inicial de programação e de linguagem.
+A iniciativa de criar um novo curso e não ofertar o mesmo surgiu em diálogo 
+com os estudantes e por conta da extensão dos conceitos ainda considerados 
+"fundamentais" na aprendizagem inicial de programação e de linguagem.
 
 
 ---
@@ -60,11 +51,14 @@ A iniciativa de criar um novo curso e não ofertar o mesmo surgiu em diálogo co
 Analisar um algoritmo significa prever os recursos de que o algoritmo necessita.
 
 Recursos como:
+
 - Memória
 - Capacidade de transmissão de dados
 - Capacidade de hardware
 
-O recurso que o algoritmo mais necessita é o tempo.
+O recurso que o algoritmo mais necessita é o **tempo**.
+
+![Alt Text](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWQwbmVwczBrdG8yY2xrMnp6ZWxkZm44ZDFvM2EwbDRmZm1yNjJ5bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/um2kBnfo55iW4ZH1Fa/giphy.gif)
 
 ---
 
@@ -82,6 +76,7 @@ Para entender melhor a análise, admitimos que as instruções serão executadas
 Para nosso pensamento computacional pensamos um modelo de computação genérico de máquina de acesso aleatório (random-access machine, RAM).
 
 No modelo RAM encontramos:
+
 - Instruções aritméticas 
     - soma, subtração, multiplicação, divisão, resto, piso, teto.
 - Movimentação de dados
@@ -91,6 +86,8 @@ No modelo RAM encontramos:
 
 **Cada uma dessas instruções demora uma quantidade de tempo constante.**
 
+![](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHdiMWJ4Y2RubWFzM2JxNHk5NzMyYzAzejdwd3gxZmxpdnd6N2FqdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/8YBpKSm3uPWG9Ca0F4/giphy.gif)
+
 ---
 
 ### Comportamento dos algoritmos
@@ -98,6 +95,7 @@ No modelo RAM encontramos:
 Uma análise de um algoritmo simples no modelo de RAM pode ser desafiante.
 
 As ferramentas matemáticas exigidas podem incluir:
+
 - Análise combinatória
 - Teoria das probabilidades
 - Habilidade em álgebra
@@ -109,7 +107,7 @@ Portanto é necessário resumir esse comportamento em fórmulas simples, de fác
 
 ---
 
-### Ordenação por inserção (Insertion-Sort)
+## Ordenação por inserção (Insertion-Sort)
 
 - Entrada: Uma sequência de $n$ números
 - Saída: Uma permutação (reordenação) da sequência de entrada
@@ -124,7 +122,7 @@ Os números que desejamos ordenar são conhecidos como **chaves**.
 
 ---
 
-#### A "lógica"
+### A "lógica"
 
 
 A ordenação por inserção funciona da maneira como muitas pessoas ordenam as cartas em um jogo de baralho.
@@ -133,7 +131,7 @@ A ordenação por inserção funciona da maneira como muitas pessoas ordenam as 
 
 ---
 
-#### Funcionamento
+### Funcionamento
 
 - Iniciamos com mão esquerda vazia e as cartas viradas para baixo, na mesa.
 
@@ -145,7 +143,7 @@ As cartas que seguramos na mão esquerda são ordenadas, e essas cartas eram as 
 
 ---
 
-##### 2 cartas
+#### 2 cartas
 
 Suponhamos que temos 2 cartas sobre a mesa.
 
@@ -159,7 +157,7 @@ Perceba que o arranjo inicial era <5, 2> e o final <2, 5>.
 
 ---
 
-##### 3 cartas
+#### 3 cartas
 
 1. A primeira carta da pilha possui valor 5.
     - A mão esquerda inicialmente está vazia, e agora contem a carta de valor 5.
@@ -174,7 +172,7 @@ Perceba que o arranjo inicial era <5, 2, 4> e o final <2, 4, 5>.
 
 ---
 
-##### 4 cartas
+#### 4 cartas
 
 1. A primeira carta da pilha possui valor 5.
     - A mão esquerda inicialmente está vazia, e agora contem a carta de valor 5.
@@ -195,7 +193,7 @@ Perceba que o arranjo inicial era <5, 2, 4, 6> e o final <2, 4, 5, 6>.
 
 ---
 
-#### Pseudocódigo
+### Pseudocódigo
 
 O pseudocódigo se assemelha muito com as linguagens de programação C, C++, Python e Pascal.
 
@@ -209,7 +207,7 @@ O pseudocódigo transmite a essência do algoritmo de modo mais conciso.
 
 ---
 
-#### O pseudocódigo da ordenação por inserção
+### O pseudocódigo da ordenação por inserção
 
 ```py title="pseudocodigo.py" linenums="1"
 def ordenacao_insercao(A):
@@ -226,7 +224,7 @@ def ordenacao_insercao(A):
 
 ---
 
-#### Ordenação por inserção em Python
+### Ordenação por inserção em Python
 
 ```py title="ordenacao_insercao.py" linenums="1" hl_lines="2 5"
 def ordenacao_insercao(lista):

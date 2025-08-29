@@ -22,6 +22,9 @@ nav:
     - Aula 13 - Instrução For - 05/07: "Módulo 1/aula_13.md"
     - Aula 14 - Dicionários - 23/08: "Módulo 1/aula_14.md"
     - Aula 15 - Tuplas e revisão do módulo 1 - 30/08: "Módulo 1/aula_15.md"
+  - Módulo 2:
+    - Aula 01 - Introdução à análise de algoritmos - 30/08: "Módulo 2/aula_01.md"
+
 theme: 
   name: material
   features:
