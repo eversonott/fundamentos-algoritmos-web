@@ -1,7 +1,3 @@
----
-search:
-  exclude: true
----
 # Aula 02 - Análise de algoritmos e suas complexidades (pt. 1)
 
 
