@@ -129,9 +129,7 @@ A ordenação por inserção funciona da maneira como muitas pessoas ordenam as 
 
 ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi0.wp.com%2Fstudyalgorithms.com%2Fwp-content%2Fuploads%2F2014%2F01%2Finsertion_srot.jpg%3Fresize%3D503%252C433%26ssl%3D1&f=1&nofb=1&ipt=f1f22d900136458f8a031ad7ac2364015567cfb4bf4bd8c161978e124bc17df4&ipo=images)
 
----
 
-### Funcionamento
 
 - Iniciamos com mão esquerda vazia e as cartas viradas para baixo, na mesa.
 
@@ -147,104 +145,48 @@ As cartas que seguramos na mão esquerda são ordenadas, e essas cartas eram as 
 
 Suponhamos que temos 2 cartas sobre a mesa.
 
-1. A primeira carta da pilha possui valor 5.
+1. A primeira carta da pilha possui valor 6.
     - A mão esquerda inicialmente está vazia, e agora contem a carta de valor 5.
-2. A segunda carta da pilha, possui valor 2.
-    - Olhamos para a carta na mão esquerda: <5>
-    - Como 2 é menor que 5, colocamos a segunda carta a esquerda da primeira carta: <2,5>
+2. A segunda carta da pilha, possui valor 5.
+    - Olhamos para a carta na mão esquerda: <6>
+    - Como 5 é menor que 6, colocamos a segunda carta a esquerda da primeira carta: <5,6>
 
-Perceba que o arranjo inicial era <5, 2> e o final <2, 5>.
+Perceba que o arranjo inicial era <6, 5> e o final <5, 6>.
 
 ---
 
 #### 3 cartas
 
-1. A primeira carta da pilha possui valor 5.
+1. A primeira carta da pilha possui valor 6.
     - A mão esquerda inicialmente está vazia, e agora contem a carta de valor 5.
-2. A segunda carta da pilha, possui valor 2.
-    - Olhamos para a carta na mão esquerda: <5>
-    - Como 2 é menor que 5, colocamos a segunda carta a esquerda da primeira carta ordenada: <2,5>
+2. A segunda carta da pilha, possui valor 5.
+    - Olhamos para a carta na mão esquerda: <6>
+    - Como 5 é menor que 6, colocamos a segunda carta a esquerda da primeira carta: <2,5>
 3. A terceira carta da pilha, possui valor 4.
-    - Olhamos para as cartas na mão esquerda: <2, 5>
+    - Olhamos para as cartas na mão esquerda: <5, 6>
     - Como 4 é menor que 5, colocamos a terceira carta a esquerda da segunda carta: <2, 4, 5>
 
-Perceba que o arranjo inicial era <5, 2, 4> e o final <2, 4, 5>.
+Perceba que o arranjo inicial era <6, 5, 4> e o final <4, 5, 6>.
 
 ---
 
 #### 4 cartas
 
-1. A primeira carta da pilha possui valor 5.
+1. A primeira carta da pilha possui valor 6.
     - A mão esquerda inicialmente está vazia, e agora contem a carta de valor 5.
-2. A segunda carta da pilha, possui valor 2.
-    - Olhamos para a carta na mão esquerda: <5>
-    - Como 2 é menor que 5, colocamos a segunda carta a esquerda da primeira carta: <2,5>
+2. A segunda carta da pilha, possui valor 5.
+    - Olhamos para a carta na mão esquerda: <6>
+    - Como 5 é menor que 6, colocamos a segunda carta a esquerda da primeira carta: <2,5>
 3. A terceira carta da pilha, possui valor 4.
-    - Olhamos para as cartas na mão esquerda: <2, 5>
-    - Como 4 é menor que 5, colocamos a terceira carta a esquerda da segunda carta ordenada: <2, 4, 5>
+    - Olhamos para as cartas na mão esquerda: <5, 6>
+    - Como 4 é menor que 5, colocamos a terceira carta a esquerda da segunda carta: <2, 4, 5>
+4. A quarta carta da pilha possui valor 2.
+    - Olhamos para as cartas na mão esquerda: <4, 5, 6>
+    - Como 2 é menor que 4, colocamos a quarta carta a esquerda da terceira carta ordenada: <2, 4, 5, 6>
 
----
-
-4. A quarta carta da pilha possui valor 6.
-    - Olhamos para as cartas na mão esquerda: <2, 4, 5>
-    - Como 6 é maior que 5, colocamos a quarta carta a direita da terceira carta ordenada: <2, 4, 5, 6>
-
-Perceba que o arranjo inicial era <5, 2, 4, 6> e o final <2, 4, 5, 6>.
-
----
-
-### Pseudocódigo
-
-O pseudocódigo se assemelha muito com as linguagens de programação C, C++, Python e Pascal.
-
-No pseudocódigo é empregado qualquer método expressivo que seja mais claro e conciso para especificar um dado algoritmo.
-
-Às vezes, o método mais claro é a linguagem natural.
-
-O pseudocódigo não se preocupa com questões de engenharia de software. Isso significa que não se preocupa com abstrações de dados, módulos e erros.
-
-O pseudocódigo transmite a essência do algoritmo de modo mais conciso.
-
----
-
-### O pseudocódigo da ordenação por inserção
-
-```py title="pseudocodigo.py" linenums="1"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
+Perceba que o arranjo inicial era <6, 5, 4, 2> e o final <2, 4, 5, 6>.
 
 
----
-
-### Ordenação por inserção em Python
-
-```py title="ordenacao_insercao.py" linenums="1" hl_lines="2 5"
-def ordenacao_insercao(lista):
-    for indice_chave in range(1, len(lista)):
-        chave = lista[indice_chave]
-        indice_anterior = indice_chave - 1
-        while indice_anterior >= 0 and lista[indice_anterior] > chave:
-            indice_posterior = indice_anterior + 1
-            # Troca o elemento maior de posição, desloca para "direita"
-            lista[indice_posterior] = lista[indice_anterior]
-            # Corrige o indíce, após o comparativo.
-            indice_anterior = indice_anterior - 1 
-        # Mantém na ordem inicial, já que o termo posterior é menor ou igual.
-        lista[indice_anterior + 1] = chave 
-```
-
-
----
-
-
-
+### Vamos implementar
 
 

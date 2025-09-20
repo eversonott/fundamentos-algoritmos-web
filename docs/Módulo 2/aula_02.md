@@ -6,7 +6,7 @@
 {% set objetivos = ["Um entendimento do algoritmo de ordenação por inserção.", "Introduzir os conceitos de análise de algoritmo.", "O uso do pior caso de execução.", "Ordem de crescimento dos algoritmos."] %}
 
 
-{% include "templates/cabecalho.md" %}
+{% include "templates/cabecalho_sem_video.md" %}
 
 ---
 
@@ -17,307 +17,468 @@
 ![](https://upload.wikimedia.org/wikipedia/commons/2/25/Insertion_sort_animation.gif){: .center .shadow}
 
 
-Para o exemplo iremos utilizar o arranjo: `A = < 5, 2, 4, 6 >`
+Para os passos a seguir vamos usar a lista numérica: `[6, 5, 4, 2]`
 
+Iremos implementar a função `ordenacao_insercao`.
+Essa função irá receber um objeto python do tipo `list` e com seus elementos numéricos.
 
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+Portanto temos:
+
+```py title="ordenacao_insercao" linenums="1"
+lista_numerica = [6, 5, 4, 2]
+
+def ordenacao_insercao(lista):
+    ...
+
 ```
 
-Vamos considerar o arranjo:
+Vamos implementar com calma e usando `print` para verificar os estados dos valores envolvidos (teste de mesa):
 
+Inicialmente temos uma lista numérica desordenada e posteriormente teremos ela ordenada.
 
-|arranjo:|5|2|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
+Vamos dividir a parte principal do nosso script em antes de chamar a função e depois.
 
-### 1ª Iteração
+```py title="ordenacao_insercao" linenums="1"
+lista_numerica = [6, 5, 4, 2]
 
+def ordenacao_insercao(lista):
+    ...
 
-#### 1⁰ passo: A comparação do menor elemento é sempre binária
+print(f'Lista Desordenada: {lista_numerica} \n')
+ordenacao_insercao(lista_numerica)
+print(f'Lista Ordenada: {lista_numerica} \n')
 
-|arranjo:|5|2|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="2"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
 ```
 
+Para:
 
-|arranjo:|5|2|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|1|-|-|
-
-Começamos a partir do segundo elemento, para o ordenar o primeiro.
-Uma vez que o comparativo necessita de dois elementos.
-> Lembre-se: Uma sequência de apenas um número, já está ordenada.
-
-#### 2⁰ passo: Determina a chave e o índice do seu termo anterior
-
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="3 5"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+```sh title="Terminal"
+python ordenacao_insercao.py
 ```
 
+Temos:
 
-|arranjo:|5|2|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|1|-|-|-|
-|chave:|-|2|-|
-|j:|0|-|-|-|
+```sh title="Saída"
+Lista Desordenada: [6, 5, 4, 2]
 
-A variável `chave` armazena o valor que queremos ordenar.
+Lista Ordenada: [6, 5, 4, 2]
 
-A variável `j` armazena o índice do termo anterior a chave.
-
-#### 3⁰ passo: Se o termo anterior for menor que a chave, faz a troca
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
 ```
 
+Vamos agora implementar algumas funções de impressões que nos auxiliarão:
 
-|arranjo:|5|2|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|1|-|-|
-|chave:|-|2|-|-|
-|j:|0|-|-|-|
-|**Enquanto**  <td colspan="4">índice do termo anterior estiver dentro do arranjo e o termo anterior for maior que a chave</td></tr>
+Para vermos os índices:
 
-##### 3.1⁰ passo: Como fazer a troca
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7 8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+```py title="ordenacao_insercao"
+def imprime_indices(lista):
+    lista_indices = []
+    for i in range(0, len(lista)):
+        lista_indices.append(i)
+    print(f'Indices: {lista_indices}')
 ```
 
-|arranjo:|5|5|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|1|-|-|
-|chave:|-|2|-|-|
-|**Enquanto**  <td colspan="4">índice do termo anterior estiver dentro do arranjo e o termo anterior for maior que a chave</td></tr>
-|j:|-1|-|-|-|
+Atualizando a função principal:
 
-Utilizando o índice do termo anterior, desloca o termo anterior uma casa a frente, ou seja, coloca o valor maior a direita.
+```py title="ordenacao_insercao"
+def ordenacao_insercao(lista):
+    imprime_indices(lista)
+```
+
+```sh title="Saída"
+Lista Desordenada: [6, 5, 4, 2]
+
+Indices: [0, 1, 2, 3]
+Lista Ordenada: [6, 5, 4, 2]
+
+```
+
+Para vermos os valores:
+
+```py title="ordenacao_insercao"
+def imprime_valores(lista):
+	print(lista)
+```
+
+Atualizando a função principal:
+
+```py title="ordenacao_insercao"
+def ordenacao_insercao(lista):
+    imprime_indices(lista)
+    imprime_valores
+```
+
+```sh title="Saída"
+Lista Desordenada: [6, 5, 4, 2]
+
+Indices: [0, 1, 2, 3]
+Valores: [6, 5, 4, 2]
+Lista Ordenada: [6, 5, 4, 2]
 
 
-#### 4⁰ passo: Transfere a chave para a posição mais à esquerda.
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="9"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
 ```
 
 
-|arranjo:|2|5|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|1|-|-|
-|chave:|-|2|-|-|
-|**Enquanto**  <td colspan="4">índice do termo anterior estiver dentro do arranjo e o termo anterior for maior que a chave</td></tr>
-|j:|-1|-|-|-|
 
 
-Usando o índice do termo anterior, que está decrementado uma unidade, transfere o valor chave para a posição mais a esquerda.
+Como sempre precisamos verificar em qual índice o valor está, vamos juntas as duas funções
+em um função que nos trás uma "única" impressão:
 
 
-### 2ª Iteração
-
-
-#### 1⁰ passo e 2⁰ passo
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="2-3 5"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+```py title="ordenacao_insercao"
+def imprime(lista):
+	imprime_indices(lista)
+	imprime_valores(lista)
+	print('')
 ```
 
-|arranjo:|2|5|4|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|-|2|-|
-|chave:|-|-|4|-|
-|j:|-|1|-|-|
+Atualizando a função principal:
 
-#### 3⁰ passo
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+```py title="ordenacao_insercao"
+def ordenacao_insercao(lista):
+    imprime(lista)
 ```
 
 
-|arranjo:|2|5|5|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|-|2|-|
-|chave:|-|-|4|-|
-|**Enquanto**  <td colspan="4">índice do termo anterior estiver dentro do arranjo e o termo anterior for maior que a chave</td></tr>
-|j:|0|-|-|-|
+```sh title="Saída"
+Lista Desordenada: [6, 5, 4, 2]
 
+Indices: [0, 1, 2, 3]
+Valores: [6, 5, 4, 2]
 
-Dessa vez a condição que quebra o laço `A[j] > chave`, onde `2 > 4 = False`
+Lista Ordenada: [6, 5, 4, 2]
 
-
-#### 4⁰ passo
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="9"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
 ```
 
-|arranjo:|2|4|5|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|-|2|-|
-|chave:|-|-|4|-|
-|**Enquanto**  <td colspan="4">índice do termo anterior estiver dentro do arranjo e o termo anterior for maior que a chave</td></tr>
-|j:|0|-|-|-|
+Temos, então até agora:
 
+```py title="ordenacao_insercao" linenums="1"
+def imprime_indices(lista):
+    lista_indices = []
+    for i in range(0, len(lista)):
+        lista_indices.append(i)
+    print(f'Indices: {lista_indices}')
 
-### 3ª Iteração
+def imprime_valores(lista):
+	print(f'Valores: {lista}')
+	
+def imprime(lista):
+	imprime_indices(lista)
+	imprime_valores(lista)
+	print('')
 
-#### 1⁰ passo e 2⁰ passo
+def ordenacao_insercao(lista):
+	imprime(lista)
+	
+lista_numerica = [6, 5, 4, 2]
 
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="2-3 5"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+print(f'Lista Desordenada: {lista_numerica} \n')
+ordenacao_insercao(lista_numerica)
+print(f'Lista Ordenada: {lista_numerica} \n')
 ```
 
-|arranjo:|2|4|5|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|-|-|3|
-|chave:|-|-|-|6|
-|j:|-|-|2|-|
+Vamos a implementação de fato!
 
-#### 3⁰ passo
+A partir de agora vamos partir de discussões e erros mais simples até chegar ao algoritmos de fato.
 
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+```py title="ordenacao_insercao" linenums="15"
+def ordenacao_insercao(lista):
+	imprime(lista)
+	
+	for i in range(0, len(lista)):
+		if lista[i] > lista[i + 1]:
+			# Trocar lista[i + 1] com lista[i]
+			...
 ```
 
-|arranjo:|2|4|5|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|-|-|3|
-|chave:|-|-|-|6|
-|j:|-|-|2|-|
+Há um problema, e antes de implementarmos a troca, podemos perceber:
 
-Não entramos no laço devido a condição `A[j] > chave`, onde `5 > 6 = False`
-
-As linhas **7** e **8** não são executadas, e saltamos para a linha **9**.
-
-#### 4⁰ passo
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="9"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
+```sh title="Saída"
+if lista[i] > lista[i + 1]:
+                  ~~~~~^^^^^^^
+IndexError: list index out of range
 ```
 
-|arranjo:|2|4|5|6|
-|-|-|-|-|-|
-|**índice:**|**0**|**1**|**2**|**3**|
-|i|-|-|-|3|
-|chave:|-|-|-|6|
-|j:|-|-|2|-|
+Isso acontece que estamos sempre comparando com o termo mais a direita, mais sucessor.
 
-A linha **9** atribui na posição onde está a chave, a própria chave.
 
-O arranjo final é permutado em sequência crescente.
+Acontece que nosso `i` vai até o último índice e compara o último índice com um índice que não existe.
+
+Vamos corrigir isso, deixando o `i` ir apenas ao penúltimo índice.
+
+
+Vamos usar um print para verificar isso.
+
+```py title="ordenacao_insercao" linenums="15" hl_lines="4"
+def ordenacao_insercao(lista):
+	imprime(lista)
+	
+	for i in range(0, len(lista) - 1):
+		print(f'Índice i: {i}')
+		if lista[i] > lista[i + 1]:
+			# Trocar lista[i + 1] com lista[i]
+			...
+```
+
+```sh title="Saída" hl_lines="6-8"
+Lista Desordenada: [6, 5, 4, 2]
+
+Indices: [0, 1, 2, 3]
+Valores: [6, 5, 4, 2]
+
+Índice i: 0
+Índice i: 1
+Índice i: 2
+Lista Ordenada: [6, 5, 4, 2]
+
+```
+
+Vamos fazer a troca e chamar a impressão a cada troca:
+
+```py title="ordenacao_insercao" linenums="15" hl_lines="8-11"
+def ordenacao_insercao(lista):
+	imprime(lista)
+	
+	for i in range(0, len(lista) - 1):
+		print(f'Índice i: {i}')
+		if lista[i] > lista[i + 1]:
+			# Trocar lista[i + 1] com lista[i]
+			valor_menor = lista[i + 1]
+			lista[i + 1] = lista[i]
+			lista[i] = valor_menor
+			imprime(lista)
+```
+
+```sh title="Saída" hl_lines="6 8 10 12 14 16"
+Lista Desordenada: [6, 5, 4, 2]
+
+Indices: [0, 1, 2, 3]
+Valores: [6, 5, 4, 2]
+
+Índice i: 0
+Indices: [0, 1, 2, 3]
+Valores: [5, 6, 4, 2]
+
+Índice i: 1
+Indices: [0, 1, 2, 3]
+Valores: [5, 4, 6, 2]
+
+Índice i: 2
+Indices: [0, 1, 2, 3]
+Valores: [5, 4, 2, 6]
+
+Lista Ordenada: [5, 4, 2, 6]
+```
+
+Vamos analisar o que houve:
+
+- Na primeira iteração, com `i = 0`:
+
+    - Indices: [0, 1, 2, 3]
+    - Valores: [6, 5, 4, 2]
+    
+    - Começamos olhando para o primeiro elemento.
+    - Trocamos o `lista[0] = 6` e `lista[1] = 5`.
+
+        - Indices: [0, 1, 2, 3]
+        - Valores: [5, 6, 4, 2]
+
+Normal!
+
+- Na segunda iteração, com `i = 1`.
+    - Indices: [0, 1, 2, 3]
+    - Valores: [5, 6, 4, 2]
+
+    - Começamos olhando para o segundo elemento.
+    - Trocamos `lista[1] = 6` e `lista[2] = 4`.
+        - Indices: [0, 1, 2, 3]
+        - Valores: [5, 4, 6, 2]
+
+
+O problema surge aqui!
+
+Não estamos implementando o nosso algoritmo, pois ainda teríamos que ordenar o valores `[5, 4]` para `[4, 5]`.
+
+Lembre-se que com o baralho, quando já temos cartas (ordenadas) na mão esquerda (para destros) temos que olhar para todas as cartas.
+
+E verificar onde devemos inserir.
+
+Portanto se tenho em uma mão `[5, 6]` e tiro do baralho uma carta `[4]` devo olhar para o `6`, quanto para o `5`.
+
+`[4]` vai para a esquerda de `[6]`, mas também vai a esquerda de `[5]`, ou seja, vai a esquerda de `[5, 6]`.
+
+Logo: `[4, 5, 6]`.
+
+
+Vamos pensar, voltando para a programação:
+
+No nosso caso, ainda com `i = 1`, temos que olhar para o `lista[0]`.
+
+Ou seja, enquanto o elemento a esquerda for maior que nosso elemento a ser trocado e não chegamos ao início, devemos continuar trocando.
+
+Isso me parece um `while`.
+
+Repita até enquanto a condição for verdadeira.
+
+Repita até os valores maiores que 4 estarem a direita de 4.
+
+Voltamos ao código, como estamos falando de termos anteriores, vamos usar o termo `indice_anterior`
+
+```py title="ordenacao_insercao" linenums="15" hl_lines="6-9 11-13 15"
+def ordenacao_insercao(lista):
+	imprime(lista)
+	
+	for i in range(0, len(lista) - 1):
+		print(f'Índice i: {i}')
+		indice_anterior = i - 1
+		print(f'Índice anterior: {indice_anterior}')
+		while lista[indice_anterior] > lista[indice_anterior + 1]:
+			print(f'Índice anterior: {indice_anterior}')
+			# Trocar lista[indice_anterior + 1] com lista[indice_anterior]
+			valor_menor = lista[indice_anterior + 1]
+			lista[indice_anterior + 1] = lista[indice_anterior]
+			lista[indice_anterior] = valor_menor
+			imprime(lista)
+			indice_anterior -= 1
+```
+
+```sh title="Saída" linenums="1" hl_lines="7 12 18 22"
+Lista Desordenada: [6, 5, 4, 2]
+
+Indices: [0, 1, 2, 3]
+Valores: [6, 5, 4, 2]
+
+Índice i: 0
+Índice anterior: -1
+Índice i: 1
+Índice anterior: 0
+Índice anterior: 0
+Indices: [0, 1, 2, 3]
+Valores: [5, 6, 4, 2]
+
+Índice i: 2
+Índice anterior: 1
+Índice anterior: 1
+Indices: [0, 1, 2, 3]
+Valores: [5, 4, 6, 2]
+
+Índice anterior: 0
+Indices: [0, 1, 2, 3]
+Valores: [4, 5, 6, 2]
+
+Lista Ordenada: [4, 5, 6, 2]
+
+```
+
+Na linha 12, temos o `5` a esquerda de `6`.
+
+Na linha 18, temos o `4` a esquerda de `6`.
+
+Na linha 22, finalmente, o `4` esquerda de `[5,6]`.
+
+
+Mas perceba que o elemento `2`, continua desordenado.
+
+Precisamos que nosso `i` vá até o último índice (`3`) para que compare:
+
+`lista[2] = 6  > lista[3] = 2`
+
+Mas temos um problema, nosso último índice anterior é -1. 
+
+Perceba na linha 20, o índice anterior é impresso como 0. 
+
+Porém essa impressão vem antes da linha de decremento (`indice_anterior -= 1`)
+
+Ou seja, se entrarmos novamente no while, irá considerar a lista como cíclica.
+
+E iremos comparar `lista[-1] = 2 > lista[0] = 4` e essa não é o tipo de comparação que queremos para validar nosso `while`
+
+Precisamos garantir, antes de incluir `i = len(lista)` que nosso `indice_anterior` percorra os índices `>= 0`:
+
+```py title="ordenacao_insercao" linenums="15" hl_lines="7"
+def ordenacao_insercao(lista):
+	imprime(lista)
+	
+	for i in range(0, len(lista)):
+		print(f'Índice i: {i}')
+		indice_anterior = i - 1
+		print(f'Índice anterior: {indice_anterior}')
+		while indice_anterior >= 0 and lista[indice_anterior] > lista[indice_anterior + 1]:
+			print(f'Índice anterior: {indice_anterior}')
+			# Trocar lista[indice_anterior + 1] com lista[indice_anterior]
+			valor_menor = lista[indice_anterior + 1]
+			lista[indice_anterior + 1] = lista[indice_anterior]
+			lista[indice_anterior] = valor_menor
+			imprime(lista)
+			indice_anterior -= 1
+```
+
+```sh title="Saída" linenums="1" hl_lines="38"
+Lista Desordenada: [6, 5, 4, 2]
+
+Indices: [0, 1, 2, 3]
+Valores: [6, 5, 4, 2]
+
+Índice i: 0
+Índice anterior: -1
+Índice i: 1
+Índice anterior: 0
+Índice anterior: 0
+Indices: [0, 1, 2, 3]
+Valores: [5, 6, 4, 2]
+
+Índice i: 2
+Índice anterior: 1
+Índice anterior: 1
+Indices: [0, 1, 2, 3]
+Valores: [5, 4, 6, 2]
+
+Índice anterior: 0
+Indices: [0, 1, 2, 3]
+Valores: [4, 5, 6, 2]
+
+Índice i: 3
+Índice anterior: 2
+Índice anterior: 2
+Indices: [0, 1, 2, 3]
+Valores: [4, 5, 2, 6]
+
+Índice anterior: 1
+Indices: [0, 1, 2, 3]
+Valores: [4, 2, 5, 6]
+
+Índice anterior: 0
+Indices: [0, 1, 2, 3]
+Valores: [2, 4, 5, 6]
+
+Lista Ordenada: [2, 4, 5, 6]
+```
+
+
+Algoritmo de ordenação por inserção, implementado!
+
+Limpando os print, ficamos com:
+
+```py title="ordenacao_insercao" linenums="15" 
+def ordenacao_insercao(lista):
+	for i in range(0, len(lista)):
+		indice_anterior = i - 1
+		while indice_anterior >= 0 and lista[indice_anterior] > lista[indice_anterior + 1]:
+			valor_menor = lista[indice_anterior + 1]
+			lista[indice_anterior + 1] = lista[indice_anterior]
+			lista[indice_anterior] = valor_menor
+			indice_anterior -= 1
+```
+
+Em python podemos fazer reatribuições simultâneas:
+
+```py title="ordenacao_insercao" linenums="15" hl_lines="6" 
+def ordenacao_insercao(lista):
+	for i in range(0, len(lista)):
+		indice_anterior = i - 1
+		while indice_anterior >= 0 and lista[indice_anterior] > lista[indice_anterior + 1]:
+			lista[indice_anterior + 1], lista[indice_anterior] = lista[indice_anterior], lista[indice_anterior + 1]
+			indice_anterior -= 1
+```
 
 ## Análise da ordenação por inserção
 
@@ -325,37 +486,149 @@ O tempo necessário pelo procedimento `ordenacao_insercao` depende da entrada:
 
 - Ordenar mil números demora mais que ordenar três números.
 
-Além disso, a ordenação por inserção pode demorar tempo diferentes para ordenar duas sequências de entrada do mesmo tamanho, dependendo do quanto elas já estejam ordenadas.
+Além disso, a ordenação por inserção pode demorar tempo diferentes para ordenar duas sequências de entrada do mesmo tamanho, dependendo do quanto elas já estejam ordenadas:
+
+- Ordenar `[2, 5, 4, 6]` é muito mais rápido que ordenar `[2, 6, 5, 4]`.
+    - A lista numérica `[2, 5, 4, 6]` entra menos vezes no `while` do que `[2, 6, 5, 4]`.
+    - Observe que ambas listas tem `len(lista) = 5`
+
+
+
 
 Em termos gerais, o tempo gasto por um algoritmo cresce com o tamanho da entrada.
 
-Portanto, é tradicional descrever o tempo de execução de um programa em função do tamanho de sua entrada.
+Portanto, é tradicional descrever o tempo de execução de um programa em **função do tamanho de sua entrada**.
 
 ### O tempo de execução
 
+
+
 O tempo de execução de um algoritmo em determinada entrada é o número de operações primitivas ou "passos" executados.
 
-Vamos adotar que uma quantidade de tempo constante é exigida para executar cada linha do nosso pseudo código.
+#### Tempo constante para cada linha
 
-Uma linha pode demorar uma quantidade de tempo diferente de outra linha, mas consideremos que cada execução de i-ésima linha leva um tempo `ci`, onde `ci` é uma constante.
+**Vamos adotar que uma quantidade de tempo constante é exigida para executar cada linha do nosso pseudo código.**
 
-Partiremos de uma fórmula confusa que utiliza todos os custos de instrução `ci` até uma notação muito mais simples, que também é mais concisa e mais fácil de manipular.
+Uma linha pode demorar uma quantidade de tempo diferente de outra linha, mas consideremos que cada execução de `i-ésima` linha leva um tempo $c_i$, onde $c_i$ é uma constante.
+
+
+#### Quantidade de vezes que uma linha é executada
+
+
+Como estamos falando de número de operações, e já definimos que cada linha terá um tempo constante.
+
+Agora precisamos avaliar quantas vezes cada linha é executada.
+
+
+Para isso partiremos do nosso algoritmo mais simples:
+
+
+```py title="ordenacao_insercao" linenums="15" 
+def ordenacao_insercao(lista):
+	for i in range(0, len(lista)):
+		indice_anterior = i - 1
+		while indice_anterior >= 0 and lista[indice_anterior] > lista[indice_anterior + 1]:
+			lista[indice_anterior + 1], lista[indice_anterior] = lista[indice_anterior], lista[indice_anterior + 1]
+			indice_anterior -= 1
+```
+
+Para facilitar ainda mais a análise, vamos simplificar alguns nomes:
+Não é uma boa prática, mas necessitamos desta mudança para fins didáticos.
+
+```py title="ordenacao_insercao" linenums="15" 
+def ordenacao_insercao(lista):
+	for i in range(0, len(lista)):
+		i_ant = i - 1
+		while i_ant >= 0 and lista[i_ant] > lista[i_ant + 1]:
+			lista[i_ant + 1], lista[i_ant] = lista[i_ant], lista[i_ant + 1]
+			i_ant -= 1
+```
+
+Iremos tratar `len(lista)` como `n`, ou seja, `n` é quantidade de elementos.
+
+- A linha `for i in range(0, len(lista)):` é executada `n + 1`.
+
+    - Ela precisa ser executada uma vez a mais para desvalidar o `i` que ficará fora do `range`.
+    
+    - Lembre-se `len(lista)` não é inclusivo no `for`, justamente para relacionarmos a condição de parada com o tamanho, quando iniciamos em `0`.
+
+- A linha `i_ant = i - 1` é executada `n`.
+
+    - Ela está dentro do `for` e a cada iteração é executada. Há 
+
+##### O While do nosso algoritmo
+
+Para discutirmos a próxima linha vamos fazer diversas inferências:
+Vamos manter a escrita em itens para entender melhor as implicações.
+
+- A linha `while i_ant >= 0 and lista[i_ant] > lista[i_ant + 1]:` é executada uma quantidade que depende de quanto a lista está ordenada com seus valores anteriores.
+    
+    - Esta linha depende de cada lista, ou seja, depende de cada caso.
+
+    - Depende da quantidade de elementos desordenados/ordenados anteriormente.
+
+    - Então temos, no mínimo `1` elemento anterior e no máximo `n - 1` elementos anteriores (para o último elemento). 
+    Considerando uma iteração a mais para sair do `while`, temos no máximo `n` elementos.
+    Perceba que aqui estamos considerando o pior caso (- iremos detalhar adiante), que é uma lista numérica ordenada decrescentemente.
+
+    - Chamamos de limite inferior: `1`.
+
+    - Chamamos de limite superior: `n`.
+
+    - Temos uma função que varia dentro desses limites. Um termo geral $f(k)$
+        
+        - Ou seja, $f(k)$ variando de $1$ a $n$.
+
+    - A quantidade de vezes que a linha será executada é igual:
+        
+        - $f(1) + f(2) + f(3) + \cdots + f(n)$
+
+    - Temos um somatório:
+        
+        - $\sum_{k=1}^{n} f(k)$
+
+        - Como f(k) é a própria quantidade de termos anterior ($f(k) = k$), temos:
+
+        - $\sum_{k=1}^{n} f(k) = \sum_{k = 1}^{n} k = 1 + 2 + \cdots +  n$
+
+            - Somatório de uma progressão aritmética de $\text{razão} = 1$
+
+                - $\sum_{k = 1}^{n} k = \dfrac{n}{2} \cdot (n + 1)$
+
+    - Concluindo, finalmente:
+
+        - A linha `while i_ant >= 0 and lista[i_ant] > lista[i_ant + 1]:` é executada $\dfrac{n}{2} \cdot (n + 1)$.
+
+- A linha `lista[i_ant + 1], lista[i_ant] = lista[i_ant], lista[i_ant + 1]` é executada uma vez menos que a linha do nosso querido `while`.
+
+    - $\sum_{k=1}^{n - 1} f(k) - 1$, $f(k) = k$.
+
+    - $\sum_{k=1}^{n} f(k) - 1 = \sum_{k=1}^{n} k - 1 = \dfrac{(n-1)}{2} \cdot ((n-1) +1) = \dfrac{n-1}{2} \cdot n$ 
+
+    - A linha `lista[i_ant + 1], lista[i_ant] = lista[i_ant], lista[i_ant + 1]` é executada $\dfrac{n-1}{2} \cdot n$
+
+- A linha `i_ant -= 1` está dentro do while assim como a linha anterior da troca
+    
+    - A linha `i_ant -= 1` é executada $\dfrac{n-1}{2} \cdot n$
+
+
+Partiremos de uma fórmula confusa que utiliza todos os custos de instrução $c_i$ e a quantidade de vezes de cada linha até uma notação muito mais simples, que também é mais concisa e mais fácil de manipular.
 
 E será por meio dessa notação mais simples também que facilitará a tarefa de determinar se um algoritmo é mais eficiente que outro.
+
+
+Vamos então organizar os custos e a quantidade em uma tabela
 
 ### Ordenação por inserção com custo
 
 
-|linha|def ordenacao_insercao(A):|custo|vezes|
+|linha|def ordenacao_insercao(lista):|custo|vezes|
 |-|-|-|-|
-    |1|&emsp;Para i = 1 até A.comprimento, faça:|$c_1$|n|
-        |2|&emsp;&emsp; chave = A[i]|$c_2$|n - 1|
-        |3|// Inserir A[i] na sequência ordenada A[0, ..., i -1]|0|n - 1|
-        |4|&emsp;&emsp;j = i - 1|$c_4$|n - 1|
-        |5|&emsp;Enquanto j > -1 e A[j] > chave, faça:|$c_5$|$\sum_{i=1}^{n} t_i$|
-            |6|&emsp;&emsp;&emsp;A[j + 1] = A[j]|$c_6$|$\sum_{i=1}^{n} (t_i - 1)$|
-            |7|&emsp;&emsp;&emsp;j = j - 1|$c_7$|$\sum_{i=1}^{n} (t_i - 1)$|
-        |8|&emsp;A[j + 1] = chave|$c_8$|n - 1|
+    |1|&emsp;`for i in range(0, len(lista)):`|$c_1$|n + 1|
+        |2|&emsp;&emsp; `i_ant = i - 1`|$c_2$|n|
+        |3|&emsp;&emsp;`while i_ant >= 0 and lista[i_ant] > lista[i_ant + 1]:`|$c_3$|$\dfrac{n}{2} \cdot (n + 1)$|
+        |4|&emsp;&emsp;&emsp;`lista[i_ant + 1], lista[i_ant] = lista[i_ant], lista[i_ant + 1]`|$c_4$|$\dfrac{n-1}{2} \cdot n$|
+        |5|&emsp;&emsp;&emsp;`i_ant -= 1`|$c_5$|$\dfrac{n-1}{2} \cdot n$|
 
 O tempo de execução do algoritmo é a soma dos tempos de execução para cada instrução executada.
 
@@ -364,549 +637,70 @@ Para calcular o $T(n)$, o tempo de execução da ordenação por inserção de u
 
 $$\begin{equation}
 \begin{split}
-T(n) &= c_1n + c_2(n - 1) + c_4(n-1) + c_5\sum_{i=1}^{n} t_i + c_6\sum_{i=1}^{n} (t_i - 1)\\
- &\quad + c_7\sum_{i=1}^{n} (t_i - 1) + c_8(n - 1) \\
+T(n) &= c_1 \cdot  (n + 1) + c_2 \cdot (n) + c_3 \cdot  \biggl(\dfrac{n}{2} \cdot (n + 1)\biggl) + c_4 \cdot \biggl(\dfrac{n-1}{2} \cdot n \biggl)+ \\
+    &\quad c_5 \cdot  \biggl(\dfrac{n-1}{2} \cdot n\biggl)\\
 \end{split}
 \end{equation}$$
 
+Como a multiplicação por $\dfrac{1}{2}$ ou uma divisão por $2$ é sempre constante na função.
 
-### Série infinita (ou apenas série)
+Agregamos essa operação com um escalar, como uma operação que envolve uma multiplicação constate.
 
-Em geral, se tentarmos somar os termos de uma sequência infinita ${a_n}^{\infty}_{n=1}$, obtemos:
+Logo agregamos ao tempo constate de cada linha, que também é um fator multiplicativo.
 
-$$a_1 + a_2 + a_3 + \cdots + a_n + \cdots$$
-
-que é denominada uma série infinita, por simplicidade, pelo símbolo:
-
-$$\sum_{n=1}^{\infty} a_n \text{ ou } \sum a_n$$
-
-#### Sequência limitada
-
-Uma sequência ${a_n}^{\infty}_{n=1}$ é **limitada superiormente** se existir um número M tal que:
-
-$$a_n \leqslant M\text{, para todo }n \geqslant 1$$
-
-Uma sequência ${a_n}^{\infty}_{n=1}$ é **limitada inferiormente** se existir um número m tal que:
-
-$$m \leqslant a_n\text{, para todo }n \geqslant 1$$
-
-Dizemos que uma sequência ${a_n}^{\infty}_{n=1}$ é **limitada** se for limitada superiormente e inferiormente.
-
-### Analisando o pior caso
-
-
-
-Se o arranjo estiver ordenado em ordem decrescente, resulta o pior caso de ordenação.
-
-#### 1⁰ Iteração (i = 1)
-
-##### j = 0
-
-Nosso arranjo no pior caso é: <6, 5, 4, 2>
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="2-3 5"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|6|5|4|2|
-|-|-|-|-|-|-|
-|**índice:**|-|**0**|**1**|**2**|**3**|
-|i|-|-|1|-|-|
-|chave:|-|-|5|-|-|
-|j:|-|0|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-
-|arranjo:|-|6|5|4|2|
-|-|-|-|-|-|-|
-|**índice:**|-|**0**|**1**|**2**|**3**|
-|i|-|-|1|-|-|
-|chave:|-|-|5|-|-|
-|j:|-|0|-|-|-|
-|**Enquanto**|-|0 > -1 = **True** e 6 > 5 = **True**|-|-|-|
-
-
-##### j = -1
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|- |6|6|4|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|1|-|-|
-|chave:|-|-|5|-|-|
-|**Enquanto**|-|0 > -1 = **True** e 6 > 5 = **True**|-|-|-|
-|j:|-1|-|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|- |6|6|4|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|1|-|-|
-|chave:|-|-|5|-|-|
-|j:|-1|-|-|-|-|
-|**Enquanto**|-1 > -1 = **False**|-|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="9"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|6|4|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|1|-|-|
-|chave:|-|-|5|-|-|
-|j:|-1|-|-|-|-|
-|**Enquanto**|-1 > -1 = **False**|-|-|-|-|
-
-#### 2⁰ Iteração (i = 2)
-
-##### j = 1
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="2-3 5"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|6|4|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|j:|-|-|1|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|6|4|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|j:|-|-|1|-|-|
-|**Enquanto**|-|-|1 > -1 = **True** e 6 > 4 = **True**|-|-|
-
-##### j = 0
-
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|6|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|**Enquanto**|-|-|1 > -1 = **True** e 6 > 4 = **True**|-|-|
-|j:|-|0|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|6|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|j:|-|0|-|-|-|
-|**Enquanto**|-|0 > -1 = **True** e 5 > 4 = **True**|-|-|-|
-
-
-##### j = -1
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|5|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|**Enquanto**|-|0 > -1 = **True** e 5 > 4 = **True**|-|-|-|
-|j:|-1|-|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|5|5|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|j:|-1|-|-|-|-|
-|**Enquanto**|-1 > -1 = **False**|-|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="9"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|2|-|
-|chave:|-|-|-|4|-|
-|j:|-1|-|-|-|-|
-|**Enquanto**|-1 > -1 = **False**|-|-|-|-|
-
-
-#### 3⁰ Iteração (i = 3)
-
-##### j = 2
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="2-3 5"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|j:|-|-|-|2|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|6|2|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|j:|-|-|-|2|-|
-|**Enquanto**|-|-|-|2 > -1 = **True** e 6 > 2 = **True**|-|
-
-
-##### j = 1
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|6|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|**Enquanto**|-|-|-|2 > -1 = **True** e 6 > 2 = **True**|-|
-|j:|-|-|1|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|6|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|j:|-|-|1|-|-|
-|**Enquanto**|-|-|1 > -1 = **True** e 5 > 2 = **True**|-|-|
-
-
-##### j = 0
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|5|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|**Enquanto**|-|-|1 > -1 = **True** e 5 > 2 = **True**|-|-|
-|j:|-|0|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|5|5|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|j:|-|0|-|-|-|
-|**Enquanto**|-|0 > -1 = **True** e 4 > 2 = **True**|-|-|-|
-
-
-##### j = -1
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="7-8"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|4|5|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|**Enquanto**|-|0 > -1 = **True** e 4 > 2 = **True**|-|-|-|
-|j:|-1|-|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="6"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|4|4|5|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|j:|-1|-|-|-|-|
-|**Enquanto**|-1 > -1 = **False**|-|-|-|-|
-
-```py title="pseudocodigo_ordenacao_insercao" linenums="1"  hl_lines="9"
-def ordenacao_insercao(A):
-    Para i = 1 até A.comprimento, faça:
-        chave = A[i]
-        // Inserir A[i] na sequência ordenada A[0, ..., i -1]
-        j = i - 1
-        Enquanto j > -1 e A[j] > chave, faça:
-            A[j + 1] = A[j]
-            j = j - 1
-        A[j + 1] = chave
-```
-
-|arranjo:|-|2|4|5|6|
-|-|-|-|-|-|-|
-|**índice:** |**-1**|**0**|**1**|**2**|**3**|
-|i|-|-|-|-|3|
-|chave:|-|-|-|-|2|
-|j:|-1|-|-|-|-|
-|**Enquanto**|-1 > -1 = **False**|-|-|-|-|
-
-#### T(n) para o pior caso
-
-Comparando cada elemento $A[i]$ com cada elemento do subarranjo ordenado inteiro (lado esquerdo), $A[0, \cdots, i - 1]$, e então $t_i = i$ para $1,2,3, \cdots, n$.
-
-Perceba que a cada elemento a direita ($A[i]$) é necessário fazer toda a comparação nos subarranjos à esquerda ($A[0, \cdots, i - 1]$).
-
-Logo no pior caso temos: 
-
-$\sum_{i=1}^{n} t_i = \sum_{i=1}^{n} i = 1 + 2 + \cdots +  n$, é uma série aritmética e tem valor:
-
-No nosso exemplo temos $n = 4$, logo: $\sum_{i=1}^{4} i = 1 + 2 + 3$, ou seja, a linha 6 é executada 6 vezes.
-
-
-$\sum_{i=1}^{n} i = \dfrac{1}{2}n(n +1)$
-
-Pelo mesmo princípio:
-
-$\sum_{i=1}^{n} t_i - 1 = \sum_{i=1}^{n} i - 1 = \dfrac{1}{2}(n-1)((n-1) +1) = \dfrac{1}{2}(n-1)(n)$ 
-
-Voltando ao nosso $T(n)$
+Então temos:
 
 $$\begin{equation}
 \begin{split}
-T(n) &= c_1n + c_2(n - 1) + c_4(n-1) + c_5\dfrac{1}{2}n(n +1) + c_6\dfrac{1}{2}(n-1)(n)\\
- &\quad + c_7\dfrac{1}{2}(n-1)(n) + c_8(n - 1) \\
+T(n) &= c_1 \cdot  (n + 1) + c_2 \cdot (n) + c_3 \cdot  (n \cdot (n + 1))
++ c_4 \cdot ((n-1) \cdot n )+ \\
+    &\quad c_5 \cdot  ((n-1) \cdot n)\\
 \end{split}
 \end{equation}$$
+
+Vamos agora multiplicar os termos que envolvem $n$:
 
 $$\begin{equation}
 \begin{split}
-T(n) &= c_1n + c_2(n - 1) + c_4(n-1) + c_5\dfrac{1}{2}n(n +1) + (c_6 + c_7) \dfrac{1}{2}(n-1)(n) \\
- &\quad +  c_8(n - 1) \\
+T(n) &= c_1 \cdot  (n + 1) + c_2 \cdot (n) + c_3 \cdot  (n^2 + n)
++ c_4 \cdot (n^2 - n)+ \\
+    &\quad c_5 \cdot  (n^2 - n)\\
 \end{split}
 \end{equation}$$
+
+Vamos fazer a multiplicação pelas constantes:
 
 $$\begin{equation}
 \begin{split}
-T(n) &= c_1n + c_2(n - 1) + c_4(n-1) + c_5\dfrac{1}{2}n^2 +c_5\dfrac{1}{2}n + (c_6 + c_7)\dfrac{1}{2}n^2 \\
- &\quad -(c_6 + c_7)\dfrac{1}{2}n +  c_8(n - 1) \\
+T(n) &= 1c_1 n + 1c_1 + c_2 n +  1c_3 n^2 + 1 c_3n +  1c_4 n^2 - 1c_4 n + 1c_5 n^2 - 1c_5 n\\
 \end{split}
 \end{equation}$$
+
+Vamos agrupar os termos semelhantes, colocando-os lado a lado:
 
 $$\begin{equation}
 \begin{split}
-T(n) &= c_5\dfrac{1}{2}n^2 + (c_6 + c_7)\dfrac{1}{2}n^2 + c_1n + c_2n + c_4n \\
- &\quad -(c_6 + c_7)\dfrac{1}{2}n + c_8n + c_2 + c_4 + c_8\\
+T(n) &= 1c_3 n^2 + 1c_4 n^2 + 1c_5 n^2 + 1c_1 n  + 1c_2 n + 1 c_3n  - 1c_4 n  - 1c_5 n + 1c_1\\
 \end{split}
 \end{equation}$$
+
+Colocando em evidência:
+
 
 $$\begin{equation}
 \begin{split}
-T(n) &= (c_5 + c_6 + c_7)\dfrac{1}{2}n^2 + (c_1 + c_2 + c_4 -((c_6 + c_7)\dfrac{1}{2})  + c_8)n \\
- &\quad  + c_2 + c_4 + c_8\\
+T(n) &= (c_3 + c_4  + c_5)n^2 + (c_1 + c_2 + c_3 - c_4 - c_5)n + 1c_1\\
 \end{split}
 \end{equation}$$
 
+Reconsiderando as constantes:
 
-Podemos expressar esse tempo de execução do pior caso como $an^2 + bn + c$ para as constantes a, b e c que, mais uma vez, dependem dos custos de instrução $c_i$;
+$$\begin{equation}
+\begin{split}
+T(n) &= an^2 + bn + c\\
+\end{split}
+\end{equation}$$
+
 
 Portanto o pior caso é uma **função quadrática** de $n$.
 
@@ -917,26 +711,17 @@ O tempo de execução do pior caso de um algoritmo estabelece um limite superior
 
 Conhecer o pior tempo garante que o algoritmo nunca demorará mais do que esse tempo.
 
-Para alguns algoritmos, o pior caso ocorre com bastante frequência. Por exemplo, em uma pesquisa de um banco de dados , o pior caso do algoritmo de busca frequentemente ocorre quando a informação não existe.
-
-Muitas vezes, o "caso médio" é quase tão ruim quanto o pior caso.
-Suponha que escolhemos $n$ números aleatoriamente e aplicamos ordenação por inserção.
-
-Quanto tempo transcorrerá até que o algoritmo determine o lugar no subarranjo $A[1, \cdots, i -1]$ em que deve ser inserido o elemento $A[i]$, qualquer?
-
-Em uma média probabilística, metade dos elementos em $A[1, \cdots, i -1]$ é menor que $A[i]$ e metade dos elementos é maior.
-Portanto, deve-se em média, verificar metade do subarranjo $A[1, \cdots, i -1], mesmo assim, nosso $t_i$ continua em função de $i$, como $t_i = i/2$. Resultando que o tempo de execução obtido no caso médio é uma função quadrática do tamanho da entrada, exatamente o que ocorre com o tempo de execução do pior caso.
-
 ## Ordem de crescimento
 
 Ao falar da taxa de crescimento ou ordem de crescimento, simplificamos. Portanto, consideramos apenas o termo inicial de uma fórmula, já que o termos de ordem mais baixa são relativamente insignificantes para grandes valores de $n$.
 
 Ignoramos também o coeficiente constante do termo inicial, visto que fatores constantes são menos significativos que a taxa de crescimento.
 
-Afirmamos, por fim que a ordenação por inserção tem um tempo de execução do pior caso igual à $\Theta(n^2)$ (lido como "teta de $n$ ao quadrado).
+## Finalmente a análise do pior caso do algoritmo de ordenação por inserção
+
+**Afirmamos, por fim que a ordenação por inserção tem um tempo de execução do pior caso igual à $\Theta(n^2)$ (lido como "teta de $n$ ao quadrado).**
 
 Conclusão, em geral, consideramos que um algoritmo é mais eficiente que outro se seu tempo de execução do pior caso apresenta um ordem de crescimento mais baixa.
 
 E agora? Existe alguma ordenação que tem $\Theta < \Theta(n^2)$? A análise de algoritmos apenas começou!
 
-[Aula 03 - Um novo algoritmo de ordenação, uma nova análise](./aula_03.md)
