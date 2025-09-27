@@ -25,6 +25,7 @@ nav:
   - Módulo 2:
     - Aula 01 - Introdução à análise de algoritmos - 30/08: "Módulo 2/aula_01.md"
     - Aula 02 - Introdução à análise de algortimos part.2 - 30/8: "Módulo 2/aula_02.md"
+    - Aula 03 - Teste: "Módulo 2/aula_03.md"
 
 theme: 
   name: material
@@ -78,6 +79,11 @@ markdown_extensions:
   - pymdownx.snippets:
       base_path: ["docs"]
   - tables
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - social
