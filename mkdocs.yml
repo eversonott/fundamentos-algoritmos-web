@@ -27,6 +27,8 @@ nav:
     - Aula 02 - Introdução à análise de algortimos part.2: "Módulo 2/aula_02.md"
     - Aula 03 - Análise de algoritmos e suas complexidades - Ordenação por intercalação: "Módulo 2/aula_03.md"
     - Aula 04 - Módulos: "Módulo 2/aula_04.md"
+    - Aula 05 - Strings e Entrada e saída de arquivos: "Módulo 2/aula_05.md"
+    - Aula 06 - Entrada e saída de arquivos: "Módulo 2/aula_06.md"
 
 theme: 
   name: material

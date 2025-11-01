@@ -1,27 +1,25 @@
----
-search:
-  exclude: true
----
+
 # Aula 05 - Entrada e Saída de arquivos (pt. 1)
 
 {% set aula = "05" %}
-{% set link = "k6LpQWeoHDY" %}
+{% set link = "" %}
 {% set codigos = true %}
 {% set pesquisas = true %}
 {% set slides = false %}
-{% set objetivos = ["Formatação de saída", "Strings", "Leitura de arquivos"]%}
-{% include "templates/cabecalho.md" %}
+{% set objetivos = [""]%}
+{% include "templates/cabecalho_sem_video.md" %}
 
 ---
 
 
-## Refinando a formatação de saída
+## Strings literais formatadas
 
-Muitas vezes desejamos um maior controle sobre a formatação da saída do que simplesmente exibir valores separados por espaço.
+Muitas vezes desejamos um maior controle sobre a formatação da saída
+do que simplesmente exibir valores separados por espaço.
 
-### Strings literais formatadas
-
-Também conhecidas como f=strings, permite que se inclua o valor de expressões Python dentro de uma string, prefixando-a com `f` ou com `F` e escrevendo expressões na forma `{expressão}`.
+Também conhecidas como `f-strings`, permite que se inclua o valor de
+expressões Python dentro de uma string, prefixando-a com `f` ou com 
+`F` e escrevendo expressões na forma `{expressão}`.
 
 ```py title="Terminal interativo - aula_05/exemplo_01.py"
 >>> import math
@@ -29,57 +27,94 @@ Também conhecidas como f=strings, permite que se inclua o valor de expressões 
 O valor aproximado de pi é: 3.141592653589793
 ```
 
-#### Usando o especificador ':'
+### Usando o especificador `:`
 
-
-```py title="Terminal interativo - aula_05/exemplo_01.py"
->>> import math
->>> print(f'O valor aprozimado de pi é {math.pi:.2f}.')
-O valor aproximado de pi é: 3.14.
-```
-
-Passando um inteiro após `':'` fará com que o campo tenha um número mínimo de caracteres de largura. Isso é eficiente para alinhar colunas.
-
-Mas conciliando `':'` com um tipo de apresentação numérica. No nosso caso: `.2f`, considera uma notação de ponto-flutuante (float ou número real). Em que o número após o `.` determina exatamente quantos dígitos após a vírgula.
-
-Alinhamento de colunas utilizando `':'`:
-
-Sem `':'`:
+Passando um inteiro após `:` fará com que o campo tenha um número 
+mínimo de caracteres de largura. Isso é eficiente para alinhar 
+colunas.
 
 ```py title="Terminal interativo - aula_05/exemplo_01.py"
->>> cadastro = {'Jõao': 2312, 'Madalena': 4351, 'Alisson': 345}
->>> for nome, id in cadastro.items():
-...     print(f'{nome} ==> {id}')
-...
-Jõao ==> 2312
-Madalena ==> 4351
-Alisson ==> 345
+numero = 345
+
+print(f'O meu número é {numero}')
+print(f'O meu número é {numero:1}')
+print(f'O meu número é {numero:2}')
+print(f'O meu número é {numero:3}')
+print(f'O meu número é {numero:4}')
+print(f'O meu número é {numero:5}')
+print(f'O meu número é {numero:6}')
+
+// Saída: O meu número é 345
+// Saída: O meu número é 345
+// Saída: O meu número é 345
+// Saída: O meu número é 345
+// Saída: O meu número é  345
+// Saída: O meu número é   345
+// Saída: O meu número é    345 
 ```
 
-Com `':'`:
+Isso é eficiente para alinhar colunas:
 
 ```py title="Terminal interativo - aula_05/exemplo_01.py"
->>> cadastro = {'Jõao': 2312, 'Madalena': 4351, 'Alisson': 345}
->>> for nome, id in cadastro.items():
-...     print(f'{nome:10} ==> {id:3}')
-...
-Jõao       ==> 2312
-Madalena   ==> 4351
-Alisson    ==> 345
+clientes = [{'nome': 'Antônio', 'valor' : 345}, {'nome': 'Beatriz', 'valor': 4356}, {'nome': 'Carlos', 'valor': 2}]
+
+print('|Nome|Valor depositado|')
+for cliente in clientes:
+    nome_cliente = cliente['nome']
+    valor_depositado = cliente['valor']
+    print(f'|{nome_cliente}|', end='')
+    print(f'{valor_depositado}|')
+
+// Saída: |Nome|Valor depositado|
+// Saída: |A|345|
+// Saída: |B|4356|
+// Saída: |C|2|
 ```
 
-#### Usando o especificador '='
+```py title="Terminal interativo - aula_05/exemplo_01.py"
+print('|Nome|Valor depositado|')
+for cliente in clientes:
+    nome_cliente = cliente['nome']
+    valor_depositado = cliente['valor']
+    print(f'|{nome_cliente:4}|', end='')
+    print(f'{valor_depositado:16}|')
+
+// Saída: |Nome|Valor depositado|
+// Saída: |A   |             345|
+// Saída: |B   |            4356|
+// Saída: |C   |               2|
+```
+
+Mas conciliando `:` com um tipo de apresentação numérica:
+
+```py title="Terminal interativo - aula_05/exemplo_01.py"
+print(f'O valor aproximado de pi é: {math.pi:.4f}')
+\\ Saída: O valor aproximado de pi é: 3.1416
+```
+
+No nosso caso: `.4f`, considera uma notação de ponto-flutuante 
+(`f`: float ou número real). Em que o número após o `.` determina 
+exatamente quantos dígitos após a vírgula, por exemplo 4 dígitos após
+a vírgula.
+
+Podemos trabalhar aproximações mais precisas, ou não:
+
+```py title="Terminal interativo - aula_05/exemplo_01.py"
+print(f'O valor ainda mais aproximado de pi é: {math.pi:.2f}')
+\\ Saída: O valor ainda mais aproximado de pi é: 3.14
+```
+
+### Usando o especificador `=`
 
 Esse especificador expande a expressão para seu nome e valor.
 
-
 ```py title="Terminal interativo - aula_05/exemplo_02.py"
->>> aulas = 12
->>> inicio = 9
->>> fim = 11
->>> curso = 'Fundamentos de algoritmos'
->>> print(f'Oferta: {curso=} {aulas=} {inicio=}h e {fim=}h.')
-Oferta: curso='Fundamentos de algoritmos' aulas=12 inicio=9h e fim=11h.
+aulas = 12
+inicio = 9
+fim = 11
+curso = 'Fundamentos de algoritmos'
+print(f'Oferta: {curso=} {aulas=} {inicio=}h e {fim=}h.')
+\\ Saída: Oferta: curso='Fundamentos de algoritmos' aulas=12 inicio=9h e fim=11h.
 ```
 
 Podemos usar o `=` pode exibir toda a expressão para que os cálculos possam ser mostrados:
@@ -87,27 +122,28 @@ Podemos usar o `=` pode exibir toda a expressão para que os cálculos possam se
 
 
 ```py title="Terminal interativo - aula_05/exemplo_02.py"
->>> from math import radians as radianos
->>> from math import sin as seno
->>> theta = 30
->>> print(f'{theta=} {seno(radianos(theta))=:.3f}')
-theta=30 seno(radianos(theta))=0.500
+from math import radians as radianos
+from math import sin as seno
+theta = 30
+print(f'{theta=} {seno(radianos(theta))=:.3f}')
+\\ Saída: theta=30 seno(radianos(theta))=0.500
 ```
 
-##### Bônus: módulo random
+### Bônus: módulo random
 
 Temos um módulo embutido em Python que implementa geradores de números pseudo-aleatórios para vários distribuições.
 
 ```py title="Terminal interativo - aula_05/exemplo_02.py"
->>> from math import radians as radianos
->>> from math import sin as seno
->>> from random import randrange
->>> theta = 30
->>> print(f'{theta=} {seno(radianos(theta))=:.3f}')
->>> for i in range(10):
-...     theta = randrange(0,366)
-...     print(f'{theta=} {seno(radianos(theta))=:.3f}')
-...
+from math import radians as radianos
+from math import sin as seno
+from random import randrange
+theta = 30
+print(f'{theta=} {seno(radianos(theta))=:.3f}')
+for i in range(10):
+    theta = randrange(0,366)
+    print(f'{theta=} {seno(radianos(theta))=:.3f}')
+'''
+Saída:
 theta=276 seno(radianos(theta))=-0.995
 theta=167 seno(radianos(theta))=0.225
 theta=69 seno(radianos(theta))=0.934
@@ -118,6 +154,8 @@ theta=73 seno(radianos(theta))=0.956
 theta=317 seno(radianos(theta))=-0.682
 theta=182 seno(radianos(theta))=-0.035
 theta=44 seno(radianos(theta))=0.695
+'''
+
 ```
 
 A cada nova interpretação, será novos ângulos. 
@@ -125,7 +163,7 @@ A cada nova interpretação, será novos ângulos.
 Pensem nas possibilidades para testarmos fórmulas?! Ou até mesmo algoritmos próprios.
 ![](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmVyZ3Jna3huejF1b2hwenFuZWhiOWFhcmsxaGw1MTFqNGt0ZXZiZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/DhstvI3zZ598Nb1rFf/giphy.webp){: .center .shadow width=150px}
 
-### O método format()
+## O método format()
 
 Executa uma operação de formatação de string.
 As chaves e seus conteúdos (chamados campos de formatação) são substituídos pelos objetos passados para o método `str.format()`.
@@ -133,20 +171,22 @@ As chaves e seus conteúdos (chamados campos de formatação) são substituídos
 Pode-se usar 
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
->>> print('Somos os {} que dizem "{}"!'.format('cavaleiros', 'Ni'))
-Somos os cavaleiros que dizem "Ni"!
+print('Somos os {} que dizem "{}"!'.format('cavaleiros', 'Ni'))
+\\ Saída: Somos os cavaleiros que dizem "Ni"!
 ```
 
 ![](https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHFxc2NmOGx3b3Rkd242Y3M2dmM0eGNjdGc2bW84OXpjOXJkbjBtOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/35aVstfJYNlEA/giphy.gif){: .center .shadow}
 
-#### O uso de chaves com o `format()`
+### O uso de chaves com o `format()`
 
 Um número nas chaves pode ser usado para referenciar a posição do objeto passado pelos campos de formatação.
 
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
->>> print('{0} e {1}'.format('spam', 'bacon'))
->>> print('{1} e {0}'.format('spam', 'bacon'))
+print('{0} e {1}'.format('spam', 'bacon'))
+print('{1} e {0}'.format('spam', 'bacon'))
+\\ Saída: spam e bacon
+\\ Saída: bacon e spam
 ```
 
 ??? Note "Referência"
@@ -154,23 +194,23 @@ Um número nas chaves pode ser usado para referenciar a posição do objeto pass
     
     O termo `spam` que hoje usamos, veio dessa esquete do Monty Python.
 
-#### Renomeação com o `format()`
+### Renomeação com o `format()`
 
 Os argumentos de `format()` podem ser renomeados e seus valores podem ser referenciados utilizando o nome do argumento.
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
 >>> print('Eu não gosto de {prato}'.format(prato = 'spam'))
-Eu não gosto de spam
+\\ Saída: Eu não gosto de spam
 ```
 
-#### Uso de dicionários com o `format()`
+### Uso de dicionários com o `format()`
 
 Para strings de formatação longas demais, podemos fazer referência utilizando a estrutura de dados `dict` (dicionário), e realizar a referência diretamente com um nome (chave) do que com a posição.
 
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
 >>> print('John: {0}; Michael: {2}; Terry: {1}'.format(84, 77, 81))
-John: 84; Eric: 81; Terry: 77.
+\\ Saída: John: 84; Eric: 81; Terry: 77.
 ```
 
 Na execução acima, perceba que o valor correto da idade depende diretamente da posição.
@@ -179,48 +219,51 @@ Se organizarmos os dados (nome e idade) em um dicionário, e referenciarmos pela
 
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
->>> dados = {'John': 84, 'Eric': 81, 'Terry': 77}
->>> print('John: {0[John]}; Terry: {0[Terry]}; Eric: {0[Eric]}.'.format(dados))
-John: 84; Eric: 81; Terry: 77.
+dados = {'John': 84, 'Eric': 81, 'Terry': 77}
+print('John: {0[John]}; Terry: {0[Terry]}; Eric: {0[Eric]}.'.format(dados))
+\\ Saída: John: 84; Eric: 81; Terry: 77.
 ```
 
 Perceba que precisamos referência o dicionário com `0` (por meio do `format()`) para acessá-lo com a devida chave.
 
-##### Operador `*` ou `**`
+#### Operador `*` ou `**`
 
 Além de serem utilizados para a multiplicação e exponenciação, os operados `*` e `**`, respectivamente, podem ser utilizados como para 'acessar' um número variável de argumentos e um número arbitrário de argumentos de **palavras-chaves**.
 
 Usando `*`:
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
->>> numeros = [1, 2, 3, 5, 6]
->>> def adicao(*lista):
-...     return sum(lista)
-...
->>> print(adicao(*numeros))
-17
+numeros = [1, 2, 3, 5, 6]
+def adicao(*lista):
+    return sum(lista)
+
+print(adicao(*numeros))
+\\ Saída: 17
 ```
 
 Usando `**`:
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
->>> dados = {'fruta': 'morango', 'vegetal': 'batata', 'bacon':'span'}
->>> def definicao(**dados):
-...     for item in dados:
-...         print(dados[item])
-...
->>> definicao(**dados)
+dados = {'fruta': 'morango', 'vegetal': 'batata', 'bacon':'span'}
+def definicao(**dados):
+    for item in dados:
+        print(dados[item])
+
+definicao(**dados)
+'''
+Saída: 
 morango
 batata
 span
+'''
 ```
 
 Portanto podemos utilizar dados do tipo `dict`, `format()` e operados: `*` e `**`:
 
 ```py title="Terminal interativo - aula_05/exemplo_03.py"
->>> dados = {'John': 84, 'Eric': 81, 'Terry': 77}
->>> print('John: {John}; Terry: {Terry}; Eric: {Eric}.'.format(**dados))
-John: 84; Eric: 81; Terry: 77.
+dados = {'John': 84, 'Eric': 81, 'Terry': 77}
+print('John: {John}; Terry: {Terry}; Eric: {Eric}.'.format(**dados))
+\\ Saída: John: 84; Eric: 81; Terry: 77.
 ```
 
 Com `**` operamos diretamente sobre as chaves do dicionário.
@@ -275,16 +318,18 @@ Considere o arquivo que será lido:
 ```
 
 ```py title="Terminal interativo - aula_05/exemplo_04.py"
->>> with open('nomes.txt', encoding='utf-8') as arq:
-...     nomes = arq.read()
-...
->>> print(nomes)
+with open('nomes.txt', encoding='utf-8') as arq:
+nomes = arq.read()
+
+print(nomes)
+'''
+Saída: 
 Graham Chapman
 John Cleese
 Eric Idle
 Terry Jones
 Michael Palin
-
+'''
 ```
 
 Vamos entender o que aconteceu:
@@ -296,23 +341,26 @@ Sobre o `encoding`, UTF-8 é o padrão de codificação mais utilizado. Compatí
 O método `f.readline() também retorna uma `string`, porém lê uma única linha do arquivo; O caractere de quebra de linha (`\n`) é mantido ao final da string, esse caractere só é omitido, caso o arquivo não termine com uma quebra de linha. 
 
 ```py title="Terminal interativo - aula_05/exemplo_04.py"
->>> with open('nomes.txt', encoding='utf-8') as arq:
-...     nomes = arq.readline()
-...
->>> print(nomes)
-Graham Chapman
+with open('nomes.txt', encoding='utf-8') as arq:
+    nomes = arq.readline()
 
+print(nomes)
+\\ Saída: Graham Chapman
 ```
 
 O método `f.readlines()` retorna uma lista, em que cada item é uma linha, inclusive com o caractere de quebra de linha (`\n`).
 
 ```py title="Terminal interativo - aula_05/exemplo_04.py"
->>> with open('nomes.txt', encoding='utf-8') as arq:
-...     nomes = arq.readlines()
-...
->>> print(nomes)
+with open('nomes.txt', encoding='utf-8') as arq:
+    nomes = arq.readlines()
+
+print(nomes)
+
+'''
+Saída: 
 ['Graham Chapman\n', 'John Cleese\n', 'Eric Idle\n', 'Terry Jones\n'
 , 'Michael Palin\n']
+'''
 ```
 
 
@@ -322,18 +370,16 @@ O método `f.readlines()` retorna uma lista, em que cada item é uma linha, incl
 Podemos iterar sobre o objeto arquivo para ler as linhas.
 
 ```py title="Terminal interativo - aula_05/exemplo_04.py"
->>> with open('nomes.txt', encoding='utf-8') as arq:
-...     for linha in arq:
-...         print(linha, end='')
-...
+with open('nomes.txt', encoding='utf-8') as arq:
+    for linha in arq:
+        print(linha, end='')
+
+'''
+Saída: 
 Graham Chapman
 John Cleese
 Eric Idle
 Terry Jones
 Michael Palin
+'''
 ```
-
-## Pesquisas sobre a aula
-
---8<-- "./Módulo 2/Pesquisas/aula_05.html"
-

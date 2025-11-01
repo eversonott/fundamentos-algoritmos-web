@@ -5,12 +5,12 @@ search:
 # Aula 06 - Entrada e Saída de arquivos (pt. 2)
 
 {% set aula = "06" %}
-{% set link = "goBEiJMmWVw" %}
+{% set link = "" %}
 {% set codigos = true %}
-{% set pesquisas = true %}
+{% set pesquisas = false %}
 {% set slides = false %}
 {% set objetivos = ["Escrita (saída) de arquivos no modo texto", "Manipulação de arquivos CVS", "Novos refinamentos de saídas utilizando `print`", "Manipular nomes de caminho utilizando o módulo `os`"]%}
-{% include "templates/cabecalho.md" %}
+{% include "templates/cabecalho_sem_video.md" %}
 
 ---
 
@@ -23,10 +23,10 @@ Os modos disponíveis que envolvem escrita de arquivos são:
 
 |Caractere  |Significado                                                                               |
 |-----------|-------------------------------------------------------------------------------------------|
-|`'w'`      |Abre para escrita, truncando o arquivo primeiro (remove tudo que estava contido no arquivo.|
-|`'x'`      |Abre para criação exclusiva, falha caso o arquivo exista.                                  |
-|`'a'`      |Abre para escrita, anexa ao final do arquivo caso o mesmo exista.                          |
-|`'+'`      |Abre o arquivo para atualização (leitura e escrita)                                        |
+|`w`      |Abre para escrita, truncando o arquivo primeiro (remove tudo que estava contido no arquivo.|
+|`x`      |Abre para criação exclusiva, falha caso o arquivo exista.                                  |
+|`a`      |Abre para escrita, anexa ao final do arquivo caso o mesmo exista.                          |
+|`+`      |Abre o arquivo para atualização (leitura e escrita)                                        |
 
 
 Considere o arquivo (definição de f-strings) que será lido:
@@ -349,8 +349,4 @@ No. no geral,Título,Dirigido por,Escrito por,Data de exibição,Audiência (em 
 >>> os.path.splitext(caminho)
 ('./tabelas/episodios', '.csv')
 ```
-
-## Pesquisas sobre a aula
-
---8<-- "./Módulo 2/Pesquisas/aula_06.html"
 
